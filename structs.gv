@@ -1,0 +1,115 @@
+digraph structs {
+	node [shape=box]
+	subgraph cluster_0 {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		label="ROAD MESH"
+		1 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">Highway</font></TD>
+              </TR>
+            </TABLE>>]
+		2 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+          <TR>
+            <TD bgcolor="black" align="center" colspan="2"><font color="white">Roads</font></TD>
+          </TR>
+        </TABLE>>]
+		3 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">Residential</font></TD>
+              </TR>
+              <TR>
+                <TD align="left"> nomee</TD>
+              </TR>
+              <TR>
+                <TD align="left"> surface</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> Latitude</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> Longitude</TD>
+              </TR>
+            </TABLE>>]
+		3 -> 2 [arrowhead=onormal]
+		2 -> 1 [arrowhead=onormal]
+	}
+	subgraph cluster_1 {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		label=SERVICE
+		4 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">amenity</font></TD>
+              </TR>
+            </TABLE>>]
+		5 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">education</font></TD>
+              </TR>
+            </TABLE>>]
+		6 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">university</font></TD>
+              </TR>
+              <TR>
+                <TD align="left"> addr:city</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> Latitude</TD>
+              </TR>
+              <TR>
+                <TD align="left"> nome</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> Longitude</TD>
+              </TR>
+               <TR>
+                <TD align="left"> addr:postcode</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> wikipedia</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> website</TD>
+              </TR>
+            </TABLE>>]
+		6 -> 5 [arrowhead=onormal]
+		5 -> 4 [arrowhead=onormal]
+	}
+	subgraph cluster_2 {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		label=HEALTH
+		7 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">Healthcare</font></TD>
+              </TR>
+            </TABLE>>]
+		8 [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+              <TR>
+                <TD bgcolor="black" align="center" colspan="2"><font color="white">Hospital</font></TD>
+              </TR>
+              <TR>
+                <TD align="left"> nome</TD>
+              </TR>
+               <TR>  
+                <TD align="left"> Latitude</TD>
+              </TR>
+              <TR>  
+                <TD align="left"> Longitude</TD>
+              </TR>
+            </TABLE>>]
+		8 -> 7 [arrowhead=onormal]
+		7 -> 4 [arrowhead=onormal]
+	}
+	rankdir=BT
+}

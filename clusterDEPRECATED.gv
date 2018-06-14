@@ -1,0 +1,25 @@
+digraph G {
+	subgraph cluster_0 {
+		node [color=white shape=box style=filled]
+		color=lightgrey style=filled
+		test [label=aa plaintext=asdas shape=diamond]
+		residential -> roads [arrowhead=onormal]
+		roads -> highway [arrowhead=onormal]
+		label="ROAD MESH"
+	}
+	subgraph cluster_1 {
+		node [color=white shape=box style=filled]
+		color=lightgrey style=filled
+		university -> education [arrowhead=onormal]
+		education -> amenity [arrowhead=onormal]
+		label=SERVICE
+	}
+	subgraph cluster_2 {
+		node [color=white shape=box style=filled]
+		color=lightgrey style=filled
+		hospital -> "health care" [arrowhead=onormal]
+		"health care" -> amenity [arrowhead=onormal]
+		label=HEALTH
+	}
+	rankdir=BT
+}
