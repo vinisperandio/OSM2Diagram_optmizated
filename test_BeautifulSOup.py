@@ -5,38 +5,45 @@ dicElements = {} #responsavel por separar os elementos especificos (way, node...
 dicWay = {} #dicionario das tags Way
 listWay = [] #lista que recebe todos os blocos XML da tag Way
 #dicNode = {}
-#listNode = []
+listNode = [] #lista que recebe os blocos XML sem a TAG name
+
+def Find_coord(list):
+    flg = 0
+    stereotypeList = []
+
+    for nd in list.find_all('nd'):
+        for coord in soup.find_all(id=str(nd.get('ref'))):
+            # print coord
+            dicElements["lat" + str(flg)] = coord.get('lat')
+            dicElements["lon" + str(flg)] = coord.get('lon')
+            flg = flg + 1
+            stereotypeList.append(nd.get('ref'))
+
+    print(len(stereotypeList))
+    if len(stereotypeList) == 1:
+        dicElements["stereotype"] = "point"
+    elif stereotypeList[0] == stereotypeList[len(stereotypeList) - 1]:
+        dicElements["stereotype"] = "polygon"
+    else:
+        dicElements["stereotype"] = "line"
+
+    for tag in list.find_all('tag'):
+        k = tag.get('k')
+        v = tag.get('v')
+        dicElements[k] = v
+        # print(k)
+    stereotypeList.clear()
+    return
 
 
 def Find_tag_coord(test):
-    flg = 0
-    stereotypeList=[]
     if test.find(k="name"):
-        flg = 0
-        for nd in test.find_all('nd'):
-            for coord in soup.find_all(id=str(nd.get('ref'))):
-                #print coord
-                dicElements["lat" + str(flg)] = coord.get('lat')
-                dicElements["lon" + str(flg)] = coord.get('lon')
-                flg = flg + 1
-                stereotypeList.append(nd.get('ref'))
-
-        print(len(stereotypeList))
-        if len(stereotypeList) == 1:
-            dicElements["stereotype"] = "point"
-        elif stereotypeList[0] == stereotypeList[len(stereotypeList)-1]:
-            dicElements["stereotype"] = "polygon"
-        else:
-            dicElements["stereotype"] = "line"
-
-        for tag in test.find_all('tag'):
-            k = tag.get('k')
-            v = tag.get('v')
-            dicElements[k] = v
-            #print(k)
+        Find_coord(test)
         listWay.append(dicElements.copy())
-        stereotypeList.clear()
-        dicElements.clear()
+    else:
+        Find_coord(test)
+        listNode.append(dicElements.copy())
+    dicElements.clear()
     return
 
 
@@ -64,10 +71,12 @@ for i in range(len(listWay)):
         arq.write (" - "+listWay[i]['amenity']+"\n")
     elif "highway" in listWay[i]:
         arq.write(" - " + listWay[i]['highway'] + "\n")
+    elif "shop" in listWay[i]:
+        arq.write(" - " + listWay[i]['shop'] + "\n")
     else:
         arq.write ("\n")
 arq.close()
-
+print(listWay[6].keys())
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
 #             if "lat" not in j and "lon" not in j and "name" not in j:
