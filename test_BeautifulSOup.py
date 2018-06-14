@@ -76,7 +76,8 @@ for i in range(len(listWay)):
     else:
         arq.write ("\n")
 arq.close()
-print(listWay[6].keys())
+#print(listWay[4].keys())
+print(listNode)
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
 #             if "lat" not in j and "lon" not in j and "name" not in j:
