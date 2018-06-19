@@ -7,12 +7,24 @@ digraph structs {
 		0[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">games</font>  
+				<TD align="center"><font color="black">university</font>  
 				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
 			</TR>
 			<hr/>
 			<TR>
 				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">website</TD>
+			 </TR>
+			<TR>
+				<TD align="left">wikipedia</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:city</TD>
 			 </TR>
 			<TR>
 				<TD align="left">coordinates</TD>
@@ -21,42 +33,10 @@ digraph structs {
 		1[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">shop</font>  </TD>
-			</TR>
-			</TABLE>>]
-		2[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">university</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">addr:postcode</TD>
-			 </TR>
-			<TR>
-				<TD align="left">addr:city</TD>
-			 </TR>
-			<TR>
-				<TD align="left">wikipedia</TD>
-			 </TR>
-			<TR>
-				<TD align="left">website</TD>
-			 </TR>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		3[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
 				<TD align="center"><font color="black">amenity</font>  </TD>
 			</TR>
 			</TABLE>>]
-		4[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		2[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">college</font>  
@@ -70,7 +50,7 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		5[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		3[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">parking</font>  
@@ -84,19 +64,13 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		6[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">art_music_hobbies</font>  </TD>
-			</TR>
-			</TABLE>>]
-		7[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		4[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">education</font>  </TD>
 			</TR>
 			</TABLE>>]
-		8[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		5[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">transportation</font>  </TD>
@@ -107,7 +81,7 @@ digraph structs {
 		node [color=black style=filled]
 		color=lightgrey style=filled
 		label=HEALTH
-		9[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		6[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">hospital</font>  
@@ -121,7 +95,7 @@ digraph structs {
 				<TD align="left">coordenadas</TD>
 			 </TR>
 			</TABLE>>]
-		10[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		7[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">healthCare</font>  </TD>
@@ -132,7 +106,7 @@ digraph structs {
 		node [color=black style=filled]
 		color=lightgrey style=filled
 		label=ROAD_MESH
-		11[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		8[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">residential</font>  
@@ -149,30 +123,28 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		12[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		9[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">highway</font>  </TD>
 			</TR>
 			</TABLE>>]
-		13[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		10[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">roads</font>  </TD>
 			</TR>
 			</TABLE>>]
 	}
-		11 -> 13[arrowhead=onormal]
-		8 -> 3[arrowhead=onormal]
-		2 -> 7[arrowhead=onormal]
-		5 -> 8[arrowhead=onormal]
-		0 -> 6[arrowhead=onormal]
-		6 -> 1[arrowhead=onormal]
-		7 -> 3[arrowhead=onormal]
-		4 -> 7[arrowhead=onormal]
-		13 -> 12[arrowhead=onormal]
-		10 -> 3[arrowhead=onormal]
-		9 -> 10[arrowhead=onormal]
+		0 -> 4[arrowhead=onormal]
+		6 -> 7[arrowhead=onormal]
+		5 -> 1[arrowhead=onormal]
+		7 -> 1[arrowhead=onormal]
+		3 -> 5[arrowhead=onormal]
+		4 -> 1[arrowhead=onormal]
+		2 -> 4[arrowhead=onormal]
+		8 -> 10[arrowhead=onormal]
+		10 -> 9[arrowhead=onormal]
 	rankdir=BT
 	splines=ortho
 }
