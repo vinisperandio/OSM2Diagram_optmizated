@@ -45,7 +45,7 @@ road_mesh = ['highway','aerialway','aeroway','railway','public_transportation','
 global highway
 highway = ['roads','special_road','path','linkRoads','lifecycle','othersHighway']
 global roads
-roads = ['residential','primary','motorway']
+roads = ['residential','primary','motorway','unclassified']
 global special_road
 specialRoads = ['pedestrian','escape','raceway']
 global path
