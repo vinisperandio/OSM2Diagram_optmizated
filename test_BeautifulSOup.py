@@ -64,20 +64,25 @@ for i in range(len(dicWay)):
 print(graph.driveGraph(listWay))
 
 #### GERAR SCRIP TABELAS
-arq = open("script",'w+')
+arqScript = open("script",'w+')
 for i in range(len(listWay)):
-    arq.write(listWay[i]['name'])
+    arqScript.write(listWay[i]['name'])
     if "amenity" in listWay[i]:
-        arq.write (" - "+listWay[i]['amenity']+"\n")
+        arqScript.write (" - "+listWay[i]['amenity']+"\n")
     elif "highway" in listWay[i]:
-        arq.write(" - " + listWay[i]['highway'] + "\n")
+        arqScript.write(" - " + listWay[i]['highway'] + "\n")
     elif "shop" in listWay[i]:
-        arq.write(" - " + listWay[i]['shop'] + "\n")
+        arqScript.write(" - " + listWay[i]['shop'] + "\n")
     else:
-        arq.write ("\n")
-arq.close()
-#print(listWay[4].keys())
-print(listNode)
+        arqScript.write ("\n")
+arqScript.close()
+
+print(listNode[1])
+arqNode = open("relatorio", 'w+')
+for i in range(len(listNode)):
+    arqNode.write(listNode[i]+"\n")
+arqNode.close()
+
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
 #             if "lat" not in j and "lon" not in j and "name" not in j:

@@ -15,16 +15,16 @@ digraph structs {
 				<TD align="left">addr:postcode</TD>
 			 </TR>
 			<TR>
-				<TD align="left">website</TD>
+				<TD align="left">name</TD>
 			 </TR>
 			<TR>
-				<TD align="left">name</TD>
+				<TD align="left">addr:city</TD>
 			 </TR>
 			<TR>
 				<TD align="left">wikipedia</TD>
 			 </TR>
 			<TR>
-				<TD align="left">addr:city</TD>
+				<TD align="left">website</TD>
 			 </TR>
 			<TR>
 				<TD align="left">coordinates</TD>
@@ -114,10 +114,10 @@ digraph structs {
 			</TR>
 			<hr/>
 			<TR>
-				<TD align="left">name</TD>
+				<TD align="left">surface</TD>
 			 </TR>
 			<TR>
-				<TD align="left">surface</TD>
+				<TD align="left">name</TD>
 			 </TR>
 			<TR>
 				<TD align="left">coordinates</TD>
@@ -137,13 +137,13 @@ digraph structs {
 			</TR>
 			<hr/>
 			<TR>
-				<TD align="left">surface</TD>
-			 </TR>
-			<TR>
 				<TD align="left">oneway</TD>
 			 </TR>
 			<TR>
 				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">surface</TD>
 			 </TR>
 			<TR>
 				<TD align="left">coordinates</TD>
@@ -157,15 +157,15 @@ digraph structs {
 			</TABLE>>]
 	}
 		11 -> 9[arrowhead=onormal]
-		5 -> 1[arrowhead=onormal]
 		3 -> 5[arrowhead=onormal]
-		4 -> 1[arrowhead=onormal]
-		7 -> 1[arrowhead=onormal]
+		10 -> 11[arrowhead=onormal]
+		2 -> 4[arrowhead=onormal]
+		8 -> 11[arrowhead=onormal]
+		5 -> 1[arrowhead=onormal]
 		0 -> 4[arrowhead=onormal]
 		6 -> 7[arrowhead=onormal]
-		8 -> 11[arrowhead=onormal]
-		2 -> 4[arrowhead=onormal]
-		10 -> 11[arrowhead=onormal]
+		7 -> 1[arrowhead=onormal]
+		4 -> 1[arrowhead=onormal]
 	rankdir=BT
 	splines=ortho
 }
