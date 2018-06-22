@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import graph
-
+asda
 dicElements = {} #responsavel por separar os elementos especificos (way, node...) dentro da função Find_tag_coord
 dicWay = {} #dicionario das tags Way
 listWay = [] #lista que recebe todos os blocos XML da tag Way
