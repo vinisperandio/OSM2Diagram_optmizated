@@ -1,77 +1,77 @@
 from graphviz import Digraph, render
 
-#HEALTH
+# HEALTH
 global health
 health = ['emergency']
 
 global emergency
-emergency = ['medical_rescue','firefighters','lifeguards','other_structure','other_station']
+emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_structure', 'other_station']
 global medical_rescue
 global firefighters
 global lifeguards
 global other_structure
 global other_station
 
-#SERVICES
+# SERVICES
 global service
-service = ['shop','amenity', 'craft']
+service = ['shop', 'amenity', 'craft']
 
 global amenity
-amenity = ['education','transportation','entertainment', 'healthCare', 'sustenance','financial','others']
+amenity = ['education', 'transportation', 'entertainment', 'healthCare', 'sustenance', 'financial', 'others']
 global education
-education = ['college','kindergarten','library','archive','public_bookcase','school','music_school','driving_school','language_school','university','research_institute']
+education = ['college', 'kindergarten', 'library', 'archive', 'public_bookcase', 'school', 'music_school',
+             'driving_school', 'language_school', 'university', 'research_institute']
 global transportation
-transportation = ['bus_station','fuel','parking','taxi']
+transportation = ['bus_station', 'fuel', 'parking', 'taxi']
 global entertainment
-entertainment = ['casino','cinema']
+entertainment = ['casino', 'cinema']
 global healthCare
-healthCare = ['pharmacy','hospital','dentist','blood_donation']
+healthCare = ['pharmacy', 'hospital', 'dentist', 'blood_donation']
 
 global shop
 shop = ['art_music_hobbies']
 global art_music_hobbies
-art_music_hobbies = ['camera','music','games']
+art_music_hobbies = ['camera', 'music', 'games']
 global food_beverages
-food_beverages = ['alcohol','cheese','chocolate']
-
+food_beverages = ['alcohol', 'cheese', 'chocolate']
 
 global craft
-craft = ['agricultura_engines','bakery', 'carpenter']
+craft = ['agricultura_engines', 'bakery', 'carpenter']
 
-#ROAD MESH
+# ROAD MESH
 global road_mesh
-road_mesh = ['highway','aerialway','aeroway','railway','public_transportation','route']
+road_mesh = ['highway', 'aerialway', 'aeroway', 'railway', 'public_transportation', 'route']
 
 global highway
-highway = ['roads','special_road','path','linkRoads','lifecycle','othersHighway']
+highway = ['roads', 'special_road', 'path', 'linkRoads', 'lifecycle', 'othersHighway']
 global roads
-roads = ['residential','primary','motorway','unclassified']
+roads = ['residential', 'primary', 'motorway', 'unclassified']
 global special_road
-specialRoads = ['pedestrian','escape','raceway']
+specialRoads = ['pedestrian', 'escape', 'raceway']
 global path
-path = ['steps','path','footway']
+path = ['steps', 'path', 'footway']
 
 global aerialway
 global aeroway
 
 global railway
-railway = ['tracks','station_and_shop','other_railway']
+railway = ['tracks', 'station_and_shop', 'other_railway']
 
 global public_transportation
 global route
 
-#STERIOTYPE
+# STERIOTYPE
 global line
 line = ['highway']
 global point
-point = ['amenity','shop', '']
+point = ['amenity', 'shop', '']
 global polygon
 polygon = ['amenity', 'shop', 'highway']
 
 # VARIAVEIS CONTROLE
 global contNode
 global mother
-contNode =0
+contNode = 0
 mother = {}
 
 
@@ -84,7 +84,7 @@ def driveGraph(listDic):
     if not listWay:
         return "Graph failed!"
     else:
-        for i in range(len(listWay)): #separar as entidades de acordo com o pacote
+        for i in range(len(listWay)):  # separar as entidades de acordo com o pacote
             for j in listWay[i].keys():
                 if j in service:
                     if 'amenity' in listWay[i].keys():
@@ -102,7 +102,7 @@ def driveGraph(listDic):
 
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
-        roadMeshGraph(arq,listRoadMesh)
+        roadMeshGraph(arq, listRoadMesh)
         findRelation(arq)
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
@@ -111,57 +111,62 @@ def driveGraph(listDic):
         render('dot', 'png', 'schema.gv')
     return "Graph checked!"
 
+
 ######################################################################################### CLASS_xml
 def initPackage(name):
-    return ("\n\tsubgraph cluster_"+name+" {"+
-		        "\n\t\tnode [color=black style=filled]"+
-		        "\n\t\tcolor=lightgrey style=filled"+
-                "\n\t\tlabel="+name)
+    return ("\n\tsubgraph cluster_" + name + " {" +
+            "\n\t\tnode [color=black style=filled]" +
+            "\n\t\tcolor=lightgrey style=filled" +
+            "\n\t\tlabel=" + name)
+
 
 def subGraph(arq, namePackage, package, list):
     flg = []
-    global contNode #HOW MANY NODES HAS IN THE SCHEMA
-    global mother #SAVE ALL CLASSES WITH YOUR KEYS, WILL USE FOR FIND RELATION
-    listControlMain = [] #SECURITY FLAG, USED FOR TO KNOW IF MAINCLASS(AMENITY, SHOP, HIGHWAY) WAS GENERATED
+    global contNode  # HOW MANY NODES HAS IN THE SCHEMA
+    global mother  # SAVE ALL CLASSES WITH YOUR KEYS, WILL USE FOR FIND RELATION
+    listControlMain = []  # SECURITY FLAG, USED FOR TO KNOW IF MAINCLASS(AMENITY, SHOP, HIGHWAY) WAS GENERATED
     listControlSub = []
     listControlthird = []
 
     for k in package:
-        for i in range(len(list)):##  TABLE NAME = university, third level
+        for i in range(len(list)):  ##  TABLE NAME = university, third level
             if k in list[i] and list[i][k] not in listControlthird:
-                arq.write(entityName(contNode,list[i][k], entityStereotype(list[i]["stereotype"])))
-                mother[list[i][k]] =  contNode
+                arq.write(entityName(contNode, list[i][k], entityStereotype(list[i]["stereotype"])))
+                mother[list[i][k]] = contNode
                 flg.append(findClass(namePackage, list[i][k]))
-                contNode = contNode+1
+                contNode = contNode + 1
                 arq.write("\n\t\t\t<hr/>")
-                for j in list[i].keys():##  TABLE ATT
-                    if "stereotype"not in j and "lat" not in j and "lon" not in j and k not in j:
+                for j in list[i].keys():  ##  TABLE ATT
+                    if "stereotype" not in j and "lat" not in j and "lon" not in j and k not in j:
                         arq.write(entityAtt(j))
-                arq.write(entityAtt("coordinates")+"\n\t\t\t</TABLE>>]")
+                arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
                 listControlthird.append(list[i][k])
                 if k not in listControlMain:
-                    arq.write(entityName(contNode, k, entityStereotype(None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
+                    arq.write(entityName(contNode, k, entityStereotype(
+                        None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
                     mother[k] = contNode
                     contNode = contNode + 1
                     listControlMain.append(k)
 
-    for i in range(len(flg)):## SubClasses = roads, path SECOND LEVEL
+    for i in range(len(flg)):  ## SubClasses = roads, path SECOND LEVEL
         if flg[i] not in listControlSub:
-            arq.write(entityName(contNode,flg[i],entityStereotype(None))+"\n\t\t\t</TABLE>>]")
+            arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
             mother[flg[i]] = contNode
-            contNode = contNode +1
+            contNode = contNode + 1
             listControlSub.append(flg[i])
     arq.write("\n\t}")
 
+
 def entityName(contNode, list, stereotype):
-    return ("\n\t\t"+str(contNode)+"[style = \"filled, bold\" penwidth = \"1\" fillcolor=\"white\" label=<"+
-                    "\n\t\t\t<TABLE color=\"black\" border=\"0\">"+
-                    "\n\t\t\t <TR>"+
-                    "\n\t\t\t\t<TD align=\"center\"><font color=\"black\">"+str(list)+"</font>"+
-                    stereotype+"\n\t\t\t</TR>")
+    return ("\n\t\t" + str(contNode) + "[style = \"filled, bold\" penwidth = \"1\" fillcolor=\"white\" label=<" +
+            "\n\t\t\t<TABLE color=\"black\" border=\"0\">" +
+            "\n\t\t\t <TR>" +
+            "\n\t\t\t\t<TD align=\"center\"><font color=\"black\">" + str(list) + "</font>" +
+            stereotype + "\n\t\t\t</TR>")
+
 
 def entityStereotype(name):
-    stereotype="  "
+    stereotype = "  "
     if name == "line":
         stereotype += "\n\t\t\t\t<font FACE=\"sigmoda\" POINT-SIZE=\"20.0\"> w</font>"
     if name == "point":
@@ -172,10 +177,12 @@ def entityStereotype(name):
     stereotype += "</TD>"
     return stereotype
 
+
 def entityAtt(valor):
     return ("\n\t\t\t<TR>" +
-            "\n\t\t\t\t<TD align=\"left\">"+valor+"</TD>" +
+            "\n\t\t\t\t<TD align=\"left\">" + valor + "</TD>" +
             "\n\t\t\t </TR>")
+
 
 def findClass(name, tag):
     if name == 'road_mesh':
@@ -185,15 +192,17 @@ def findClass(name, tag):
     elif name == 'health':
         return findClassHealth(tag)
 
+
 ######################################################################################### REALATION
 def entityRelation(slave, master):
-    return ("\n\t\t"+str(slave)+" -> "+str(master)+"[arrowhead=onormal]")
+    return ("\n\t\t" + str(slave) + " -> " + str(master) + "[arrowhead=onormal]")
+
 
 def findRelation(arq):
     global mother
     for i in mother:
         if i in education:
-            arq.write(entityRelation(mother[i],mother['education']))
+            arq.write(entityRelation(mother[i], mother['education']))
         elif i in transportation:
             arq.write(entityRelation(mother[i], mother['transportation']))
         elif i in entertainment:
@@ -212,6 +221,7 @@ def findRelation(arq):
             arq.write(entityRelation(mother[i], mother['highway']))
     return print("\nRelation checked!")
 
+
 def packageRelation(arq, list, name):
     flg = []
     global contNode
@@ -225,14 +235,15 @@ def packageRelation(arq, list, name):
             contNode = contNode + 1
             arq.write("\n\t\t\t<hr/>")
             for j in list[i].keys():  ##  ATRIBUTOS TABELA
-                if "stereotype"not in j and "lat" not in j and "lon" not in j and name not in j:
+                if "stereotype" not in j and "lat" not in j and "lon" not in j and name not in j:
                     arq.write(entityAtt(j))
             arq.write(entityAtt("coordenadas") + "\n\t\t\t</TABLE>>]")
 
     for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
-        arq.write(entityName(contNode, flg[i],entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
+        arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
         mother[flg[i]] = contNode
         contNode = contNode + 1
+
 
 ######################################################################################### HEALTH
 def findClassHealth(tag):
@@ -240,13 +251,14 @@ def findClassHealth(tag):
         return "healthCare"
     return
 
-def emergencyGraph(arq, listHealth):
 
+def emergencyGraph(arq, listHealth):
     arq.write(initPackage("HEALTH"))
-    packageRelation(arq, listHealth, "amenity") ##AMENITY
+    packageRelation(arq, listHealth, "amenity")  ##AMENITY
     subGraph(arq, "health", health, listHealth)
 
     return "HEALTH checked!"
+
 
 ######################################################################################### ROAD MESH
 def findClassroad_mesh(tag):
@@ -257,12 +269,13 @@ def findClassroad_mesh(tag):
     elif tag in specialRoads:
         return "specialRoads"
 
-def roadMeshGraph(arq, listRoadMesh):
 
+def roadMeshGraph(arq, listRoadMesh):
     arq.write(initPackage("ROAD_MESH"))
     subGraph(arq, "road_mesh", road_mesh, listRoadMesh)
 
     return "road_mesh checked!"
+
 
 ######################################################################################### SERVICES
 def findClassService(tag):
@@ -273,8 +286,8 @@ def findClassService(tag):
     elif tag in art_music_hobbies:
         return "art_music_hobbies"
 
-def serviceGraph(arq, listService):
 
+def serviceGraph(arq, listService):
     arq.write(initPackage("SERVICES"))
     subGraph(arq, "service", service, listService)
 

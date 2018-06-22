@@ -1,11 +1,12 @@
 from bs4 import BeautifulSoup
 import graph
-asda
-dicElements = {} #responsavel por separar os elementos especificos (way, node...) dentro da função Find_tag_coord
-dicWay = {} #dicionario das tags Way
-listWay = [] #lista que recebe todos os blocos XML da tag Way
-#dicNode = {}
-listNode = [] #lista que recebe os blocos XML sem a TAG name
+
+dicElements = {}  # responsavel por separar os elementos especificos (way, node...) dentro da função Find_tag_coord
+dicWay = {}  # dicionario das tags Way
+listWay = []  # lista que recebe todos os blocos XML da tag Way
+# dicNode = {}
+listNode = []  # lista que recebe os blocos XML sem a TAG name
+
 
 def Find_coord(list):
     flg = 0
@@ -47,9 +48,8 @@ def Find_tag_coord(test):
     return
 
 
-
 #### LEITURA XML
-with open ('map.osm') as xml_file:
+with open('map.osm') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -64,23 +64,23 @@ for i in range(len(dicWay)):
 print(graph.driveGraph(listWay))
 
 #### GERAR SCRIP TABELAS
-arqScript = open("script",'w+')
+arqScript = open("script", 'w+')
 for i in range(len(listWay)):
     arqScript.write(listWay[i]['name'])
     if "amenity" in listWay[i]:
-        arqScript.write (" - "+listWay[i]['amenity']+"\n")
+        arqScript.write(" - " + listWay[i]['amenity'] + "\n")
     elif "highway" in listWay[i]:
         arqScript.write(" - " + listWay[i]['highway'] + "\n")
     elif "shop" in listWay[i]:
         arqScript.write(" - " + listWay[i]['shop'] + "\n")
     else:
-        arqScript.write ("\n")
+        arqScript.write("\n")
 arqScript.close()
 
 print(listNode[1])
 arqNode = open("relatorio", 'w+')
 for i in range(len(listNode)):
-    arqNode.write(listNode[i]+"\n")
+    arqNode.write(listNode[i] + "\n")
 arqNode.close()
 
 # for i in range(len(listWay)):
