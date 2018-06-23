@@ -77,6 +77,7 @@ for i in range(len(listWay)):
         arqScript.write("\n")
 arqScript.close()
 
+###### GERAR RELATORIO
 print(listNode[1])
 arqNode = open("relatorio", 'w+')
 for i in range(len(listNode)):
