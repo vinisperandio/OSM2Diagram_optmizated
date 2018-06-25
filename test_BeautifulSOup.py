@@ -20,7 +20,7 @@ def Find_coord(list):
             flg = flg + 1
             stereotypeList.append(nd.get('ref'))
 
-    print(len(stereotypeList))
+    # print(len(stereotypeList))
     if len(stereotypeList) == 1:
         dicElements["stereotype"] = "point"
     elif stereotypeList[0] == stereotypeList[len(stereotypeList) - 1]:
@@ -78,10 +78,9 @@ for i in range(len(listWay)):
 arqScript.close()
 
 ###### GERAR RELATORIO
-print(listNode[1])
 arqNode = open("relatorio", 'w+')
 for i in range(len(listNode)):
-    arqNode.write(listNode[i] + "\n")
+    arqNode.write(str(listNode[i]) + "\n")
 arqNode.close()
 
 # for i in range(len(listWay)):
