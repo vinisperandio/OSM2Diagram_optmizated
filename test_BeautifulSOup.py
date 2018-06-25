@@ -79,8 +79,15 @@ arqScript.close()
 
 ###### GERAR RELATORIO
 arqNode = open("relatorio", 'w+')
+
+# for i in range(len(listNode)):
+print(listNode[4].keys())
 for i in range(len(listNode)):
-    arqNode.write(str(listNode[i]) + "\n")
+    num = 0
+    while 'lat'+str(num) in listNode[i].keys():
+        arqNode.write(str(listNode[i]['lat'+str(num)])+", "+str(listNode[i]['lon'+str(num)])+ "\n")
+        num += 1
+    arqNode.write(listNode[i]["stereotype"]+ "\n\n")
 arqNode.close()
 
 # for i in range(len(listWay)):
