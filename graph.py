@@ -84,7 +84,7 @@ def driveGraph(listDic):
     if not listWay:
         return "Graph failed!"
     else:
-        for i in range(len(listWay)):  # separar as entidades de acordo com o pacote
+        for i in range(len(listWay)):  # separate the entities according to packages
             for j in listWay[i].keys():
                 if j in service:
                     if 'amenity' in listWay[i].keys():
