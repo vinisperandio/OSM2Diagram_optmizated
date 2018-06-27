@@ -109,7 +109,7 @@ def driveGraph(listDic):
         arq.close()
 
         render('dot', 'png', 'schema.gv')
-    return "Graph checked!"
+    return "Graph checked!\n"
 
 
 ######################################################################################### CLASS_xml

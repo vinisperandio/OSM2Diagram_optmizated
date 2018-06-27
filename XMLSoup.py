@@ -8,7 +8,7 @@ listWay = []  # lista que recebe todos os blocos XML da tag Way
 listNode = []  # lista que recebe os blocos XML sem a TAG name
 
 
-def Find_coord(list):
+def find_coord_stereotypes(list):
     flg = 0
     stereotypeList = []
 
@@ -37,15 +37,24 @@ def Find_coord(list):
     return
 
 
-def Find_tag_coord(test):
+def find_tag_coord(test):
     if test.find(k="name"):
-        Find_coord(test)
+        find_coord_stereotypes(test)
         listWay.append(dicElements.copy())
     else:
-        Find_coord(test)
+        find_coord_stereotypes(test)
         listNode.append(dicElements.copy())
     dicElements.clear()
     return
+
+
+def find_region_extent(list):
+    for i in range(len(listNode)):
+        num = 0
+        flgLatHi = list['lat0']
+        flgLonHi = list['lon0']
+        print(flgLatHi+" - "+flgLonHi)
+#     while 'lat'+str(num) in listNode[i].keys():
 
 
 #### LEITURA XML
@@ -55,13 +64,19 @@ with open('map.osm') as xml_file:
 #### PEGANDO TAGs WAY
 dicWay = soup.find_all("way")
 
-#### SINCRONIZANDO COORDENADAS
+#### SINCRONIZANDO COORDENADAS E STEREOTYPES
 for i in range(len(dicWay)):
     tagWay = BeautifulSoup(str(dicWay[i]), 'lxml')
-    Find_tag_coord(tagWay)
+    find_tag_coord(tagWay)
 
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 print(graph.driveGraph(listWay))
+
+
+#### RETANGULO ENVOLVENTE
+#for i in listNode:
+#    find_region_extent(i)
+
 
 #### GERAR SCRIP TABELAS
 arqScript = open("script", 'w+')
