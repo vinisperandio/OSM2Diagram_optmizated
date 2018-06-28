@@ -48,13 +48,18 @@ def find_tag_coord(test):
     return
 
 
-def find_region_extent(list):
-    for i in range(len(listNode)):
-        num = 0
-        flgLatHi = list['lat0']
-        flgLonHi = list['lon0']
-        print(flgLatHi+" - "+flgLonHi)
-#     while 'lat'+str(num) in listNode[i].keys():
+def find_region_extent(list, ref):
+    num = 0
+    flgHi = list[ref+str(num)]
+    flgLw = list[ref+str(num)]
+    while ref+str(num) in list.keys():
+        if flgHi < list[ref+str(num)]:
+            flgHi = list[ref+str(num)]
+        if flgLw > list[ref+str(num)]:
+            flgLw = list[ref+str(num)]
+        num += 1
+
+    return flgHi, flgLw
 
 
 #### LEITURA XML
@@ -75,8 +80,9 @@ print(graph.driveGraph(listWay))
 
 #### RETANGULO ENVOLVENTE
 #for i in listNode:
-#    find_region_extent(i)
-
+#    print(find_region_extent(i, 'lat'))
+#    print(find_region_extent(i, 'lon'))
+#    print()
 
 #### GERAR SCRIP TABELAS
 arqScript = open("script", 'w+')
@@ -99,10 +105,17 @@ arqNode = open("relatorio", 'w+')
 print(listNode[4].keys())
 for i in range(len(listNode)):
     num = 0
+    arqNode.write(listNode[i]["stereotype"] + "\n")
     while 'lat'+str(num) in listNode[i].keys():
         arqNode.write(str(listNode[i]['lat'+str(num)])+", "+str(listNode[i]['lon'+str(num)])+ "\n")
         num += 1
-    arqNode.write(listNode[i]["stereotype"]+ "\n\n")
+    latHi, latLw = find_region_extent(listNode[i], 'lat')
+    lonHi, lonLw = find_region_extent(listNode[i], 'lon')
+    arqNode.write(" -------------------------------------\n")
+    arqNode.write("|\t\t\t "+str(latHi)+"\t\t\t  |\n")
+    arqNode.write("|"+str(lonLw)+"\t\t\t "+str(lonHi)+"  |\n")
+    arqNode.write("|\t\t\t " + str(latLw) + "\t\t\t  |\n")
+    arqNode.write(" -------------------------------------\n\n\n")
 arqNode.close()
 
 # for i in range(len(listWay)):
