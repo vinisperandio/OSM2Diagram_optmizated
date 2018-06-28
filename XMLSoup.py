@@ -48,17 +48,18 @@ def find_tag_coord(test):
     return
 
 
+def limiting_decimals(num, lim):
+    return float("{0:."+lim+"f}".format(num))
+
 def find_region_extent(list, ref):
     num = 0
-    flgHi = list[ref+str(0)]
-    flgLw = list[ref+str(0)]
+    flgHi = float(list[ref+str(0)])
+    flgLw = float(list[ref+str(0)])
     while ref+str(num) in list.keys():
-        flgHi = max(flgHi, list[ref+str(num)])
-        print(flgLw+" , "+list[ref+str(num)])
-        flgLw = min(flgLw, list[ref+str(num)])
-        print(flgLw)
+        flg = float(list[ref+str(num)])
+        flgHi = max(flgHi, flg)
+        flgLw = min(flgLw, flg)
         num += 1
-    print()
     return flgHi, flgLw
 
 
@@ -110,15 +111,16 @@ for i in range(len(listNode)):
     while 'lat'+str(num) in listNode[i].keys():
         arqNode.write(str(listNode[i]['lat'+str(num)])+", "+str(listNode[i]['lon'+str(num)])+ "\n")
         num += 1
-    latHi, latLw = find_region_extent(listNode[4], 'lat')
-    lonHi, lonLw = find_region_extent(listNode[4], 'lon')
+    latHi, latLw = find_region_extent(listNode[i], 'lat')
+    lonHi, lonLw = find_region_extent(listNode[i], 'lon')
+
     arqNode.write(" -------------------------------------\n")
     arqNode.write("|\t\t\t "+str(lonHi)+"\t\t\t  |\n")
     arqNode.write("|"+str(latLw)+"\t\t\t "+str(latHi)+"  |\n")
     arqNode.write("|\t\t\t " + str(lonLw) + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
 arqNode.close()
-print(min(-20.7619150 , -20.7621508))
+print(min(-20.7619150, -20.7621508))
 print("Arq Elements completed")
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
