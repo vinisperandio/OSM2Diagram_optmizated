@@ -50,15 +50,15 @@ def find_tag_coord(test):
 
 def find_region_extent(list, ref):
     num = 0
-    flgHi = list[ref+str(num)]
-    flgLw = list[ref+str(num)]
+    flgHi = list[ref+str(0)]
+    flgLw = list[ref+str(0)]
     while ref+str(num) in list.keys():
-        if flgHi < list[ref+str(num)]:
-            flgHi = list[ref+str(num)]
-        if flgLw > list[ref+str(num)]:
-            flgLw = list[ref+str(num)]
+        flgHi = max(flgHi, list[ref+str(num)])
+        print(flgLw+" , "+list[ref+str(num)])
+        flgLw = min(flgLw, list[ref+str(num)])
+        print(flgLw)
         num += 1
-
+    print()
     return flgHi, flgLw
 
 
@@ -96,28 +96,30 @@ for i in range(len(listWay)):
         arqScript.write(" - " + listWay[i]['shop'] + "\n")
     else:
         arqScript.write("\n")
+print("Script Table completed")
 arqScript.close()
 
 ###### GERAR RELATORIO
 arqNode = open("relatorio", 'w+')
 
 # for i in range(len(listNode)):
-print(listNode[4].keys())
+#print(listNode[4].keys())
 for i in range(len(listNode)):
     num = 0
     arqNode.write(listNode[i]["stereotype"] + "\n")
     while 'lat'+str(num) in listNode[i].keys():
         arqNode.write(str(listNode[i]['lat'+str(num)])+", "+str(listNode[i]['lon'+str(num)])+ "\n")
         num += 1
-    latHi, latLw = find_region_extent(listNode[i], 'lat')
-    lonHi, lonLw = find_region_extent(listNode[i], 'lon')
+    latHi, latLw = find_region_extent(listNode[4], 'lat')
+    lonHi, lonLw = find_region_extent(listNode[4], 'lon')
     arqNode.write(" -------------------------------------\n")
-    arqNode.write("|\t\t\t "+str(latHi)+"\t\t\t  |\n")
-    arqNode.write("|"+str(lonLw)+"\t\t\t "+str(lonHi)+"  |\n")
-    arqNode.write("|\t\t\t " + str(latLw) + "\t\t\t  |\n")
+    arqNode.write("|\t\t\t "+str(lonHi)+"\t\t\t  |\n")
+    arqNode.write("|"+str(latLw)+"\t\t\t "+str(latHi)+"  |\n")
+    arqNode.write("|\t\t\t " + str(lonLw) + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
 arqNode.close()
-
+print(min(-20.7619150 , -20.7621508))
+print("Arq Elements completed")
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
 #             if "lat" not in j and "lon" not in j and "name" not in j:
