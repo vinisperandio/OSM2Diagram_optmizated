@@ -11,33 +11,71 @@ global firefighters
 global lifeguards
 global other_structure
 global other_station
-
+#---------------------------------------------PACKAGED SERVICES--------------------------------------------------------------------------
 # SERVICES
 global service
 service = ['shop', 'amenity', 'craft']
 
 global amenity
-amenity = ['education', 'transportation', 'entertainment', 'healthCare', 'sustenance', 'financial', 'others']
+amenity = ['sustenance','education', 'transportation', 'financial', 'healthCare', 'entertainment', 'othersAmenity']
+global sustenance
+sustenance = ['bar','bbq','biergarten','cafe','drinking_water','fast_food','ice_cream','pub','restaurant']
 global education
 education = ['college', 'kindergarten', 'library', 'archive', 'public_bookcase', 'school', 'music_school',
              'driving_school', 'language_school', 'university', 'research_institute']
 global transportation
-transportation = ['bus_station', 'fuel', 'parking', 'taxi']
-global entertainment
-entertainment = ['casino', 'cinema']
+transportation = ['bicycle_parking','bicycle_repair_station','bicycle_rental','boat_rental','bus_station', 'fuel',
+                  'boat_sharing','bus_station','car_rental','car_sharing','car_wash','charging_station',
+                  'ferry_terminal','grit_bin','motorcycle_parking','parking','parking_entrance','	parking_space',
+                  'taxi','ticket_validator']
+global financial
+financial = ['atn','bank','bureau_de_change']
 global healthCare
-healthCare = ['pharmacy', 'hospital', 'dentist', 'blood_donation']
+healthCare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home','pharmacy','social_facility',
+              'veterinary','blood_donation']
+global entertainment
+entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub',
+                 'planetarium','social_centre','stripclub','studio','swingerclub','theatre']
+global othersAmenity
+othersAmenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthhouse','coworking_spece','creamtorium',
+          'crypt','dive_centre','dojo','embassy','fire_station','game_feeding','grave_feeding','grave_yard','hunting_stand',
+          'internet_cafe','kitchen','kneipp_water_cure','marketplace','photo_booth','place_of_worship','police','post_box',
+          'post_office','prison','public_bath','ranger_station','recycling','rescue_station','sanitary_dump_station',
+          'shelter','shower','table','telephone','toilets','townhall','vendingg_machine','wasted_disposal',
+          'waste_transfer_station','watering_place','water_point']
+
 
 global shop
-shop = ['art_music_hobbies']
-global art_music_hobbies
-art_music_hobbies = ['camera', 'music', 'games']
+shop = ['food_beverages','general_store','clothing_shoes_acessories','discountStore','health_beauty',
+        'do_it_yourself','furniture_interior','eletronics','outdoors_sport','art_music_hobbies','stationery_gfits_books',
+        'othersShop']
 global food_beverages
-food_beverages = ['alcohol', 'cheese', 'chocolate']
+food_beverages = ['alcohol','bakery','beverages','brewing_supplies','butcher','cheese', 'chocolate','chocolate','coffee',
+                  'confectionery','convenience','deli','dairy','farm','frozen_food','greengrocer','health_food','ice_cream',
+                  'pasta','pastry','seafood','spices','tea','water']
+global general_store
+general_store = ['department_sote','general','kiosk','mail','supermarket','wholesale']
+global clothing_shoes_acessories
+clothing_shoes_acessories = ['baby_goods','bag','boutique','clothes','fabric','fashion','jewelry','leather','sewing',
+                             'shoes','tailor','watches']
+global discountStore
+discountStore = ['charity','second_hand','variety_store']
+global health_beaty
+health_beaty = ['beauty','chemist','cosmetics','erotic','hairdresser','hairdresser_supply','hearing_aids','herbalist',
+                'massage','medical_supply','nutrition_supplements','optician','perfumery','tattoo']
+global do_it_yourself
+global furniture_interior
+global eletronics
+global outdoors_sport
+global art_music_hobbies
+global stationery_gfits_books
+global othersShop
+art_music_hobbies = ['camera', 'music', 'games']
+
 
 global craft
 craft = ['agricultura_engines', 'bakery', 'carpenter']
-
+#-----------------------------------------------PACKAGE ROAD MESH----------------------------------------------------------------------
 # ROAD MESH
 global road_mesh
 road_mesh = ['highway', 'aerialway', 'aeroway', 'railway', 'public_transportation', 'route']
