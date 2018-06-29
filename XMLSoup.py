@@ -115,11 +115,12 @@ for i in range(len(listNode)):
     lonHi, lonLw = find_region_extent(listNode[i], 'lon')
 
     arqNode.write(" -------------------------------------\n")
-    arqNode.write("|\t\t\t "+str(lonHi)+"\t\t\t  |\n")
-    arqNode.write("|"+str(latLw)+"\t\t\t "+str(latHi)+"  |\n")
-    arqNode.write("|\t\t\t " + str(lonLw) + "\t\t\t  |\n")
+    arqNode.write("|\t\t\t "+f'{lonHi:.7f}'+"\t\t\t  |\n")
+    arqNode.write("|"+f'{latLw:.7f}'+"\t\t\t "+f'{latHi:.7f}'+"  |\n")
+    arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
 arqNode.close()
+print(f'{lonLw:.7f}')
 print(min(-20.7619150, -20.7621508))
 print("Arq Elements completed")
 # for i in range(len(listWay)):
