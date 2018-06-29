@@ -48,9 +48,6 @@ def find_tag_coord(test):
     return
 
 
-def limiting_decimals(num, lim):
-    return float("{0:."+lim+"f}".format(num))
-
 def find_region_extent(list, ref):
     num = 0
     flgHi = float(list[ref+str(0)])
@@ -79,12 +76,6 @@ for i in range(len(dicWay)):
 print(graph.driveGraph(listWay))
 
 
-#### RETANGULO ENVOLVENTE
-#for i in listNode:
-#    print(find_region_extent(i, 'lat'))
-#    print(find_region_extent(i, 'lon'))
-#    print()
-
 #### GERAR SCRIP TABELAS
 arqScript = open("script", 'w+')
 for i in range(len(listWay)):
@@ -102,9 +93,6 @@ arqScript.close()
 
 ###### GERAR RELATORIO
 arqNode = open("relatorio", 'w+')
-
-# for i in range(len(listNode)):
-#print(listNode[4].keys())
 for i in range(len(listNode)):
     num = 0
     arqNode.write(listNode[i]["stereotype"] + "\n")
@@ -113,16 +101,13 @@ for i in range(len(listNode)):
         num += 1
     latHi, latLw = find_region_extent(listNode[i], 'lat')
     lonHi, lonLw = find_region_extent(listNode[i], 'lon')
-
     arqNode.write(" -------------------------------------\n")
     arqNode.write("|\t\t\t "+f'{lonHi:.7f}'+"\t\t\t  |\n")
     arqNode.write("|"+f'{latLw:.7f}'+"\t\t\t "+f'{latHi:.7f}'+"  |\n")
     arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
 arqNode.close()
-print(f'{lonLw:.7f}')
-print(min(-20.7619150, -20.7621508))
-print("Arq Elements completed")
+
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
 #             if "lat" not in j and "lon" not in j and "name" not in j:
