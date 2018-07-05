@@ -93,6 +93,9 @@ craft = ['agricultura_engines', 'bakery', 'carpenter']
 global road_mesh
 road_mesh = ['highway', 'aerialway', 'aeroway', 'railway', 'public_transportation', 'route']
 
+global aerialway
+global aeroway
+
 global highway
 highway = ['roads', 'special_road', 'path', 'linkRoads', 'lifecycle', 'othersHighway']
 global roads
@@ -101,9 +104,6 @@ global special_road
 specialRoads = ['pedestrian', 'escape', 'raceway']
 global path
 path = ['steps', 'path', 'footway']
-
-global aerialway
-global aeroway
 
 global railway
 railway = ['tracks', 'station_and_shop', 'other_railway']
