@@ -64,13 +64,26 @@ global health_beaty
 health_beaty = ['beauty','chemist','cosmetics','erotic','hairdresser','hairdresser_supply','hearing_aids','herbalist',
                 'massage','medical_supply','nutrition_supplements','optician','perfumery','tattoo']
 global do_it_yourself
+do_it_yourself= ['agraria','appliance','bathoroom_furnishing','doityourself','electrical','energy','fireplace',
+                         'florist','garden_centre','garden_furniture','gas','glaziery','hardware','houseware','locksmith',
+                         'paint','security','trade']
 global furniture_interior
+furniture_interior = ['antique','bed','candles','carpet','curtain','doors','flooring','furniture','interior_decoration',
+                      'kitchen','lamps','tiles','window_blind']
 global eletronics
+eletronics = ['computer','robot','electronics','hifi','mobile_phone','radiotechnics','vacuum_cleaner']
 global outdoors_sport
+outdoors_sport = ['atv','bicycle','boat','car','car_repair','car_parts','fuel','fishing','free_flying','hunting','jetski',
+                  'motorcycle','outdoor','scuba_diving','ski','snowmobile','sports','swimming_pool','tyres']
 global art_music_hobbies
+art_music_hobbies = ['atr','collector','craft','frame','games','model','music','musical_instrument','photo','camera',
+                     'trophy','video','video_games']
 global stationery_gfits_books
+stationery_gfits_books = ['anime','books','gift','lottery','newsagent','stationery','ticket']
 global othersShop
-art_music_hobbies = ['camera', 'music', 'games']
+othersShop = ['bookmaker','copyshop','dry_cleaning','e-cigarette','funeral_directors','laundry','money_lender','party',
+              'pawnbroker','pet','pyrotechnics','religion','storage_rental','tobacco','toys','travel_agency','vacant',
+              'weapons','user_defined']
 
 
 global craft
