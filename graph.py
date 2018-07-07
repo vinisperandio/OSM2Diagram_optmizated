@@ -5,19 +5,19 @@ global health
 health = ['emergency']
 
 global emergency
-emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_structure', 'other_station']
+emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_Structure', 'other_Station']
 global medical_rescue
 global firefighters
 global lifeguards
-global other_structure
-global other_station
+global other_Structure
+global other_Station
 #---------------------------------------------PACKAGED SERVICES--------------------------------------------------------------------------
 # SERVICES
 global service
 service = ['shop', 'amenity', 'craft']
 
 global amenity
-amenity = ['sustenance','education', 'transportation', 'financial', 'healthCare', 'entertainment', 'othersAmenity']
+amenity = ['sustenance','education', 'transportation', 'financial', 'healthCare', 'entertainment', 'other_Amenity']
 global sustenance
 sustenance = ['bar','bbq','biergarten','cafe','drinking_water','fast_food','ice_cream','pub','restaurant']
 global education
@@ -36,8 +36,8 @@ healthCare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home
 global entertainment
 entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub',
                  'planetarium','social_centre','stripclub','studio','swingerclub','theatre']
-global othersAmenity
-othersAmenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthhouse','coworking_spece','creamtorium',
+global other_Amenity
+other_Amenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthhouse','coworking_spece','creamtorium',
           'crypt','dive_centre','dojo','embassy','fire_station','game_feeding','grave_feeding','grave_yard','hunting_stand',
           'internet_cafe','kitchen','kneipp_water_cure','marketplace','photo_booth','place_of_worship','police','post_box',
           'post_office','prison','public_bath','ranger_station','recycling','rescue_station','sanitary_dump_station',
@@ -48,7 +48,7 @@ othersAmenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock
 global shop
 shop = ['food_beverages','general_store','clothing_shoes_acessories','discountStore','health_beauty',
         'do_it_yourself','furniture_interior','eletronics','outdoors_sport','art_music_hobbies','stationery_gfits_books',
-        'othersShop']
+        'other_Shop']
 global food_beverages
 food_beverages = ['alcohol','bakery','beverages','brewing_supplies','butcher','cheese', 'chocolate','chocolate','coffee',
                   'confectionery','convenience','deli','dairy','farm','frozen_food','greengrocer','health_food','ice_cream',
@@ -80,8 +80,8 @@ art_music_hobbies = ['atr','collector','craft','frame','games','model','music','
                      'trophy','video','video_games']
 global stationery_gfits_books
 stationery_gfits_books = ['anime','books','gift','lottery','newsagent','stationery','ticket']
-global othersShop
-othersShop = ['bookmaker','copyshop','dry_cleaning','e-cigarette','funeral_directors','laundry','money_lender','party',
+global other_Shop
+other_Shop = ['bookmaker','copyshop','dry_cleaning','e-cigarette','funeral_directors','laundry','money_lender','party',
               'pawnbroker','pet','pyrotechnics','religion','storage_rental','tobacco','toys','travel_agency','vacant',
               'weapons','user_defined']
 
@@ -94,24 +94,47 @@ global road_mesh
 road_mesh = ['highway', 'aerialway', 'aeroway', 'railway', 'public_transportation', 'route']
 
 global aerialway
+aerialway = ['cable_car','gondola','chair_lift','mixed_lift','drag_lift','t-bar','j-bar','rope_tow','magic_carpet','zip_line']
 global aeroway
+aeroway = ['aerodrome','apron','gate','hangar','helipad','heliport','navigationaid','runway','spaceport','taxilane',
+           'taxiway','terminal','windsock']
 
 global highway
-highway = ['roads', 'special_road', 'path', 'linkRoads', 'lifecycle', 'othersHighway']
+highway = ['roads', 'linkRoads','special_road', 'path', 'lifecycle', 'other_Highway']
 global roads
-roads = ['residential', 'primary', 'motorway', 'unclassified']
+roads = ['motorway','trunk','primary','secondary','tertiary','unclassified','residential','service']
+global linkRoads
+linkRoads = ['motorway_link','trunk_link','primary_link','secondary_link','tertiary_link']
 global special_road
-specialRoads = ['pedestrian', 'escape', 'raceway']
+specialRoads = ['living_street','pedestrian','track','bus_guideway','escape','raceway','road']
 global path
-path = ['steps', 'path', 'footway']
+path = ['footway','bridleway','steps','path','cycleway','busway']
+global lifecycle
+lifecycle = ['proposed','construction']
+global other_Highway
+other_Highway = ['bus_stop','crossing','elevator','emergency_access_point','give_way','phone','mini_roundabout','motorway_junstion',
+                'passing_place','rest_area','speed_camera','street_lamp','services','stop','traffic_signals','turning_circle',
+                'User Defined']
 
 global railway
-railway = ['tracks', 'station_and_shop', 'other_railway']
+railway = ['tracks', 'station_and_shop', 'other_Railway']
+global tracks
+tracks = ['abandoned','construction','disused','funicular','light_rail','miniature','monorail','narrow_gauge','preserved',
+          'rail','subway','tram']
+global station_and_shop
+station_and_shop = ['halt','stop_position','platform','station','subway_entrance','tram_stop']
+global other_Railway
+other_Railway = ['buffer_stop','derail','crossing','level_crossing','signal','switch','railway_crossing','turntable',
+                 'roundhouse','traverser','wash','user defined']
 
 global public_transportation
+public_transportation = ['stop_position','platform','station','stop_area']
 global route
+route = ['bicycle','bus','canoe','detour','ferry','fitness_trail','hiking','horse','inline_skates','light_rail','mtb',
+         'nordic_walking','pipeline','piste','power','railway','road','running','ski','train','tram','User defined']
 
-# STERIOTYPE
+
+#-----------------------------------------------STERIOTYPE-------------------------------------------------------------------
 global line
 line = ['highway']
 global point
@@ -119,7 +142,8 @@ point = ['amenity', 'shop', '']
 global polygon
 polygon = ['amenity', 'shop', 'highway']
 
-# VARIAVEIS CONTROLE
+
+#-----------------------------------------------VARIAVEIS CONTROLE------------------------------------------------------------
 global contNode
 global mother
 contNode = 0
