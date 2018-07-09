@@ -109,6 +109,7 @@ for i in range(len(listNode)):
 print("Arq Incomplete nodes")
 arqNode.close()
 
+
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
 #             if "lat" not in j and "lon" not in j and "name" not in j:
