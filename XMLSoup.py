@@ -109,6 +109,7 @@ for i in range(len(listNode)):
     arqNode.write("|"+f'{latLw:.7f}'+"\t\t\t "+f'{latHi:.7f}'+"  |\n")
     arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
+
 print("Arq Incomplete nodes")
 arqNode.close()
 
