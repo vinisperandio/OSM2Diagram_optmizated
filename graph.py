@@ -135,15 +135,9 @@ route = ['bicycle','bus','canoe','detour','ferry','fitness_trail','hiking','hors
 
 
 #-----------------------------------------------STERIOTYPE-------------------------------------------------------------------
-global line
-line = ['highway']
-global point
-point = ['amenity', 'shop', '']
-global polygon
-polygon = ['amenity', 'shop', 'highway']
 
 
-#-----------------------------------------------VARIAVEIS CONTROLE------------------------------------------------------------
+#-----------------------------------------------VARIAVEIS CONTROLE-----------------------------------------------------------
 global contNode
 global mother
 contNode = 0

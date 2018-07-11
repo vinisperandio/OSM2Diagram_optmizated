@@ -2,10 +2,11 @@ from bs4 import BeautifulSoup
 import graph
 
 dicElements = {}  # responsavel por separar os elementos especificos (way, node...) dentro da função Find_tag_coord
-dicWay = {}  # dicionario das tags Way
-listWay = []  # lista que recebe todos os blocos XML da tag Way
-# dicNode = {}
-listNode = []  # lista que recebe os blocos XML sem a TAG name
+dicWay = {}    # dicionario das tags Way
+listWay = []   # lista que recebe todos os blocos XML da tag Way
+dicNode = {}   # dicionario das tags Node
+listNode = []   # lista que recebe todos os blocos XML da tag Node
+listIncom = []  # lista que recebe os blocos XML sem a TAG name
 
 
 def find_coord_stereotypes(list):
@@ -37,13 +38,18 @@ def find_coord_stereotypes(list):
     return
 
 
-def find_tag_coord(test):
+def find_tag_coord_Way(test, tagType):
     if test.find(k="name"):
-        find_coord_stereotypes(test)
-        listWay.append(dicElements.copy())
+        if tagType == 'way':
+            find_coord_stereotypes(test)
+            listWay.append(dicElements.copy())
+        elif tagType == 'node':
+            print('NODE')
+        else:
+            print('RELATIONS')
     else:
         find_coord_stereotypes(test)
-        listNode.append(dicElements.copy())
+        listIncom.append(dicElements.copy())
     dicElements.clear()
     return
 
@@ -66,12 +72,22 @@ with open('map_ladeira.osm') as xml_file:
 
 #### PEGANDO TAGs WAY
 dicWay = soup.find_all("way")
+dicNode = soup.find_all("node")
+
+print(len(dicWay))
+print(len(dicNode))
 
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
 for i in range(len(dicWay)):
     tagWay = BeautifulSoup(str(dicWay[i]), 'lxml')
-    find_tag_coord(tagWay)
+    find_tag_coord_Way(tagWay)
 
+for i in range(len(dicNode)):
+    tagNode = BeautifulSoup(str(dicNode[i]), 'lxml')
+    find_tag_coord(tagNode)
+
+print(len(listWay))
+exit(0)
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 print(graph.driveGraph(listWay))
 
@@ -96,14 +112,14 @@ arqScript.close()
 
 ###### GERAR RELATORIO
 arqNode = open("relatorio", 'w+')
-for i in range(len(listNode)):
+for i in range(len(listIncom)):
     num = 0
-    arqNode.write(listNode[i]["stereotype"] + "\n")
-    while 'lat'+str(num) in listNode[i].keys():
-        arqNode.write(str(listNode[i]['lat'+str(num)])+", "+str(listNode[i]['lon'+str(num)])+ "\n")
+    arqNode.write(listIncom[i]["stereotype"] + "\n")
+    while 'lat'+str(num) in listIncom[i].keys():
+        arqNode.write(str(listIncom[i]['lat'+str(num)])+", "+str(listIncom[i]['lon'+str(num)])+ "\n")
         num += 1
-    latHi, latLw = find_region_extent(listNode[i], 'lat')
-    lonHi, lonLw = find_region_extent(listNode[i], 'lon')
+    latHi, latLw = find_region_extent(listIncom[i], 'lat')
+    lonHi, lonLw = find_region_extent(listIncom[i], 'lon')
     arqNode.write(" -------------------------------------\n")
     arqNode.write("|\t\t\t "+f'{lonHi:.7f}'+"\t\t\t  |\n")
     arqNode.write("|"+f'{latLw:.7f}'+"\t\t\t "+f'{latHi:.7f}'+"  |\n")
