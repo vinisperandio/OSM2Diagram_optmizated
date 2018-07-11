@@ -100,7 +100,7 @@ aeroway = ['aerodrome','apron','gate','hangar','helipad','heliport','navigationa
            'taxiway','terminal','windsock']
 
 global highway
-highway = ['roads', 'linkRoads','special_road', 'path', 'lifecycle', 'other_Highway']
+highway = ['roads', 'linkRoads','special_road', 'path', 'lifecycle', 'other highway features']
 global roads
 roads = ['motorway','trunk','primary','secondary','tertiary','unclassified','residential','service']
 global linkRoads
@@ -284,6 +284,8 @@ def findRelation(arq):
             arq.write(entityRelation(mother[i], mother['art_music_hobbies']))
         elif i in shop:
             arq.write(entityRelation(mother[i], mother['shop']))
+        elif i in other_Highway:
+            arq.write(entityRelation(mother[i], mother['other highway features']))
         elif i in roads:
             arq.write(entityRelation(mother[i], mother['roads']))
         elif i in highway:
@@ -335,9 +337,21 @@ def findClassroad_mesh(tag):
         return "roads"
     elif tag in path:
         return "path"
+    elif tag in linkRoads:
+        return "link Roads"
+    elif tag in lifecycle:
+        return "life cycle"
     elif tag in specialRoads:
-        return "specialRoads"
+        return "special roads"
+    elif tag in other_Highway:
+        return "other highway features"
 
+    elif tag in tracks:
+        return "tracks"
+    elif tag in station_and_shop:
+        return "statoin and shop"
+    elif tag in other_Railway:
+        return "other railway"
 
 def roadMeshGraph(arq, listRoadMesh):
     arq.write(initPackage("ROAD_MESH"))
