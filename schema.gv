@@ -107,6 +107,9 @@ digraph structs {
 				<TD align="left">name</TD>
 			 </TR>
 			<TR>
+				<TD align="left">oneway</TD>
+			 </TR>
+			<TR>
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
