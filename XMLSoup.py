@@ -7,9 +7,9 @@ listWay = []   # lista que recebe todos os blocos XML da tag Way
 dicNode = {}   # dicionario das tags Node
 listNode = []   # lista que recebe todos os blocos XML da tag Node
 listIncom = []  # lista que recebe os blocos XML sem a TAG name
+listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serão modelados
 
-
-def find_coord_stereotypes(list):
+def find_coord_stereotypes_Way(list):
     flg = 0
     stereotypeList = []
 
@@ -21,7 +21,6 @@ def find_coord_stereotypes(list):
             flg = flg + 1
             stereotypeList.append(nd.get('ref'))
 
-    # print(len(stereotypeList))
     if len(stereotypeList) == 1:
         dicElements["stereotype"] = "point"
     elif stereotypeList[0] == stereotypeList[len(stereotypeList) - 1]:
@@ -37,19 +36,44 @@ def find_coord_stereotypes(list):
     stereotypeList.clear()
     return
 
+def find_coord_stereotypes_Node(list):
+    flg = 0
+    print(list)
 
-def find_tag_coord_Way(test, tagType):
-    if test.find(k="name"):
-        if tagType == 'way':
-            find_coord_stereotypes(test)
+    dicElements["lat" + str(flg)] = list.get('lat')
+    dicElements["lon" + str(flg)] = list.get('lon')
+
+    for tag in list.find_all('tag'):
+        k = tag.get('k')
+        v = tag.get('v')
+        dicElements[k] = v
+
+    dicElements["stereotype"] = "point"
+    print(str(list.get("id"))+'  '+str(list.get('lon')))
+    return
+
+
+def find_tag_coord(test, tagType):
+    if tagType == 'way':
+        if test.find(k="name"):
+            find_coord_stereotypes_Way(test)
             listWay.append(dicElements.copy())
-        elif tagType == 'node':
-            print('NODE')
         else:
-            print('RELATIONS')
+            find_coord_stereotypes_Way(test)
+            listIncom.append(dicElements.copy())
+
+    elif tagType == 'node':
+        if test.find('tag'):
+            find_coord_stereotypes_Node(test)
+            listNode.append(dicElements.copy())
+            # print(listNode)
+            # input()
+        else:
+            print("NODE REF")
+
     else:
-        find_coord_stereotypes(test)
-        listIncom.append(dicElements.copy())
+        print('RELATIONS')
+
     dicElements.clear()
     return
 
@@ -67,7 +91,7 @@ def find_region_extent(list, ref):
 
 
 #### LEITURA XML
-with open('map_ladeira.osm') as xml_file:
+with open('map.osm') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -76,38 +100,38 @@ dicNode = soup.find_all("node")
 
 print(len(dicWay))
 print(len(dicNode))
-
+# find_tag_coord(dicWay[2], 'way')
+# print(dicNode[157])
+# find_tag_coord(dicNode[157], 'node')
+# print(listNode)
+# exit(0)
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
 for i in range(len(dicWay)):
     tagWay = BeautifulSoup(str(dicWay[i]), 'lxml')
-    find_tag_coord_Way(tagWay)
+    find_tag_coord(tagWay, 'way')
 
 for i in range(len(dicNode)):
-    tagNode = BeautifulSoup(str(dicNode[i]), 'lxml')
-    find_tag_coord(tagNode)
+    find_tag_coord(dicNode[i], 'node')
 
-print(len(listWay))
-exit(0)
 #### CONSTRUINDO ESQUEMA CONCEITUAL
-print(graph.driveGraph(listWay))
+listAllEntities = listNode + listWay
+print(graph.driveGraph(listAllEntities))
 
-
+exit(0)
 #### GERAR SCRIP TABELAS
 arqScript = open("script", 'w+')
-for i in range(len(listWay)):
-    arqScript.write(listWay[i]['name'])
-    if "amenity" in listWay[i]:
-        arqScript.write(" - " + listWay[i]['amenity'] + "\n")
+for i in range(len(listAllEntities)):
+    arqScript.write(listAllEntities[i]['name'])
+    if "amenity" in listAllEntities[i]:
+        arqScript.write(" - " + listAllEntities[i]['amenity'] + "\n")
     elif "highway" in listWay[i]:
-        arqScript.write(" - " + listWay[i]['highway'] + "\n")
+        arqScript.write(" - " + listAllEntities[i]['highway'] + "\n")
     elif "shop" in listWay[i]:
-        arqScript.write(" - " + listWay[i]['shop'] + "\n")
+        arqScript.write(" - " + listAllEntities[i]['shop'] + "\n")
     else:
         arqScript.write("\n")
 print("Script Table completed")
 arqScript.close()
-
-
 
 
 ###### GERAR RELATORIO
