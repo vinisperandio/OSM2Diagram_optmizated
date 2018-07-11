@@ -15,7 +15,6 @@ def find_coord_stereotypes_Way(list):
 
     for nd in list.find_all('nd'):
         for coord in soup.find_all(id=str(nd.get('ref'))):
-            # print coord
             dicElements["lat" + str(flg)] = coord.get('lat')
             dicElements["lon" + str(flg)] = coord.get('lon')
             flg = flg + 1
@@ -32,13 +31,11 @@ def find_coord_stereotypes_Way(list):
         k = tag.get('k')
         v = tag.get('v')
         dicElements[k] = v
-        # print(k)
     stereotypeList.clear()
     return
 
 def find_coord_stereotypes_Node(list):
     flg = 0
-    print(list)
 
     dicElements["lat" + str(flg)] = list.get('lat')
     dicElements["lon" + str(flg)] = list.get('lon')
@@ -49,7 +46,6 @@ def find_coord_stereotypes_Node(list):
         dicElements[k] = v
 
     dicElements["stereotype"] = "point"
-    print(str(list.get("id"))+'  '+str(list.get('lon')))
     return
 
 
@@ -66,10 +62,8 @@ def find_tag_coord(test, tagType):
         if test.find('tag'):
             find_coord_stereotypes_Node(test)
             listNode.append(dicElements.copy())
-            # print(listNode)
-            # input()
         else:
-            print("NODE REF")
+            None
 
     else:
         print('RELATIONS')
@@ -98,13 +92,6 @@ with open('map.osm') as xml_file:
 dicWay = soup.find_all("way")
 dicNode = soup.find_all("node")
 
-print(len(dicWay))
-print(len(dicNode))
-# find_tag_coord(dicWay[2], 'way')
-# print(dicNode[157])
-# find_tag_coord(dicNode[157], 'node')
-# print(listNode)
-# exit(0)
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
 for i in range(len(dicWay)):
     tagWay = BeautifulSoup(str(dicWay[i]), 'lxml')
