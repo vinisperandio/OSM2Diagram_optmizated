@@ -117,17 +117,18 @@ for i in range(len(dicNode)):
 listAllEntities = listNode + listWay
 print(graph.driveGraph(listAllEntities))
 
-exit(0)
+
 #### GERAR SCRIP TABELAS
 arqScript = open("script", 'w+')
 for i in range(len(listAllEntities)):
-    arqScript.write(listAllEntities[i]['name'])
+    if "name" in listAllEntities[i]:
+        arqScript.write(listAllEntities[i]['name'])
     if "amenity" in listAllEntities[i]:
-        arqScript.write(" - " + listAllEntities[i]['amenity'] + "\n")
-    elif "highway" in listWay[i]:
-        arqScript.write(" - " + listAllEntities[i]['highway'] + "\n")
-    elif "shop" in listWay[i]:
-        arqScript.write(" - " + listAllEntities[i]['shop'] + "\n")
+        arqScript.write(" - " + listAllEntities[i]['amenity'])
+    if "highway" in listAllEntities[i]:
+        arqScript.write(" - " + listAllEntities[i]['highway'])
+    if "shop" in listAllEntities[i]:
+        arqScript.write(" - " + listAllEntities[i]['shop'])
     else:
         arqScript.write("\n")
 print("Script Table completed")
