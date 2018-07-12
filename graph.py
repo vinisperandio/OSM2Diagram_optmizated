@@ -1,6 +1,14 @@
 from graphviz import Digraph, render
 
-# HEALTH
+#---------------------------------------------DIVERSION-------------------------------------------------------------------------
+global diversion
+diversion = ['leisure','historic','touriusm','man_made','sport']
+global leisure
+global historic
+global touriusm
+global man_made
+global sport
+#---------------------------------------------HEALTH-------------------------------------------------------------------------
 global health
 health = ['emergency']
 
@@ -46,8 +54,8 @@ other_Amenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock
 
 
 global shop
-shop = ['food_beverages','general_store','clothing_shoes_acessories','discountStore','health_beauty',
-        'do_it_yourself','furniture_interior','eletronics','outdoors_sport','art_music_hobbies','stationery_gfits_books',
+shop = ['food_beverages','general_store','clothing_shoes_acessories','discount Store','health and beauty',
+        'do_it_yourself','furniture_interior','eletronics','outdoors_sport','art_music_hobbies','stationery_gifts_books',
         'other_Shop']
 global food_beverages
 food_beverages = ['alcohol','bakery','beverages','brewing_supplies','butcher','cheese', 'chocolate','chocolate','coffee',
@@ -78,13 +86,12 @@ outdoors_sport = ['atv','bicycle','boat','car','car_repair','car_parts','fuel','
 global art_music_hobbies
 art_music_hobbies = ['atr','collector','craft','frame','games','model','music','musical_instrument','photo','camera',
                      'trophy','video','video_games']
-global stationery_gfits_books
-stationery_gfits_books = ['anime','books','gift','lottery','newsagent','stationery','ticket']
+global stationery_gifts_books
+stationery_gifts_books = ['anime','books','gift','lottery','newsagent','stationery','ticket']
 global other_Shop
 other_Shop = ['bookmaker','copyshop','dry_cleaning','e-cigarette','funeral_directors','laundry','money_lender','party',
               'pawnbroker','pet','pyrotechnics','religion','storage_rental','tobacco','toys','travel_agency','vacant',
               'weapons','user_defined']
-
 
 global craft
 craft = ['agricultura_engines', 'bakery', 'carpenter']
@@ -142,13 +149,14 @@ global contNode
 global mother
 contNode = 0
 mother = {}
-
+#-----------------------------------------------------------------------------------------------------------------------------
 
 def driveGraph(listDic):
     listWay = listDic.copy()
     listService = []
     listRoadMesh = []
     listHealth = []
+    listDiversion = []
 
     if not listWay:
         return "Graph failed!"
@@ -158,17 +166,21 @@ def driveGraph(listDic):
                 if j in service:
                     if 'amenity' in listWay[i].keys():
                         if listWay[i]['amenity'] in healthCare:
+                            print("health " + listWay[i]['name'])
                             listHealth.append(listWay[i].copy())
+                        elif listWay[i]['amenity'] in entertainment:
+                            print("diversion " + listWay[i]['name'])
+                            listDiversion.append(listWay[i].copy())
                         else:
+                            print("service " + listWay[i]['name'])
                             listService.append(listWay[i].copy())
-                    else:
-                        listService.append(listWay[i].copy())
                 if "highway" in j:
                     listRoadMesh.append(listWay[i].copy())
 
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
+        diversionGraph(arq, listDiversion)
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
@@ -179,6 +191,109 @@ def driveGraph(listDic):
 
         render('dot', 'png', 'schema.gv')
     return "Graph checked!\n"
+
+
+######################################################################################### DIVERSION
+def findClassDiversion(tag):
+    if tag in entertainment:
+        return "entertainment"
+    return
+
+
+def diversionGraph(arq, listDiversion):
+    arq.write(initPackage("DIVERSION"))
+    packageRelation(arq, listDiversion, "amenity", "diversion")  ##AMENITY
+    subGraph(arq, "Diversion", diversion, listDiversion)
+
+    return "DIVERSION checked!"
+
+
+######################################################################################### HEALTH
+def findClassHealth(tag):
+    if tag in healthCare:
+        return "healthCare"
+    return
+
+
+def emergencyGraph(arq, listHealth):
+    arq.write(initPackage("HEALTH"))
+    packageRelation(arq, listHealth, "amenity", "health")  ##AMENITY
+    subGraph(arq, "health", health, listHealth)
+
+    return "HEALTH checked!"
+
+
+######################################################################################### ROAD MESH
+def findClassroad_mesh(tag):
+    if tag in roads:
+        return "roads"
+    elif tag in path:
+        return "path"
+    elif tag in linkRoads:
+        return "link Roads"
+    elif tag in lifecycle:
+        return "life cycle"
+    elif tag in specialRoads:
+        return "special roads"
+    elif tag in other_Highway:
+        return "other highway features"
+
+    elif tag in tracks:
+        return "tracks"
+    elif tag in station_and_shop:
+        return "statoin and shop"
+    elif tag in other_Railway:
+        return "other railway"
+
+def roadMeshGraph(arq, listRoadMesh):
+    arq.write(initPackage("ROAD_MESH"))
+    subGraph(arq, "road_mesh", road_mesh, listRoadMesh)
+
+    return "road_mesh checked!"
+
+
+######################################################################################### SERVICES
+def findClassService(tag):
+    if tag in education:
+        return "education"
+    elif tag in transportation:
+        return "transportation"
+    elif tag in sustenance:
+        return "sustenance"
+    elif tag in financial:
+        return "financial"
+    elif tag in other_Amenity:
+        return "other_Amenity"
+
+    elif tag in general_store:
+        return "general_store"
+    elif tag in do_it_yourself:
+        return "do_it_yourself"
+    elif tag in eletronics:
+        return "eletronics"
+    elif tag in health_beaty:
+        return "health and beauty"
+    elif tag in food_beverages:
+        return "food_beverages"
+    elif tag in furniture_interior:
+        return "furniture_interior"
+    elif tag in outdoors_sport:
+        return "outdoors_sport"
+    elif tag in discountStore:
+        return "discount_Store"
+    elif tag in clothing_shoes_acessories:
+        return "clothing_shoes_acessories"
+    elif tag in art_music_hobbies:
+        return "art_music_hobbies"
+    elif tag in stationery_gifts_books:
+        return "stationary_gifts_books"
+
+
+def serviceGraph(arq, listService):
+    arq.write(initPackage("SERVICES"))
+    subGraph(arq, "service", service, listService)
+
+    return "Services checked!"
 
 
 ######################################################################################### CLASS_xml
@@ -293,7 +408,7 @@ def findRelation(arq):
     return print("\nRelation checked!")
 
 
-def packageRelation(arq, list, name):
+def packageRelation(arq, list, name, packageName):
     flg = []
     global contNode
     global mother
@@ -302,7 +417,12 @@ def packageRelation(arq, list, name):
         if name in list[i]:
             arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
             mother[list[i]['amenity']] = contNode
-            flg.append(findClassHealth(list[i]['amenity']))
+
+            if packageName == 'health':
+                flg.append(findClassHealth(list[i]['amenity']))
+            elif packageName == 'diversion':
+                flg.append(findClassDiversion(list[i]['amenity']))
+
             contNode = contNode + 1
             arq.write("\n\t\t\t<hr/>")
             for j in list[i].keys():  ##  ATRIBUTOS TABELA
@@ -316,65 +436,6 @@ def packageRelation(arq, list, name):
         contNode = contNode + 1
 
 
-######################################################################################### HEALTH
-def findClassHealth(tag):
-    if tag in healthCare:
-        return "healthCare"
-    return
-
-
-def emergencyGraph(arq, listHealth):
-    arq.write(initPackage("HEALTH"))
-    packageRelation(arq, listHealth, "amenity")  ##AMENITY
-    subGraph(arq, "health", health, listHealth)
-
-    return "HEALTH checked!"
-
-
-######################################################################################### ROAD MESH
-def findClassroad_mesh(tag):
-    if tag in roads:
-        return "roads"
-    elif tag in path:
-        return "path"
-    elif tag in linkRoads:
-        return "link Roads"
-    elif tag in lifecycle:
-        return "life cycle"
-    elif tag in specialRoads:
-        return "special roads"
-    elif tag in other_Highway:
-        return "other highway features"
-
-    elif tag in tracks:
-        return "tracks"
-    elif tag in station_and_shop:
-        return "statoin and shop"
-    elif tag in other_Railway:
-        return "other railway"
-
-def roadMeshGraph(arq, listRoadMesh):
-    arq.write(initPackage("ROAD_MESH"))
-    subGraph(arq, "road_mesh", road_mesh, listRoadMesh)
-
-    return "road_mesh checked!"
-
-
-######################################################################################### SERVICES
-def findClassService(tag):
-    if tag in education:
-        return "education"
-    elif tag in transportation:
-        return "transportation"
-    elif tag in art_music_hobbies:
-        return "art_music_hobbies"
-
-
-def serviceGraph(arq, listService):
-    arq.write(initPackage("SERVICES"))
-    subGraph(arq, "service", service, listService)
-
-    return "Services checked!"
 
 # def serviceGraph(arq, listService):
 #     flg=[]
