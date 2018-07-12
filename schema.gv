@@ -212,9 +212,41 @@ digraph structs {
 			</TR>
 			</TABLE>>]
 	}
+	subgraph cluster_EDIFICATION {
+		node [color=black style=filled]
+		color=lightgrey style=filled
+		label=EDIFICATION
+		17[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">university</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		18[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">building</font>  </TD>
+			</TR>
+			</TABLE>>]
+		19[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">civic_amenity</font>  </TD>
+			</TR>
+			</TABLE>>]
+	}
 		0 -> 1[arrowhead=onormal]
 		1 -> 3[arrowhead=onormal]
-		2 -> 6[arrowhead=onormal]
+		17 -> 6[arrowhead=onormal]
+		17 -> 19[arrowhead=onormal]
 		4 -> 6[arrowhead=onormal]
 		5 -> 7[arrowhead=onormal]
 		6 -> 3[arrowhead=onormal]
@@ -227,6 +259,7 @@ digraph structs {
 		14 -> 16[arrowhead=onormal]
 		15 -> 11[arrowhead=onormal]
 		16 -> 11[arrowhead=onormal]
+		19 -> 18[arrowhead=onormal]
 	rankdir=BT
 	splines=ortho
 }

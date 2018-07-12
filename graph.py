@@ -1,5 +1,5 @@
 from graphviz import Digraph, render
-
+import mini_mundo
 #---------------------------------------------DIVERSION-------------------------------------------------------------------------
 global diversion
 diversion = ['leisure','historic','touriusm','man_made','sport']
@@ -19,8 +19,8 @@ global firefighters
 global lifeguards
 global other_Structure
 global other_Station
+
 #---------------------------------------------PACKAGED SERVICES--------------------------------------------------------------------------
-# SERVICES
 global service
 service = ['shop', 'amenity', 'craft']
 
@@ -95,8 +95,8 @@ other_Shop = ['bookmaker','copyshop','dry_cleaning','e-cigarette','funeral_direc
 
 global craft
 craft = ['agricultura_engines', 'bakery', 'carpenter']
+
 #-----------------------------------------------PACKAGE ROAD MESH----------------------------------------------------------------------
-# ROAD MESH
 global road_mesh
 road_mesh = ['highway', 'aerialway', 'aeroway', 'railway', 'public_transportation', 'route']
 
@@ -141,6 +141,28 @@ route = ['bicycle','bus','canoe','detour','ferry','fitness_trail','hiking','hors
          'nordic_walking','pipeline','piste','power','railway','road','running','ski','train','tram','User defined']
 
 
+#-----------------------------------------------PACKAGE EDIFICATION--------------------------------------------------------------------
+global edification
+edification = ['place','office','building']
+
+global place
+global administratively_declared_places
+global populated_settlements_urban
+global pupulated_settlements_urban_and_rural
+global other_places
+
+global office
+
+global building
+building = ['accommodation','commercial','religious','civic_amenity','other_building']
+global accommodation
+global commercial
+global religious
+global civic_amenity
+civic_amenity = ['university']
+global other_building
+
+
 #-----------------------------------------------STERIOTYPE-------------------------------------------------------------------
 
 
@@ -157,6 +179,7 @@ def driveGraph(listDic):
     listRoadMesh = []
     listHealth = []
     listDiversion = []
+    listEdification = []
 
     if not listWay:
         return "Graph failed!"
@@ -174,8 +197,10 @@ def driveGraph(listDic):
                         else:
                             print("service " + listWay[i]['name'])
                             listService.append(listWay[i].copy())
-                if "highway" in j:
+                if j in road_mesh:
                     listRoadMesh.append(listWay[i].copy())
+                if j in edification:
+                    listEdification.append(listWay[i].copy())
 
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
@@ -184,6 +209,7 @@ def driveGraph(listDic):
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
+        edificationGraph(arq, listEdification)
         findRelation(arq)
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
@@ -250,6 +276,20 @@ def roadMeshGraph(arq, listRoadMesh):
     subGraph(arq, "road_mesh", road_mesh, listRoadMesh)
 
     return "road_mesh checked!"
+
+
+######################################################################################### EDIFICATION
+def findClassEdification(tag):
+    if tag in civic_amenity:
+        return "civic_amenity"
+    return
+
+
+def edificationGraph(arq, listEdification):
+    arq.write(initPackage("EDIFICATION"))
+    subGraph(arq, "edification", edification, listEdification)
+
+    return "EDIFICATION checked!"
 
 
 ######################################################################################### SERVICES
@@ -375,6 +415,10 @@ def findClass(name, tag):
         return findClassService(tag)
     elif name == 'health':
         return findClassHealth(tag)
+    elif name == 'diversion':
+        return findClassDiversion(tag)
+    elif name == 'edification':
+        return findClassEdification(tag)
 
 
 ######################################################################################### REALATION
@@ -384,10 +428,11 @@ def entityRelation(slave, master):
 
 def findRelation(arq):
     global mother
+    print(mother)
     for i in mother:
         if i in education:
             arq.write(entityRelation(mother[i], mother['education']))
-        elif i in transportation:
+        if i in transportation:
             arq.write(entityRelation(mother[i], mother['transportation']))
         elif i in entertainment:
             arq.write(entityRelation(mother[i], mother['entertainment']))
@@ -405,6 +450,10 @@ def findRelation(arq):
             arq.write(entityRelation(mother[i], mother['roads']))
         elif i in highway:
             arq.write(entityRelation(mother[i], mother['highway']))
+        elif i in civic_amenity:
+            arq.write(entityRelation(mother[i], mother['civic_amenity']))
+        elif i in building:
+            arq.write(entityRelation(mother[i], mother['building']))
     return print("\nRelation checked!")
 
 
