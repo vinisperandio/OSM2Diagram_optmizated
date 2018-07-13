@@ -189,13 +189,13 @@ def driveGraph(listDic):
                 if j in service:
                     if 'amenity' in listWay[i].keys():
                         if listWay[i]['amenity'] in healthCare:
-                            print("health " + listWay[i]['name'])
+                            #print("health " + listWay[i]['name'])
                             listHealth.append(listWay[i].copy())
                         elif listWay[i]['amenity'] in entertainment:
-                            print("diversion " + listWay[i]['name'])
+                            #print("diversion " + listWay[i]['name'])
                             listDiversion.append(listWay[i].copy())
                         else:
-                            print("service " + listWay[i]['name'])
+                            #print("service " + listWay[i]['name'])
                             listService.append(listWay[i].copy())
                 if j in road_mesh:
                     listRoadMesh.append(listWay[i].copy())
@@ -207,8 +207,8 @@ def driveGraph(listDic):
 
         diversionGraph(arq, listDiversion)
         serviceGraph(arq, listService)
-        emergencyGraph(arq, listHealth)
-        roadMeshGraph(arq, listRoadMesh)
+        # emergencyGraph(arq, listHealth)
+        # roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         findRelation(arq)
 
