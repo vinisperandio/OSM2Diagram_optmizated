@@ -171,6 +171,7 @@ global contNode
 global mother
 contNode = 0
 mother = {}
+controllerPackages = {}
 #-----------------------------------------------------------------------------------------------------------------------------
 
 def driveGraph(listDic):
@@ -207,8 +208,8 @@ def driveGraph(listDic):
 
         diversionGraph(arq, listDiversion)
         serviceGraph(arq, listService)
-        # emergencyGraph(arq, listHealth)
-        # roadMeshGraph(arq, listRoadMesh)
+        emergencyGraph(arq, listHealth)
+        roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         findRelation(arq)
 
@@ -356,7 +357,8 @@ def subGraph(arq, namePackage, package, list):
         for i in range(len(list)):  ##  TABLE NAME = university, third level
             if k in list[i] and list[i][k] not in listControlthird:
                 arq.write(entityName(contNode, list[i][k], entityStereotype(list[i]["stereotype"])))
-                mother[list[i][k]] = contNode
+                mother[contNode] = list[i][k]
+                controllerPackages[contNode] = namePackage
                 flg.append(findClass(namePackage, list[i][k]))
                 contNode = contNode + 1
                 arq.write("\n\t\t\t<hr/>")
@@ -366,16 +368,17 @@ def subGraph(arq, namePackage, package, list):
                 arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
                 listControlthird.append(list[i][k])
                 if k not in listControlMain:
-                    arq.write(entityName(contNode, k, entityStereotype(
-                        None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
-                    mother[k] = contNode
+                    arq.write(entityName(contNode, k, entityStereotype(None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
+                    mother[contNode] = k
+                    controllerPackages[contNode] = namePackage
                     contNode = contNode + 1
                     listControlMain.append(k)
 
     for i in range(len(flg)):  ## SubClasses = roads, path SECOND LEVEL
         if flg[i] not in listControlSub:
             arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
-            mother[flg[i]] = contNode
+            mother[contNode] = flg[i]
+            controllerPackages[contNode] = namePackage
             contNode = contNode + 1
             listControlSub.append(flg[i])
     arq.write("\n\t}")
@@ -425,35 +428,43 @@ def findClass(name, tag):
 def entityRelation(slave, master):
     return ("\n\t\t" + str(slave) + " -> " + str(master) + "[arrowhead=onormal]")
 
+def valueKey(dic, val):
+    for k, v in dic.items():
+        if v == val:
+            return k
 
 def findRelation(arq):
     global mother
     print(mother)
-    for i in mother:
-        if i in education:
-            arq.write(entityRelation(mother[i], mother['education']))
-        if i in transportation:
-            arq.write(entityRelation(mother[i], mother['transportation']))
-        elif i in entertainment:
-            arq.write(entityRelation(mother[i], mother['entertainment']))
-        elif i in healthCare:
-            arq.write(entityRelation(mother[i], mother['healthCare']))
-        elif i in amenity:
-            arq.write(entityRelation(mother[i], mother['amenity']))
-        elif i in art_music_hobbies:
-            arq.write(entityRelation(mother[i], mother['art_music_hobbies']))
-        elif i in shop:
-            arq.write(entityRelation(mother[i], mother['shop']))
-        elif i in other_Highway:
-            arq.write(entityRelation(mother[i], mother['other highway features']))
-        elif i in roads:
-            arq.write(entityRelation(mother[i], mother['roads']))
-        elif i in highway:
-            arq.write(entityRelation(mother[i], mother['highway']))
-        elif i in civic_amenity:
-            arq.write(entityRelation(mother[i], mother['civic_amenity']))
-        elif i in building:
-            arq.write(entityRelation(mother[i], mother['building']))
+    print(controllerPackages)
+    for k,v in mother.items():
+        if v in entertainment and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'entertainment')))
+        elif v in healthCare and controllerPackages[k] == 'health':
+            arq.write(entityRelation(k, valueKey(mother,'healthCare')))
+        elif v in education and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother,'education')))
+        elif v in transportation and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother,'transportation')))
+        elif v in amenity and controllerPackages[k] == 'service' or controllerPackages[k] == 'health' or controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'amenity')))
+
+        elif v in art_music_hobbies and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'art_music_hobbies')))
+        elif v in shop and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'shop')))
+
+        elif v in other_Highway and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'other highway features')))
+        elif v in roads and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'roads')))
+        elif v in highway and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'highway')))
+
+        elif v in civic_amenity and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'civic_amenity')))
+        elif v in building and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'building')))
     return print("\nRelation checked!")
 
 
@@ -465,8 +476,8 @@ def packageRelation(arq, list, name, packageName):
     for i in range(len(list)):  ##  NOME TABELA
         if name in list[i]:
             arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
-            mother[list[i]['amenity']] = contNode
-
+            mother[contNode] = list[i]['amenity']
+            controllerPackages[contNode] = packageName
             if packageName == 'health':
                 flg.append(findClassHealth(list[i]['amenity']))
             elif packageName == 'diversion':
@@ -481,7 +492,8 @@ def packageRelation(arq, list, name, packageName):
 
     for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
         arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
-        mother[flg[i]] = contNode
+        mother[contNode] = flg[i]
+        controllerPackages[contNode] = packageName
         contNode = contNode + 1
 
 
