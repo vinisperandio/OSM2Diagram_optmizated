@@ -146,6 +146,7 @@ global edification
 edification = ['place','office','building']
 
 global place
+place = ['administratively_declared_places','populated_settlements_urban','pupulated_settlements_urban_and_rural','other_places']
 global administratively_declared_places
 global populated_settlements_urban
 global pupulated_settlements_urban_and_rural
