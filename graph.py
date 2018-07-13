@@ -37,7 +37,7 @@ transportation = ['bicycle_parking','bicycle_repair_station','bicycle_rental','b
                   'ferry_terminal','grit_bin','motorcycle_parking','parking','parking_entrance','	parking_space',
                   'taxi','ticket_validator']
 global financial
-financial = ['atn','bank','bureau_de_change']
+financial = ['atm','bank','bureau_de_change']
 global healthCare
 healthCare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home','pharmacy','social_facility',
               'veterinary','blood_donation']
@@ -433,6 +433,7 @@ def valueKey(dic, val):
         if v == val:
             return k
 
+
 def findRelation(arq):
     global mother
     print(mother)
@@ -446,11 +447,39 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother,'education')))
         elif v in transportation and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother,'transportation')))
+        elif v in financial and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother,'financial')))
+        elif v in sustenance and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother,'sustenance')))
+        elif v in other_Amenity and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother,'other_Amenity')))
         elif v in amenity and controllerPackages[k] == 'service' or controllerPackages[k] == 'health' or controllerPackages[k] == 'diversion':
             arq.write(entityRelation(k, valueKey(mother,'amenity')))
 
+        elif v in food_beverages and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'food_beverages')))
+        elif v in general_store and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'general_store')))
+        elif v in clothing_shoes_acessories and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'clothing_shoes_acessories')))
+        elif v in discountStore and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'discount')))
+        elif v in health_beaty and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'health and beauty')))
+        elif v in do_it_yourself and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'do_it_yourself')))
+        elif v in furniture_interior and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'furniture_interior')))
+        elif v in eletronics and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'eletronics')))
+        elif v in outdoors_sport and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'outdoors_sport')))
         elif v in art_music_hobbies and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother, 'art_music_hobbies')))
+        elif v in stationery_gifts_books and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'stationery_gifts_books')))
+        elif v in other_Shop and controllerPackages[k] == 'service':
+            arq.write(entityRelation(k, valueKey(mother, 'other_Shop')))
         elif v in shop and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother, 'shop')))
 

@@ -85,7 +85,7 @@ def find_region_extent(list, ref):
 
 
 #### LEITURA XML
-with open('map.osm') as xml_file:
+with open('map_ladeira.osm') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
