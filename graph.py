@@ -294,6 +294,15 @@ def findClassroad_mesh(tag):
     elif tag in aerialway:
         return "aerialway"
 
+    elif tag in aeroway:
+        return "aeroway"
+
+    elif tag in route:
+        return "route"
+
+    elif tag in public_transportation:
+        return "public transportation"
+
 def roadMeshGraph(arq, listRoadMesh):
     arq.write(initPackage("ROAD_MESH"))
     subGraph(arq, "road_mesh", road_mesh, listRoadMesh)
@@ -554,10 +563,42 @@ def findRelation(arq):
         elif v in aerialway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'aerialway')))
 
+        elif v in aeroway and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'aeroway')))
+
+        elif v in route and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'route')))
+
+        elif v in public_transportation and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'public_transportation')))
+
+        elif v in accommodation and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'accommodation')))
+        elif v in commercial and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'commercial')))
+        elif v in religious and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'religious')))
         elif v in civic_amenity and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'civic_amenity')))
+        elif v in other_building and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'other_building')))
         elif v in building and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'building')))
+
+        elif v in office and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'office')))
+
+        elif v in administratively_declared_places and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'administratively_declared_places')))
+        elif v in populated_settlements_urban and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'populated_settlements_urban')))
+        elif v in populated_settlements_urban_and_rural and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'populated_settlements_urban_and_rural')))
+        elif v in other_places and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'other_places')))
+        elif v in place and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'place')))
+
     return print("\nRelation checked!")
 
 
@@ -588,34 +629,3 @@ def packageRelation(arq, list, name, packageName):
         mother[contNode] = flg[i]
         controllerPackages[contNode] = packageName
         contNode = contNode + 1
-
-
-
-# def serviceGraph(arq, listService):
-#     flg=[]
-#     global contNode
-#     global mother
-#
-#     arq.write(initPackage("SERVICES"))
-#     ##AMENITY
-#     for i in range(len(listService)):##  NOME TABELA
-#         arq.write(entityName(contNode,listService[i]['amenity']))
-#         mother[listService[i]['amenity']] =  contNode
-#         flg.append(findClassService(listService[i]['amenity']))
-#         contNode = contNode+1
-#         for j in listService[i].keys():##  ATRIBUTOS TABELA
-#             if "lat" not in j and "lon" not in j and "amenity" not in j:
-#                 arq.write(entityAtt(j))
-#         arq.write(entityAtt("coordenadas")+"\n\t\t\t</TABLE>>]")
-#
-#     for i in range(len(flg)):## SubClasses = transportation, education .....
-#         arq.write(entityName(contNode,flg[i])+"\n\t\t\t</TABLE>>]")
-#         mother[flg[i]] = contNode
-#         contNode = contNode +1
-#     arq.write(entityName(contNode,"amenity")+"\n\t\t\t</TABLE>>]"+"\n\t}") ## MainClass = amenity
-#     mother['amenity'] = contNode
-#     contNode = contNode+1
-#
-#     print(flg)
-#     print(mother)
-#     return "Services checked!"
