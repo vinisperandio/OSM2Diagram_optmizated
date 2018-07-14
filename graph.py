@@ -225,11 +225,11 @@ def driveGraph(listDic):
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        # diversionGraph(arq, listDiversion)
-        # serviceGraph(arq, listService)
-        # emergencyGraph(arq, listHealth)
+        diversionGraph(arq, listDiversion)
+        serviceGraph(arq, listService)
+        emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
-        #edificationGraph(arq, listEdification)
+        edificationGraph(arq, listEdification)
         findRelation(arq)
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
