@@ -102,6 +102,7 @@ road_mesh = ['highway', 'aerialway', 'aeroway', 'railway', 'public_transportatio
 
 global aerialway
 aerialway = ['cable_car','gondola','chair_lift','mixed_lift','drag_lift','t-bar','j-bar','rope_tow','magic_carpet','zip_line']
+
 global aeroway
 aeroway = ['aerodrome','apron','gate','hangar','helipad','heliport','navigationaid','runway','spaceport','taxilane',
            'taxiway','terminal','windsock']
@@ -113,7 +114,7 @@ roads = ['motorway','trunk','primary','secondary','tertiary','unclassified','res
 global linkRoads
 linkRoads = ['motorway_link','trunk_link','primary_link','secondary_link','tertiary_link']
 global special_road
-specialRoads = ['living_street','pedestrian','track','bus_guideway','escape','raceway','road']
+special_road = ['living_street','pedestrian','track','bus_guideway','escape','raceway','road']
 global path
 path = ['footway','bridleway','steps','path','cycleway','busway']
 global lifecycle
@@ -136,6 +137,7 @@ other_Railway = ['buffer_stop','derail','crossing','level_crossing','signal','sw
 
 global public_transportation
 public_transportation = ['stop_position','platform','station','stop_area']
+
 global route
 route = ['bicycle','bus','canoe','detour','ferry','fitness_trail','hiking','horse','inline_skates','light_rail','mtb',
          'nordic_walking','pipeline','piste','power','railway','road','running','ski','train','tram','User defined']
@@ -148,20 +150,36 @@ edification = ['place','office','building']
 global place
 place = ['administratively_declared_places','populated_settlements_urban','pupulated_settlements_urban_and_rural','other_places']
 global administratively_declared_places
+administratively_declared_places = ['country','state','region','province','district','county','municipality']
 global populated_settlements_urban
-global pupulated_settlements_urban_and_rural
+populated_settlements_urban = ['city','borough','suburb','quarter','neighbourhood','city_block','plot']
+global populated_settlements_urban_and_rural
+populated_settlements_urban_and_rural = ['town','village','hamlet','isolated_dwelling','farm','allotments']
 global other_places
+other_places = ['continent','archipelago','island','islet','square','locality']
 
 global office
+office = ['accountant','adoptin_agency','advertising_agency','aarchitect','association','charity','company','education_institution',
+          'employment_agency','energy_supplier','estate_agent','forestry','foundation','government','guide','healer','insurance',
+          'it','lawyer','logistic','moving_company','newspaper','ngo','notary','physician','political_party','private_investigator'
+          'property_management','quango','real_estate_agent','religion','research','surveyor','tax','tax_advisor','telecommunications'
+          'therapist','travel_agent','water_utility','yes']
 
 global building
 building = ['accommodation','commercial','religious','civic_amenity','other_building']
 global accommodation
+accommodation = ['apartments','farm','hotel','house','detached','residential','dormitory','terrace','houseboat','bungalow','static_caravan']
 global commercial
+commercial = ['commercial','office','industrial','retail','warehouse','kiosk','cabin','']
 global religious
+religious = ['religious','cathedral','chapel','church','mosque','temple','synagogue','shrine']
 global civic_amenity
-civic_amenity = ['university']
+civic_amenity = ['bakehouse','kindergarten','civic','hospital','school','stadium','train_station','transportation','university',
+                 'grandstand','public']
 global other_building
+other_building = ['barn','bridge','bunker','carport','convervatory','construction','crowshed','digester','farm_auxiliary','garage','garages',
+                  'garbages_shed','greenhouse','hangar','hut','pavilion','parking','riding_hall','roof','shed','stable','sty','transformer_tower',
+                  'services','ruins','water_tower','user defined']
 
 
 #-----------------------------------------------STERIOTYPE-------------------------------------------------------------------
@@ -207,11 +225,11 @@ def driveGraph(listDic):
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        diversionGraph(arq, listDiversion)
-        serviceGraph(arq, listService)
-        emergencyGraph(arq, listHealth)
+        # diversionGraph(arq, listDiversion)
+        # serviceGraph(arq, listService)
+        # emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
-        edificationGraph(arq, listEdification)
+        #edificationGraph(arq, listEdification)
         findRelation(arq)
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
@@ -261,7 +279,7 @@ def findClassroad_mesh(tag):
         return "link Roads"
     elif tag in lifecycle:
         return "life cycle"
-    elif tag in specialRoads:
+    elif tag in special_road:
         return "special roads"
     elif tag in other_Highway:
         return "other highway features"
@@ -273,6 +291,9 @@ def findClassroad_mesh(tag):
     elif tag in other_Railway:
         return "other railway"
 
+    elif tag in aerialway:
+        return "aerialway"
+
 def roadMeshGraph(arq, listRoadMesh):
     arq.write(initPackage("ROAD_MESH"))
     subGraph(arq, "road_mesh", road_mesh, listRoadMesh)
@@ -282,10 +303,28 @@ def roadMeshGraph(arq, listRoadMesh):
 
 ######################################################################################### EDIFICATION
 def findClassEdification(tag):
-    if tag in civic_amenity:
+    if tag in accommodation:
+        return "accommodation"
+    elif tag in commercial:
+        return "commercial"
+    elif tag in religious:
+        return "religious"
+    elif tag in civic_amenity:
         return "civic_amenity"
-    return
+    elif tag in other_building:
+        return "other building"
 
+    elif tag in office:
+        return "office"
+
+    elif tag in administratively_declared_places:
+        return "administratively_declared_places"
+    elif tag in populated_settlements_urban:
+        return  "populated_settlements_urban"
+    elif tag in populated_settlements_urban_and_rural:
+        return "populated_settlements_urban_and_rural"
+    elif tag in other_places:
+        return "other_places"
 
 def edificationGraph(arq, listEdification):
     arq.write(initPackage("EDIFICATION"))
@@ -376,12 +415,16 @@ def subGraph(arq, namePackage, package, list):
                     listControlMain.append(k)
 
     for i in range(len(flg)):  ## SubClasses = roads, path SECOND LEVEL
-        if flg[i] not in listControlSub:
-            arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
-            mother[contNode] = flg[i]
-            controllerPackages[contNode] = namePackage
-            contNode = contNode + 1
-            listControlSub.append(flg[i])
+        if flg[i] in road_mesh and diversion and service and edification:
+            print(flg[i])
+            None
+        else:
+            if flg[i] not in listControlSub:
+                arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
+                mother[contNode] = flg[i]
+                controllerPackages[contNode] = namePackage
+                contNode = contNode + 1
+                listControlSub.append(flg[i])
     arq.write("\n\t}")
 
 
@@ -488,8 +531,28 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'other highway features')))
         elif v in roads and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'roads')))
+        elif v in linkRoads and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'linkRoads')))
+        elif v in special_road and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'special_road')))
+        elif v in path and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'path')))
+        elif v in lifecycle and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'lifecycle')))
         elif v in highway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'highway')))
+
+        elif v in other_Railway and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'other_Railway')))
+        elif v in station_and_shop and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'station_and_shop')))
+        elif v in tracks and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'tracks')))
+        elif v in railway and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'railway')))
+
+        elif v in aerialway and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'aerialway')))
 
         elif v in civic_amenity and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'civic_amenity')))
