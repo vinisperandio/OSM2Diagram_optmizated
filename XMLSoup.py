@@ -1,11 +1,13 @@
 from bs4 import BeautifulSoup
 import graph
 
-dicElements = {}  # responsavel por separar os elementos especificos (way, node...) dentro da função Find_tag_coord
+dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da função Find_tag_coord
 dicWay = {}    # dicionario das tags Way
 listWay = []   # lista que recebe todos os blocos XML da tag Way
 dicNode = {}   # dicionario das tags Node
 listNode = []   # lista que recebe todos os blocos XML da tag Node
+dicRelation = {}
+listRelation = []
 listIncom = []  # lista que recebe os blocos XML sem a TAG name
 listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serão modelados
 
@@ -48,6 +50,19 @@ def find_coord_stereotypes_Node(list):
     dicElements["stereotype"] = "point"
     return
 
+def find_coord_stereotypes_Relation(list):
+    flg = 0
+
+    dicElements["lat" + str(flg)] = list.get('lat')
+    dicElements["lon" + str(flg)] = list.get('lon')
+
+    for tag in list.find_all('tag'):
+        k = tag.get('k')
+        v = tag.get('v')
+        dicElements[k] = v
+
+    dicElements["stereotype"] = "point"
+    return
 
 def find_tag_coord(test, tagType):
     if tagType == 'way':
@@ -65,8 +80,15 @@ def find_tag_coord(test, tagType):
         else:
             None
 
+    elif tagType == 'relation':
+        if test.find(v="multipolygon"):
+            print("multipolygon")
+            find_coord_stereotypes_Relation(test)
+        else:
+            print("relation")
+
     else:
-        print('RELATIONS')
+        print('NEW TAG')
 
     dicElements.clear()
     return
@@ -85,12 +107,13 @@ def find_region_extent(list, ref):
 
 
 #### LEITURA XML
-with open('map.osm') as xml_file:
+with open('map_relation.osm') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
-dicWay = soup.find_all("way")
-dicNode = soup.find_all("node")
+# dicWay = soup.find_all("way")
+# dicNode = soup.find_all("node")
+dicRelation = soup.find_all("relation")
 
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
 for i in range(len(dicWay)):
@@ -100,6 +123,9 @@ for i in range(len(dicWay)):
 for i in range(len(dicNode)):
     find_tag_coord(dicNode[i], 'node')
 
+for i in range (len(dicRelation)):
+    find_tag_coord(dicRelation[i], 'relation')
+exit(0)
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 listAllEntities = listNode + listWay
 print(graph.driveGraph(listAllEntities))
