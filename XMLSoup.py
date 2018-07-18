@@ -53,15 +53,23 @@ def find_coord_stereotypes_Node(list):
 def find_coord_stereotypes_Relation(list):
     flg = 0
 
-    dicElements["lat" + str(flg)] = list.get('lat')
-    dicElements["lon" + str(flg)] = list.get('lon')
+    for member in list.find_all('member'):
+        for way in soup.find_all(id=str(member.get('ref'))):
+            for nd in way.find_all('nd'):
+                for coord in soup.find_all(id=str(nd.get('ref'))):
+                    dicElements["lat" + str(flg)] = coord.get('lat')
+                    dicElements["lon" + str(flg)] = coord.get('lon')
+                    flg = flg + 1
+
+    dicElements["stereotype"] = "polygon"
 
     for tag in list.find_all('tag'):
-        k = tag.get('k')
-        v = tag.get('v')
-        dicElements[k] = v
-
-    dicElements["stereotype"] = "point"
+        if tag.get('k') == 'type':
+            None
+        else:
+            k = tag.get('k')
+            v = tag.get('v')
+            dicElements[k] = v
     return
 
 def find_tag_coord(test, tagType):
@@ -82,8 +90,10 @@ def find_tag_coord(test, tagType):
 
     elif tagType == 'relation':
         if test.find(v="multipolygon"):
-            print("multipolygon")
+            print(test)
             find_coord_stereotypes_Relation(test)
+            listRelation.append(dicElements.copy())
+            print(listRelation)
         else:
             print("relation")
 
@@ -125,7 +135,7 @@ for i in range(len(dicNode)):
 
 for i in range (len(dicRelation)):
     find_tag_coord(dicRelation[i], 'relation')
-exit(0)
+    exit(0)
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 listAllEntities = listNode + listWay
 print(graph.driveGraph(listAllEntities))
