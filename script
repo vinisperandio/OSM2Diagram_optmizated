@@ -1,12 +1,39 @@
+Bar do DCE - fast_food
+Restaurante CEE - restaurant
  - turning_circle
  - crossing
+ - bus_stop
+Hotel CEE
  - turning_circle
-Via da Saúde - residential
-Estrada do sitio da Zootecnia - unclassified
-Universidade Federal de Viçosa - UFV - university
+ - turning_circle
+ - bus_stop
+Avenida da Agronomia - residential
+Avenida Purdue - unclassified
+Rua Recanto das Cigarras - residential
+Via Central Ed. Arthur Bernardes - unclassified
+Via Central Ed. Arthur Bernardes - residential
+Colégio de Aplicação Universitário
+PVA
+Imprensa
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Departamento De Geografia
+Restaurante Universitário - restaurant
+Biblioteca Central - library
+DCE Piscina
+Estacionamento Ed. Arthur Bernardes - parking
+Universidade Federal de Viçosa - university
+Laboratório de Desenvolvimento Infantil
 Escola Estadual Effie Rolfs - school
-Departamento de Medicina
-Divisão de Saúde - hospital
-linha trem
-cinema test - cinema
-Estacionamento da Divisão de Saúde - parking
+Centro de Ensino e Extensão (CEE)
+Departamento de Tecnologia de Alimentos (DTA) II
+Departamento de Tecnologia de Alimentos (DTA) I
+Praça P.H. Rolfs
+Barzinho DCE - fast_food
+Laticínios Funarbe (Produtos Viçosa)
+CEAD
+Predio Dança
+Casa de vegetaçao
+Divisão de Materiais
+Departamento de Direito
+Via da Saúde - unclassified

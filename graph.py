@@ -163,14 +163,14 @@ office = ['accountant','adoptin_agency','advertising_agency','aarchitect','assoc
           'employment_agency','energy_supplier','estate_agent','forestry','foundation','government','guide','healer','insurance',
           'it','lawyer','logistic','moving_company','newspaper','ngo','notary','physician','political_party','private_investigator'
           'property_management','quango','real_estate_agent','religion','research','surveyor','tax','tax_advisor','telecommunications'
-          'therapist','travel_agent','water_utility','yes']
+          'therapist','travel_agent','water_utility']
 
 global building
-building = ['accommodation','commercial','religious','civic_amenity','other_building']
+building = ['accommodation','commercial','religious','civic_amenity','other_building', 'yes']
 global accommodation
 accommodation = ['apartments','farm','hotel','house','detached','residential','dormitory','terrace','houseboat','bungalow','static_caravan']
 global commercial
-commercial = ['commercial','office','industrial','retail','warehouse','kiosk','cabin','']
+commercial = ['commercial','industrial','retail','warehouse','kiosk','cabin']
 global religious
 religious = ['religious','cathedral','chapel','church','mosque','temple','synagogue','shrine']
 global civic_amenity
@@ -225,10 +225,10 @@ def driveGraph(listDic):
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        diversionGraph(arq, listDiversion)
-        serviceGraph(arq, listService)
-        emergencyGraph(arq, listHealth)
-        roadMeshGraph(arq, listRoadMesh)
+        # diversionGraph(arq, listDiversion)
+        # serviceGraph(arq, listService)
+        # emergencyGraph(arq, listHealth)
+        # roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         findRelation(arq)
 
@@ -312,7 +312,11 @@ def roadMeshGraph(arq, listRoadMesh):
 
 ######################################################################################### EDIFICATION
 def findClassEdification(tag):
-    if tag in accommodation:
+    print(tag)
+    if tag in office:
+        return "office"
+
+    elif tag in accommodation:
         return "accommodation"
     elif tag in commercial:
         return "commercial"
@@ -323,9 +327,6 @@ def findClassEdification(tag):
     elif tag in other_building:
         return "other building"
 
-    elif tag in office:
-        return "office"
-
     elif tag in administratively_declared_places:
         return "administratively_declared_places"
     elif tag in populated_settlements_urban:
@@ -334,6 +335,7 @@ def findClassEdification(tag):
         return "populated_settlements_urban_and_rural"
     elif tag in other_places:
         return "other_places"
+
 
 def edificationGraph(arq, listEdification):
     arq.write(initPackage("EDIFICATION"))
@@ -424,8 +426,7 @@ def subGraph(arq, namePackage, package, list):
                     listControlMain.append(k)
 
     for i in range(len(flg)):  ## SubClasses = roads, path SECOND LEVEL
-        if flg[i] in road_mesh and diversion and service and edification:
-            print(flg[i])
+        if flg[i] in road_mesh or flg[i] in diversion or flg[i] in service or flg[i] in edification:
             None
         else:
             if flg[i] not in listControlSub:
@@ -572,6 +573,9 @@ def findRelation(arq):
         elif v in public_transportation and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'public_transportation')))
 
+        elif v in office and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'office')))
+
         elif v in accommodation and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'accommodation')))
         elif v in commercial and controllerPackages[k] == 'edification':
@@ -584,9 +588,6 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'other_building')))
         elif v in building and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'building')))
-
-        elif v in office and controllerPackages[k] == 'edification':
-            arq.write(entityRelation(k, valueKey(mother, 'office')))
 
         elif v in administratively_declared_places and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'administratively_declared_places')))

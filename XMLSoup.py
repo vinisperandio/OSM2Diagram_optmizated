@@ -10,6 +10,7 @@ dicRelation = {}
 listRelation = []
 listIncom = []  # lista que recebe os blocos XML sem a TAG name
 listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serão modelados
+idMultipolygon = [] #guarda os ID dos multipolygons, para que eles não entrem no arquivo RELATORIO
 
 def find_coord_stereotypes_Way(list):
     flg = 0
@@ -54,6 +55,7 @@ def find_coord_stereotypes_Relation(list):
     flg = 0
 
     for member in list.find_all('member'):
+        idMultipolygon.append(member.get('ref'))
         for way in soup.find_all(id=str(member.get('ref'))):
             for nd in way.find_all('nd'):
                 for coord in soup.find_all(id=str(nd.get('ref'))):
@@ -72,14 +74,22 @@ def find_coord_stereotypes_Relation(list):
             dicElements[k] = v
     return
 
+def find_ID(list):
+    id_soup = BeautifulSoup(str(list), 'lxml')
+    return id_soup.way['id']
+
+
 def find_tag_coord(test, tagType):
     if tagType == 'way':
         if test.find(k="name"):
             find_coord_stereotypes_Way(test)
             listWay.append(dicElements.copy())
         else:
-            find_coord_stereotypes_Way(test)
-            listIncom.append(dicElements.copy())
+            if find_ID(test) in idMultipolygon:
+                None
+            else:
+                find_coord_stereotypes_Way(test)
+                listIncom.append(dicElements.copy())
 
     elif tagType == 'node':
         if test.find('tag'):
@@ -90,10 +100,8 @@ def find_tag_coord(test, tagType):
 
     elif tagType == 'relation':
         if test.find(v="multipolygon"):
-            print(test)
             find_coord_stereotypes_Relation(test)
             listRelation.append(dicElements.copy())
-            print(listRelation)
         else:
             print("relation")
 
@@ -102,7 +110,6 @@ def find_tag_coord(test, tagType):
 
     dicElements.clear()
     return
-
 
 def find_region_extent(list, ref):
     num = 0
@@ -121,21 +128,23 @@ with open('map_relation.osm') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
-# dicWay = soup.find_all("way")
-# dicNode = soup.find_all("node")
+dicWay = soup.find_all("way")
+dicNode = soup.find_all("node")
 dicRelation = soup.find_all("relation")
 
+
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
+for i in range (len(dicRelation)):
+    find_tag_coord(dicRelation[i], 'relation')
+
 for i in range(len(dicWay)):
     tagWay = BeautifulSoup(str(dicWay[i]), 'lxml')
-    find_tag_coord(tagWay, 'way')
+    find_tag_coord(dicWay[i], 'way')
 
 for i in range(len(dicNode)):
     find_tag_coord(dicNode[i], 'node')
 
-for i in range (len(dicRelation)):
-    find_tag_coord(dicRelation[i], 'relation')
-    exit(0)
+
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 listAllEntities = listNode + listWay
 print(graph.driveGraph(listAllEntities))

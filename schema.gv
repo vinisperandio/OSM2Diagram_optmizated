@@ -1,35 +1,10 @@
 digraph structs { 
 	node [shape=box]
-	subgraph cluster_DIVERSION {
+	subgraph cluster_EDIFICATION {
 		node [color=black style=filled]
 		color=lightgrey style=filled
-		label=DIVERSION
+		label=EDIFICATION
 		0[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">cinema</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordenadas</TD>
-			 </TR>
-			</TABLE>>]
-		1[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">entertainment</font>  </TD>
-			</TR>
-			</TABLE>>]
-	}
-	subgraph cluster_SERVICES {
-		node [color=black style=filled]
-		color=lightgrey style=filled
-		label=SERVICES
-		2[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">university</font>  
@@ -43,13 +18,33 @@ digraph structs {
 				<TD align="left">addr:postcode</TD>
 			 </TR>
 			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
 				<TD align="left">name</TD>
 			 </TR>
 			<TR>
-				<TD align="left">website</TD>
+				<TD align="left">short_name</TD>
 			 </TR>
 			<TR>
-				<TD align="left">wikipedia</TD>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		1[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">building</font>  </TD>
+			</TR>
+			</TABLE>>]
+		2[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">yes</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
 			 </TR>
 			<TR>
 				<TD align="left">coordinates</TD>
@@ -58,229 +53,19 @@ digraph structs {
 		3[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">amenity</font>  </TD>
+				<TD align="center"><font color="black">civic_amenity</font>  </TD>
 			</TR>
 			</TABLE>>]
 		4[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">school</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		5[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">parking</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		6[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">education</font>  </TD>
-			</TR>
-			</TABLE>>]
-		7[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">transportation</font>  </TD>
+				<TD align="center"><font color="black">None</font>  </TD>
 			</TR>
 			</TABLE>>]
 	}
-	subgraph cluster_HEALTH {
-		node [color=black style=filled]
-		color=lightgrey style=filled
-		label=HEALTH
-		8[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">hospital</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordenadas</TD>
-			 </TR>
-			</TABLE>>]
-		9[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">healthCare</font>  </TD>
-			</TR>
-			</TABLE>>]
-	}
-	subgraph cluster_ROAD_MESH {
-		node [color=black style=filled]
-		color=lightgrey style=filled
-		label=ROAD_MESH
-		10[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">turning_circle</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		11[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">highway</font>  </TD>
-			</TR>
-			</TABLE>>]
-		12[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">crossing</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">crossing</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		13[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">residential</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">surface</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		14[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">unclassified</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">oneway</TD>
-			 </TR>
-			<TR>
-				<TD align="left">surface</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		15[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">gondola</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		16[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">aerialway</font>  </TD>
-			</TR>
-			</TABLE>>]
-		17[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">other highway features</font>  </TD>
-			</TR>
-			</TABLE>>]
-		18[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">roads</font>  </TD>
-			</TR>
-			</TABLE>>]
-	}
-	subgraph cluster_EDIFICATION {
-		node [color=black style=filled]
-		color=lightgrey style=filled
-		label=EDIFICATION
-		19[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">university</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
-			</TR>
-			<hr/>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
-			 </TR>
-			</TABLE>>]
-		20[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">building</font>  </TD>
-			</TR>
-			</TABLE>>]
-		21[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">civic_amenity</font>  </TD>
-			</TR>
-			</TABLE>>]
-	}
-		0 -> 1[arrowhead=onormal]
-		1 -> 3[arrowhead=onormal]
-		2 -> 6[arrowhead=onormal]
-		4 -> 6[arrowhead=onormal]
-		5 -> 7[arrowhead=onormal]
-		6 -> 3[arrowhead=onormal]
-		7 -> 3[arrowhead=onormal]
-		8 -> 9[arrowhead=onormal]
-		9 -> 3[arrowhead=onormal]
-		10 -> 17[arrowhead=onormal]
-		12 -> 17[arrowhead=onormal]
-		13 -> 18[arrowhead=onormal]
-		14 -> 18[arrowhead=onormal]
-		15 -> 16[arrowhead=onormal]
-		17 -> 11[arrowhead=onormal]
-		18 -> 11[arrowhead=onormal]
-		19 -> 21[arrowhead=onormal]
-		21 -> 20[arrowhead=onormal]
+		0 -> 3[arrowhead=onormal]
+		2 -> 1[arrowhead=onormal]
+		3 -> 1[arrowhead=onormal]
 	rankdir=BT
 	splines=ortho
 }
