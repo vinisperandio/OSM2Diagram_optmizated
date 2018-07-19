@@ -225,10 +225,10 @@ def driveGraph(listDic):
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        # diversionGraph(arq, listDiversion)
-        # serviceGraph(arq, listService)
-        # emergencyGraph(arq, listHealth)
-        # roadMeshGraph(arq, listRoadMesh)
+        diversionGraph(arq, listDiversion)
+        serviceGraph(arq, listService)
+        emergencyGraph(arq, listHealth)
+        roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         findRelation(arq)
 
@@ -322,6 +322,8 @@ def findClassEdification(tag):
         return "commercial"
     elif tag in religious:
         return "religious"
+    elif tag in building:
+        return "building"
     elif tag in civic_amenity:
         return "civic_amenity"
     elif tag in other_building:
@@ -411,6 +413,7 @@ def subGraph(arq, namePackage, package, list):
                 mother[contNode] = list[i][k]
                 controllerPackages[contNode] = namePackage
                 flg.append(findClass(namePackage, list[i][k]))
+                print(list[i][k])
                 contNode = contNode + 1
                 arq.write("\n\t\t\t<hr/>")
                 for j in list[i].keys():  ##  TABLE ATT

@@ -138,7 +138,6 @@ for i in range (len(dicRelation)):
     find_tag_coord(dicRelation[i], 'relation')
 
 for i in range(len(dicWay)):
-    tagWay = BeautifulSoup(str(dicWay[i]), 'lxml')
     find_tag_coord(dicWay[i], 'way')
 
 for i in range(len(dicNode)):
@@ -146,7 +145,7 @@ for i in range(len(dicNode)):
 
 
 #### CONSTRUINDO ESQUEMA CONCEITUAL
-listAllEntities = listNode + listWay
+listAllEntities = listNode + listWay + listRelation
 print(graph.driveGraph(listAllEntities))
 
 
