@@ -228,11 +228,11 @@ def driveGraph(listDic):
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        #diversionGraph(arq, listDiversion)
-        #serviceGraph(arq, listService)
-        #emergencyGraph(arq, listHealth)
+        diversionGraph(arq, listDiversion)
+        serviceGraph(arq, listService)
+        emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
-        #edificationGraph(arq, listEdification)
+        edificationGraph(arq, listEdification)
         findRelation(arq)
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
@@ -504,9 +504,9 @@ def findRelation(arq):
     global mother
     print(mother)
     print(controllerPackages)
-    print(superClass)
-    print(subClass)
-    print(entity)
+    # print(superClass)
+    # print(subClass)
+    # print(entity)
 
     for k,v in mother.items():
         if v in entertainment and controllerPackages[k] == 'diversion':
@@ -621,11 +621,13 @@ def findRelation(arq):
 
 def packageRelation(arq, list, name, packageName):
     flg = []
+    listControlthird = []
+    listControlSecond = []
     global contNode
     global mother
 
     for i in range(len(list)):  ##  NOME TABELA
-        if name in list[i]:
+        if name in list[i] and list[i][name] not in listControlthird:
             arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
             mother[contNode] = list[i]['amenity']
             controllerPackages[contNode] = packageName
@@ -640,9 +642,15 @@ def packageRelation(arq, list, name, packageName):
                 if "stereotype" not in j and "lat" not in j and "lon" not in j and name not in j:
                     arq.write(entityAtt(j))
             arq.write(entityAtt("coordenadas") + "\n\t\t\t</TABLE>>]")
+            listControlthird.append(list[i][name])
 
     for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
-        arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
-        mother[contNode] = flg[i]
-        controllerPackages[contNode] = packageName
-        contNode = contNode + 1
+        if flg[i] not in listControlSecond:
+            arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
+            mother[contNode] = flg[i]
+            listControlSecond.append(flg[i])
+            controllerPackages[contNode] = packageName
+            contNode = contNode + 1
+        else:
+            None
+
