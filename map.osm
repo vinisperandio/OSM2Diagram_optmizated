@@ -182,7 +182,7 @@
  <node id="2964381055" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:09Z" user="Artur Vieira" uid="2180959" lat="-20.7624237" lon="-42.8601729"/>
  <node id="2964381056" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:09Z" user="Artur Vieira" uid="2180959" lat="-20.7623660" lon="-42.8603424"/>
  <node id="2964381057" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:09Z" user="Artur Vieira" uid="2180959" lat="-20.7624410" lon="-42.8603670"/>
- <node id="2964381058" visible="true" version="2" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7618990" lon="-42.8619154"/>
+ <node id="2964381058" visible="true" version="2" changeset="56931769" timestamp="2018-03-06T11:15:43Z"user="Valério Castro" uid="6237447" lat="-20.7618990" lon="-42.8619154"/>
  <node id="2964381059" visible="true" version="2" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7623048" lon="-42.8619312"/>
  <node id="2964381060" visible="true" version="2" changeset="56931769" timestamp="2018-03-06T11:15:44Z" user="Valério Castro" uid="6237447" lat="-20.7623641" lon="-42.8615013"/>
  <node id="2964381061" visible="true" version="2" changeset="56931769" timestamp="2018-03-06T11:15:44Z" user="Valério Castro" uid="6237447" lat="-20.7619795" lon="-42.8614989"/>
@@ -621,8 +621,6 @@
   <nd ref="5459028922"/>
   <nd ref="5459028218"/>
   <nd ref="5459028220"/>
-  <tag k="aerialway" v="gondola"/>
-  <tag k="name" v="linha trem">
  </way>
  <way id="566996660" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028926"/>
@@ -638,8 +636,6 @@
   <nd ref="5459028214"/>
   <nd ref="5459028216"/>
   <nd ref="5459028926"/>
-  <tag k="amenity" v="cinema"/>
-  <tag k="name" v="cinema test">
  </way>
  <way id="566996661" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028932"/>

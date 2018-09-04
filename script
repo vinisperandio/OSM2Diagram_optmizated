@@ -1,41 +1,139 @@
-Bar do DCE - fast_food
-Restaurante CEE - restaurant
+ - hairdresser - restaurant
+Boca Viçosa - fast_food
+Posto Tiger - fuel
+Posto Santa Rosa - fuel
+Hotel Meridien
+Banco do Brasil - bank
+Pizzaria Torre - restaurant
+ - parking
+Correios - post_office
+ - atm
+ - car_wash
+Posto Rejane - fuel
+ - cinema
+ - car_wash
+Boca Viçosa - bakeryPadaria Universitária - bakeryPadaria Vesuvio - bakerySabor & Cia - restaurant
+Caixas Eletrônicos do BB - atm
+Bradesco - bank
+Mercantil - bank
+Hering Store - clothesLanchonete do Dênis - fast_food
+Bar Norte Mineiro - bar
+Droga Farma - pharmacy
+Alfa Hotel
+Orquídea Hotel
+Igreja Presbiteriana - place_of_worship
+Eletrozema - department_storeBob's - fast_food
+ - pharmacy
+Burguer Max - fast_food
+Na Mariah - restaurant
+Hakuna Batata - fast_food
+ - traffic_signals
+ - bus_stop
+Trem Bão - restaurant
+ - atm
+ - traffic_signals
+ - bicycle_parking
  - turning_circle
  - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
  - bus_stop
-Hotel CEE
- - turning_circle
- - turning_circle
+ - taxi
+Rei do Celular - mobile_phoneRenatu's Lanches - fast_food
+Melódica - musicCacau-Show - confectionery - bakery - telephone
+Du Bom - restaurant
+Modelo - supermarketPoliclínica Municipal - doctors
  - bus_stop
-Avenida da Agronomia - residential
-Avenida Purdue - unclassified
-Rua Recanto das Cigarras - residential
-Via Central Ed. Arthur Bernardes - unclassified
-Via Central Ed. Arthur Bernardes - residential
-Colégio de Aplicação Universitário
-PVA
-Imprensa
+ - bus_stop
+ - bus_stop
+ - bus_stop
+Vitamina Silva - fast_food
+Excelencia Grill - restaurant
+Centro
+Artes Gerais - artArmazem - artClic Clic - art
+
+Viçosa Outlet - clothesChilli Beans - department_storeMundial Acabamentos - paintJapa Nobre - restaurant
+La Coccinela - restaurant
+Subway - fast_food
+Palecolé - ice_cream
+Posto do Beto - fuel
+ - fast_food
+ - taxi
+Hot and Cold - fast_food
+ - turning_circle
+Fisioterapia
+MicroCenter - computer - fast_food
+Óticas Precisão - opticianEdificio Mandela
+ - doctors
+Centro Educacional Interativa - kindergarten
+Rameh - interior_decorationUp
+ - beautyHyperion Sports - sportsCartório de Registro Civil
+ - fast_food
+Ativa Móveis - furnitureDrogashopp - pharmacy
+FTB Farmácia - pharmacy
+FomulArt Manipulação - pharmacy
+Sudeste - furniture - fast_food
+ - lottery - fast_food
+Drogaria Nova Era - pharmacy
+Açaí Mix - fast_food
+Auto Elétrica - car_repairTiger - conveniencePneus São Paulo - car_repairAll Time - convenienceSaúde e Vida Drograria - pharmacy
+Laboratório Santa Rita
+ - bus_stop
+Sacolão DuCampo - supermarketChicken.in Frango Frito - pub
+Fontur Viagens - travel_agencyRua Gomes Barbosa - residential
+Ladeira dos Operários - tertiary
+Rua Cesar Santana - secondary
+Rua Professor Alberto Pacheco - residential
+Avenida Santa Rita - tertiary
+Travessa Sagrados Corações - pedestrian
+Avenida Santa Rita - tertiary
+Rua José da Cruz Reis - residential
+Travessa Felício - residential
+Praça Doutor Cristóvão Lopes Carvalho - residential
+Rua Padre Serafim - primary
+Rua Doutor Horta - residential
+Rua dos Estudantes - residential
+Rua Padre Serafim - primary
+Rua Verano Faria - residential
+Rua Padre Serafim - primary
+Rua Padre Serafim - primary
+Rua José Braz Costa - residential
+Rua Feijó Bhering - residential
+Rua Sílvio Romeu - residential
+Córrego da Conceição
+Córrego da Conceição
+Avenida Bueno Brandão - tertiary
+Rua Sebastião Lopes Carvalho - tertiary
+Antiga Estação Ferroviária
+Avenida Bueno Brandão - tertiary
+Praça Mário Del Giúdice
+Avenida Bueno Brandão - tertiary_link
 Avenida Peter Henry Rolfs - secondary
+Shopping Calçadão - mallShopping da Moda - mallPraça Doutor Cristóvão Lopes de Carvalho
+Rua Sílvio Romeu - residential
+Rua Francisco Machado - residential
+Praça Maestro Hervé Corodovil
+Via Digital
+Antigo Cine Brasil
+Rua dos Estudantes - residential
+Rua Peter Henry Rolfs - primary
+Rua Padre Serafim - primary
+Rua Padre Serafim - primary
 Avenida Peter Henry Rolfs - secondary
-Departamento De Geografia
-Restaurante Universitário - restaurant
-Biblioteca Central - library
-DCE Piscina
-Estacionamento Ed. Arthur Bernardes - parking
-Universidade Federal de Viçosa - university
-Laboratório de Desenvolvimento Infantil
-Escola Estadual Effie Rolfs - school
-Centro de Ensino e Extensão (CEE)
-Departamento de Tecnologia de Alimentos (DTA) II
-Departamento de Tecnologia de Alimentos (DTA) I
-Praça P.H. Rolfs
-Barzinho DCE - fast_food
-Laticínios Funarbe (Produtos Viçosa)
-CEAD
-Predio Dança
-Casa de vegetaçao
-Divisão de Materiais
-Departamento de Direito
-Via da Saúde - unclassified
-Departamento de Economia Rural
-Departamentos de Engenharia de Produção, Mecânica e Elétrica

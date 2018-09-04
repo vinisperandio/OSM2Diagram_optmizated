@@ -108,7 +108,7 @@ aeroway = ['aerodrome','apron','gate','hangar','helipad','heliport','navigationa
            'taxiway','terminal','windsock']
 
 global highway
-highway = ['roads', 'linkRoads','special_road', 'path', 'lifecycle', 'other highway features']
+highway = ['roads', 'link roads','special roads', 'path', 'lifecycle', 'other highway features']
 global roads
 roads = ['motorway','trunk','primary','secondary','tertiary','unclassified','residential','service']
 global linkRoads
@@ -125,7 +125,7 @@ other_Highway = ['bus_stop','crossing','elevator','emergency_access_point','give
                 'User Defined']
 
 global railway
-railway = ['tracks', 'station_and_shop', 'other_Railway']
+railway = ['tracks', 'station and shop', 'other_Railway']
 global tracks
 tracks = ['abandoned','construction','disused','funicular','light_rail','miniature','monorail','narrow_gauge','preserved',
           'rail','subway','tram']
@@ -166,11 +166,11 @@ office = ['accountant','adoptin_agency','advertising_agency','aarchitect','assoc
           'therapist','travel_agent','water_utility']
 
 global building
-building = ['accommodation','commercial','religious','civic_amenity','other_building', 'yes']
+building = ['accommodation','Commercial','religious','civic_amenity','other_building', 'yes']
 global accommodation
 accommodation = ['apartments','farm','hotel','house','detached','residential','dormitory','terrace','houseboat','bungalow','static_caravan']
-global commercial
-commercial = ['commercial','industrial','retail','warehouse','kiosk','cabin']
+global Commercial
+Commercial = ['commercial','industrial','retail','warehouse','kiosk','cabin']
 global religious
 religious = ['religious','cathedral','chapel','church','mosque','temple','synagogue','shrine']
 global civic_amenity
@@ -188,8 +188,10 @@ other_building = ['barn','bridge','bunker','carport','convervatory','constructio
 #-----------------------------------------------VARIAVEIS CONTROLE-----------------------------------------------------------
 global contNode
 global mother
+global superClass
 contNode = 0
 mother = {}
+superClass = {}
 controllerPackages = {}
 #-----------------------------------------------------------------------------------------------------------------------------
 
@@ -209,13 +211,10 @@ def driveGraph(listDic):
                 if j in service:
                     if 'amenity' in listWay[i].keys():
                         if listWay[i]['amenity'] in healthCare:
-                            #print("health " + listWay[i]['name'])
                             listHealth.append(listWay[i].copy())
                         elif listWay[i]['amenity'] in entertainment:
-                            #print("diversion " + listWay[i]['name'])
                             listDiversion.append(listWay[i].copy())
                         else:
-                            #print("service " + listWay[i]['name'])
                             listService.append(listWay[i].copy())
                 if j in road_mesh:
                     listRoadMesh.append(listWay[i].copy())
@@ -225,11 +224,11 @@ def driveGraph(listDic):
         arq = open("schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        diversionGraph(arq, listDiversion)
-        serviceGraph(arq, listService)
-        emergencyGraph(arq, listHealth)
+        #diversionGraph(arq, listDiversion)
+        #serviceGraph(arq, listService)
+        #emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
-        edificationGraph(arq, listEdification)
+        #edificationGraph(arq, listEdification)
         findRelation(arq)
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
@@ -276,7 +275,7 @@ def findClassroad_mesh(tag):
     elif tag in path:
         return "path"
     elif tag in linkRoads:
-        return "link Roads"
+        return "link roads"
     elif tag in lifecycle:
         return "life cycle"
     elif tag in special_road:
@@ -287,7 +286,7 @@ def findClassroad_mesh(tag):
     elif tag in tracks:
         return "tracks"
     elif tag in station_and_shop:
-        return "statoin and shop"
+        return "station and shop"
     elif tag in other_Railway:
         return "other railway"
 
@@ -318,8 +317,8 @@ def findClassEdification(tag):
 
     elif tag in accommodation:
         return "accommodation"
-    elif tag in commercial:
-        return "commercial"
+    elif tag in Commercial:
+        return "Commercial"
     elif tag in religious:
         return "religious"
     elif tag in building:
@@ -400,6 +399,7 @@ def initPackage(name):
 
 def subGraph(arq, namePackage, package, list):
     flg = []
+    global superClass
     global contNode  # HOW MANY NODES HAS IN THE SCHEMA
     global mother  # SAVE ALL CLASSES WITH YOUR KEYS, WILL USE FOR FIND RELATION
     listControlMain = []  # SECURITY FLAG, USED FOR TO KNOW IF MAINCLASS(AMENITY, SHOP, HIGHWAY) WAS GENERATED
@@ -424,6 +424,7 @@ def subGraph(arq, namePackage, package, list):
                 if k not in listControlMain:
                     arq.write(entityName(contNode, k, entityStereotype(None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
                     mother[contNode] = k
+                    superClass[contNode] = k
                     controllerPackages[contNode] = namePackage
                     contNode = contNode + 1
                     listControlMain.append(k)
@@ -495,6 +496,7 @@ def findRelation(arq):
     global mother
     print(mother)
     print(controllerPackages)
+    print(superClass)
     for k,v in mother.items():
         if v in entertainment and controllerPackages[k] == 'diversion':
             arq.write(entityRelation(k, valueKey(mother,'entertainment')))
@@ -545,9 +547,9 @@ def findRelation(arq):
         elif v in roads and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'roads')))
         elif v in linkRoads and controllerPackages[k] == 'road_mesh':
-            arq.write(entityRelation(k, valueKey(mother, 'linkRoads')))
+            arq.write(entityRelation(k, valueKey(mother, 'link roads')))
         elif v in special_road and controllerPackages[k] == 'road_mesh':
-            arq.write(entityRelation(k, valueKey(mother, 'special_road')))
+            arq.write(entityRelation(k, valueKey(mother, 'special roads')))
         elif v in path and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'path')))
         elif v in lifecycle and controllerPackages[k] == 'road_mesh':
@@ -558,7 +560,7 @@ def findRelation(arq):
         elif v in other_Railway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'other_Railway')))
         elif v in station_and_shop and controllerPackages[k] == 'road_mesh':
-            arq.write(entityRelation(k, valueKey(mother, 'station_and_shop')))
+            arq.write(entityRelation(k, valueKey(mother, 'station and shop')))
         elif v in tracks and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'tracks')))
         elif v in railway and controllerPackages[k] == 'road_mesh':
@@ -570,8 +572,8 @@ def findRelation(arq):
         elif v in aeroway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'aeroway')))
 
-        elif v in route and controllerPackages[k] == 'road_mesh':
-            arq.write(entityRelation(k, valueKey(mother, 'route')))
+        # elif v in route and controllerPackages[k] == 'road_mesh':
+        #     arq.write(entityRelation(k, valueKey(mother, 'route')))
 
         elif v in public_transportation and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'public_transportation')))
@@ -581,8 +583,8 @@ def findRelation(arq):
 
         elif v in accommodation and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'accommodation')))
-        elif v in commercial and controllerPackages[k] == 'edification':
-            arq.write(entityRelation(k, valueKey(mother, 'commercial')))
+        elif v in Commercial and controllerPackages[k] == 'edification':
+            arq.write(entityRelation(k, valueKey(mother, 'Commercial')))
         elif v in religious and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'religious')))
         elif v in civic_amenity and controllerPackages[k] == 'edification':

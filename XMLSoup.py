@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import graph
+import sys
 
-dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da função Find_tag_coord
+dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
 dicWay = {}    # dicionario das tags Way
 listWay = []   # lista que recebe todos os blocos XML da tag Way
 dicNode = {}   # dicionario das tags Node
@@ -9,8 +10,8 @@ listNode = []   # lista que recebe todos os blocos XML da tag Node
 dicRelation = {}
 listRelation = []
 listIncom = []  # lista que recebe os blocos XML sem a TAG name
-listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serão modelados
-idMultipolygon = [] #guarda os ID dos multipolygons, para que eles não entrem no arquivo RELATORIO
+listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serao modelados
+idMultipolygon = [] #guarda os ID dos multipolygons, para que eles nao entrem no arquivo RELATORIO
 
 def find_coord_stereotypes_Way(list):
     flg = 0
@@ -103,7 +104,7 @@ def find_tag_coord(test, tagType):
             find_coord_stereotypes_Relation(test)
             listRelation.append(dicElements.copy())
         else:
-            print("relation")
+            None
 
     else:
         print('NEW TAG')
@@ -124,7 +125,8 @@ def find_region_extent(list, ref):
 
 
 #### LEITURA XML
-with open('map_relation.osm') as xml_file:
+#with open(sys.argv[1]) as xml_file:
+with open("map_centro_vicosa.osm") as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
