@@ -126,7 +126,7 @@ def find_region_extent(list, ref):
 
 #### LEITURA XML
 #with open(sys.argv[1]) as xml_file:
-with open("map_centro_vicosa.osm") as xml_file:
+with open("map.osm") as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
