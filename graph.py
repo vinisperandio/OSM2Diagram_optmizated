@@ -140,7 +140,7 @@ public_transportation = ['stop_position','platform','station','stop_area']
 
 global route
 route = ['bicycle','bus','canoe','detour','ferry','fitness_trail','hiking','horse','inline_skates','light_rail','mtb',
-         'nordic_walking','pipeline','piste','power','railway','road','running','ski','train','tram','User defined']
+         'nordic_walking','pipeline','piste','power','Railway','road','running','ski','train','tram','User defined']
 
 
 #-----------------------------------------------PACKAGE EDIFICATION--------------------------------------------------------------------
@@ -189,9 +189,13 @@ other_building = ['barn','bridge','bunker','carport','convervatory','constructio
 global contNode
 global mother
 global superClass
+global subClass
+global entity
 contNode = 0
 mother = {}
 superClass = {}
+subClass = {}
+entity = {}
 controllerPackages = {}
 #-----------------------------------------------------------------------------------------------------------------------------
 
@@ -400,6 +404,8 @@ def initPackage(name):
 def subGraph(arq, namePackage, package, list):
     flg = []
     global superClass
+    global subClass
+    global entity
     global contNode  # HOW MANY NODES HAS IN THE SCHEMA
     global mother  # SAVE ALL CLASSES WITH YOUR KEYS, WILL USE FOR FIND RELATION
     listControlMain = []  # SECURITY FLAG, USED FOR TO KNOW IF MAINCLASS(AMENITY, SHOP, HIGHWAY) WAS GENERATED
@@ -411,6 +417,7 @@ def subGraph(arq, namePackage, package, list):
             if k in list[i] and list[i][k] not in listControlthird:
                 arq.write(entityName(contNode, list[i][k], entityStereotype(list[i]["stereotype"])))
                 mother[contNode] = list[i][k]
+                entity[contNode] = list[i][k]
                 controllerPackages[contNode] = namePackage
                 flg.append(findClass(namePackage, list[i][k]))
                 print(list[i][k])
@@ -436,6 +443,7 @@ def subGraph(arq, namePackage, package, list):
             if flg[i] not in listControlSub:
                 arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
                 mother[contNode] = flg[i]
+                subClass[contNode] = flg[i]
                 controllerPackages[contNode] = namePackage
                 contNode = contNode + 1
                 listControlSub.append(flg[i])
@@ -497,6 +505,9 @@ def findRelation(arq):
     print(mother)
     print(controllerPackages)
     print(superClass)
+    print(subClass)
+    print(entity)
+
     for k,v in mother.items():
         if v in entertainment and controllerPackages[k] == 'diversion':
             arq.write(entityRelation(k, valueKey(mother,'entertainment')))
@@ -572,8 +583,8 @@ def findRelation(arq):
         elif v in aeroway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'aeroway')))
 
-        # elif v in route and controllerPackages[k] == 'road_mesh':
-        #     arq.write(entityRelation(k, valueKey(mother, 'route')))
+        elif v in route and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'route')))
 
         elif v in public_transportation and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'public_transportation')))
