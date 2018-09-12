@@ -1,4 +1,5 @@
 from graphviz import Digraph, render
+import os
 
 #---------------------------------------------DIVERSION-------------------------------------------------------------------------
 global diversion
@@ -239,7 +240,8 @@ def driveGraph(listDic):
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
         arq.close()
 
-        # render('dot', 'png', '/schema.gv')
+        render('dot', 'png', 'schema.gv')
+        os.remove("schema.gv")
     return "\nGraph checked!"
 
 
