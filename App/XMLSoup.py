@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
-from App import graph
+import graph
 import time
+import sys
 
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
 dicWay = {}    # dicionario das tags Way
@@ -127,7 +128,8 @@ def find_region_extent(list, ref):
 #### LEITURA XML
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
-with open("map_vicosa.osm") as xml_file:
+
+with open("App/map.osm") as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY

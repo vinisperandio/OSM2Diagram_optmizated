@@ -1,5 +1,5 @@
 from graphviz import Digraph, render
-import mini_mundo
+
 #---------------------------------------------DIVERSION-------------------------------------------------------------------------
 global diversion
 diversion = ['leisure','historic','touriusm','man_made','sport']
@@ -239,7 +239,7 @@ def driveGraph(listDic):
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
         arq.close()
 
-        render('dot', 'png', 'schema.gv')
+        # render('dot', 'png', '/schema.gv')
     return "\nGraph checked!"
 
 
