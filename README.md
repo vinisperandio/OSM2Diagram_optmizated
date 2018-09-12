@@ -6,3 +6,5 @@ O diretório "App" mantém os códigos fontes do software;
 
 O diretório "Imagens" contém o esquema conceitual da cidade de Viçosa-MG gerado pelo OSM2Diagram, utilizando os dados do
 OpenStreetMap. 
+
+O diretório "Resultado" contém a saída do software 
