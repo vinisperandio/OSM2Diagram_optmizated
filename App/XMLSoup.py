@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
-import graph
-import sys
+from App import graph
 import time
 
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
