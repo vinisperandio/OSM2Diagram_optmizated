@@ -1,10 +1,1222 @@
+Viçosa
+
+
+
+
+
  - turning_circle
+ - turning_circle
+ - traffic_signals
+ - turning_circle
+Bar do DCE - fast_food
+Supermercado Bahamas - supermarket - pharmacy
+ - hairdresser - restaurant
+ - pharmacy
+Boca Viçosa - fast_food
+Posto Tiger - fuel
+Posto Caçula - fuel
+Posto Santa Rosa - fuel
+ - taxi
+Hotel Meridien
+Classe A Apart Hotel
+Itaú - bank
+Banco do Brasil - bank
+Pizzaria Torre - restaurant
+Lanchonete Quero Mais - fast_food
+
+ - fast_food
+ - parking
+Restaurante CEE - restaurant
+Supermercado Escola - supermarketColégio Carmo - school
+Correios - post_office
+ - atm
+ - car_wash
+Posto Rejane - fuel
+ - cinema
+ - car_wash
+Boca Viçosa - bakeryPadaria Universitária - bakery - booksLivraria Nobel - books - place_of_worship
+Padaria Vesuvio - bakerySupermercado Vilela Avenida - supermarketAçougue Dom Porco - butcherSabor & Cia - restaurant
+ - restaurant
+APAE
+Banco Itaú - bank
+Vivant Suítes Hotel
+Caixas Eletrônicos do BB - atm
+Caixa Econômica Federal - bank
+Bradesco - bank
+Mercantil - bank
+Hering Store - clothesLojas Americanas Express - department_storeCâmara Municipal de Viçosa
+Lanchonete do Dênis - fast_food
+Bar Norte Mineiro - bar
+Droga Farma - pharmacy
+Alfa Hotel
+Orquídea Hotel
+Quatro Pilastras
+Sabor e Cia Quatro Pilastras - restaurant
+Temaki Sushi Bar - restaurant
+Igreja Presbiteriana - place_of_worship
+Eletrozema - department_storeBob's - fast_food
+ - pharmacy
+Burguer Max - fast_food
+Na Mariah - restaurant
+Hakuna Batata - fast_food
+ - traffic_signals
+ - bus_stop
+ - crossing
+ - crossing
+ - bus_stop
+Trem Bão - restaurant
+ - atm
+ - bus_stop
+Magazine Luiza - department_store - cafe
+ - traffic_signals
+Lar dos Velhinhos
+A Casa da Música - music1ª Igreja Batista - place_of_worship
+Bristol Viçosa Hotel
+Núcleo de Arte e Dança
+Colégio Equipe - school
+ - bus_stop
+ - turning_circle
+ - bicycle_parking
+ - bicycle_parking
  - crossing
  - turning_circle
-Via da Saúde - residential
-Estrada do sitio da Zootecnia - unclassified
-Universidade Federal de Viçosa - UFV - university
+ - turning_circle
+ - fire_station
+Mirante do Cristo
+Capela Mortuária
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - crossing
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - crossing
+ - crossing
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+ - traffic_signals
+Lavanderia Viçosa - laundry - bus_stop
+ - newsagentPadaria Casa Mendes - bakerySupermercado Líder - supermarket - bus_stop
+ - taxi
+Lavanderia Lav Bem - laundry - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - taxi
+ - bus_stop
+Estação Rolfs - restaurant
+Rei do Celular - mobile_phoneRenatu's Lanches - fast_food
+Melódica - musicCacau-Show - confectionery - bakery - telephone
+Du Bom - restaurant
+Modelo - supermarketPoliclínica Municipal - doctors
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+Vitamina Silva - fast_food
+ - bus_stop
+ - bus_stop
+ - bus_stop
+Excelencia Grill - restaurant
+ - turning_circle
+Bom Jesus
+Sagrada Família
+Estrelas
+Conceição
+Fátima
+Centro
+Santo Antônio
+Artes Gerais - artArmazem - artClic Clic - artColégio Gênesis - school
+ - bus_stop
+ - bus_stop
+ - bus_stop
+Hotel CEE
+ - crossing
+
+
+ - turning_circle
+Nova Viçosa
+
+
+
+
+
+
+
+
+VIVO - mobile_phoneCLARO - mobile_phoneTIM - mobile_phonePastelaria do Chinês - fast_food
+OI - mobile_phoneSacolão Center - supermarketSaladelle - restaurant
+Du Roni - restaurant
+Távola Lúdica - fast_food
+Viçosa Outlet - clothes - crossing
+Academia Vila Fit
+CoffeeBitt Cafeteria Gourmet - cafe
+ - fuel
+Posto Castelo Branco - fuel
+Posto Gentil - fuel
+Motauto - carMaxmoto - motorcyclePadaria Belvedere - bakeryAcademia Via Campus Fit
+Lavanderia Tock Clean - laundry - bakeryNo Bugs - Empresa Júnior de Informática
+Vitrola Café - cafe
+Family Store - clothesChilli Beans - department_storeMundial Acabamentos - paintJapa Nobre - restaurant
+La Coccinela - restaurant
+Subway - fast_food
+Digão - fast_food
+Palecolé - ice_cream
+ - turning_circle
+Posto do Beto - fuel
+Hotel Bougainvillea
+Casas Bahia - department_storeCEMIG
+ - turning_circle
+São Francisco de Assis
+Sol Nascente
+ - turning_circle
+ - turning_circle
+
+Igreja Nosso Senhor dos Passos - place_of_worship
+
+ - post_office
+ - supermarket - bus_stop
+ - taxi
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - bus_stop
+ - fast_food
+ - fast_food
+ - fast_food
+ - fast_food
+MercoPaulo - supermarketEstação do Pet - pet - bus_stop
+Padaria Viçosense - bakeryPão de Fátima - bakeryMercado Econômico - supermarket - fast_food
+Drogaria Santos - pharmacy
+Drogaria Novo Horizonte - pharmacy
+ - telephone
+Betânia
+Ramos
+Lourdes
+Santa Clara
+JK
+São Sebastião
+União
+Vale do Sol
+ - taxi
+ - taxi
+ - taxi
+ - taxi
+Hot and Cold - fast_food
+
+Casa da Capoeira
+Luve
+Divisão de Vigilância
+Cantarutti & Pupo Arquitetura
+ - crossing
+ - bus_stop
+ - bus_stop
+UFV Cedi - bank
+Mallpe Barbearia - hairdresser
+
+
+
+
+
+
+ - turning_circle
+Ação & Água
+Habitus Academia
+Priscila Studio
+Bar da Roseli - pub
+AgroPet Casa Limpa - agrarianDisk Cerveja Papa Léguas - convenienceClinica Veterinaria Vitória - veterinary
+Clinica Odontológica - dentist
+Cantinho das Flores - floristSalão da Graça - beautyCentro de Reabilitação Geral e Cardio Respiratória
+Cinti Imagem - doctors
+Vitrine das Carnes - butcherQuitanda do Cláudio - farmAuqmia PetShop - petOdonto Care - dentist
+ - farmEstilo Animal PetShop - petFrioMaq - laundryBitByte - computerBar do Célio - pub
+ - beautySalão do Silvio - hairdresserBom D+ - fast_food
+Milho Verde Confecção
+Hyper Gil - convenienceCentro de Educação Infantil Piuí - kindergarten
+LM Hair Style - beautyCláudia Modas Unisex - fashionMarquinhos Despachante
+Bar do Rei - pub
+ - pub
+Nossa S. de Fátima - butcherEconomica - fashionArmarinho Capelão - stationery - stationeryFutBar - pub
+Quitanda - greengrocerHD Informática - computerTransito Livre - fashionSalão de Beleza Shekinah - beautyMG Motos - car_repairMetallica
+Madereira Moreira Reis
+ - car_wash
+Rose Modas - fashionRestaurante Parada Obrigatória - restaurant
+Fênix Fábrica de Placas
+Madã Modas - fashionContruForte - hardwareFaculdade Viçosa - university
+Bar do Zeti - pub
+Clélia Bernardes
+ - kindergarten
+Mercearia Ramos - supermarket - car_wash
+ - newsagentCorpo e Movimento
+Objetiva Boutique - fashionFrião - bakeryClínicas Integradas de Viçosa - clinic
+Amatus Consultórios Médicos - clinic
+VIP Barbearia - hairdresserBotica Fontenelle - pharmacy
+Sombrancelhas Design - beautyShirley Pimenta Design Interiores - interior_decorationFisioterapia
+MicroCenter - computer - fast_food
+Óticas Precisão - opticianEdificio Mandela
+ - doctors
+Centro Educacional Interativa - kindergarten
+Printer Shop - computerRameh - interior_decorationUp
+ - beautyHyperion Sports - sportsCartório de Registro Civil
+ - fast_food
+Ativa Móveis - furnitureDrogashopp - pharmacy
+FTB Farmácia - pharmacy
+FomulArt Manipulação - pharmacy
+Sudeste - furniture - fast_food
+ - lottery - fast_food
+Drogaria Nova Era - pharmacy
+Açaí Mix - fast_food
+Auto Elétrica - car_repairTiger - conveniencePneus São Paulo - car_repairAll Time - convenienceSaúde e Vida Drograria - pharmacy
+Laboratório Santa Rita
+ - bus_stop
+Sacolão DuCampo - supermarketChicken.in Frango Frito - pub
+Fontur Viagens - travel_agencyMonumento Ex Alunos da UFV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ - bus_stop
+Cristais
+Vila Chaves
+
+MG-280 - primary
+Rodovia BR-120 BR-356 - primary
+Rua Nossa Senhora das Graças - residential
+Avenida Padre Geraldo Martins Paiva - residential
+Rua Assad Nazar - residential
+Rua Gomes Barbosa - residential
+Avenida Juscelino Kubitschek - residential
+Rua Salgado Amorim - residential
+Rua Eça de Queiroz - residential
+Avenida Bernardes Filho - residential
+Rua Castro Alves - residential
+Avenida da Agronomia - tertiary
+Rua José Rodrigues de Oliveira - tertiary
+Rua José Euclides Santana - residential
+Rua Luiz Megale - residential
+Rua José Dias do Carmo - residential
+Rua Doutor Joaquim Fernandes Braga - residential
+Rua Adezílio Bicalho - residential
+Rua Padre Anchieta - residential
+Rua do Pintinho - residential
+Rua Francisco D. Fontenele - residential
+Rua José Lopes de Sá - residential
+Rua Vinícius de Moraes - residential
+Rua Dom Viçoso - residential
+Ladeira dos Operários - tertiary
+Avenida da Agronomia - residential
+Avenida Purdue - unclassified
+Rua da Arquitetura - unclassified
+Avenida dos Lagos - unclassified
+Rua Recanto das Cigarras - residential
+Via Central Ed. Arthur Bernardes - unclassified
+Via Central Ed. Arthur Bernardes - residential
+Calçadão Arthur Bernardes - pedestrian
+Rua Cesar Santana - secondary
+Rua dos Passos - tertiary
+Avenida Joaquim Lopes de Faria - secondary
+Rua Benedito Valadares - tertiary
+Rua Tenente Kümmel - tertiary
+Rua Benjamin Araújo - residential
+Via da Veterinária - residential
+Rua João Gregório dos Santos - residential
+Avenida Marechal Castelo Branco - primary
+Rua Doutor Milton Bandeira - tertiary
+Rua Capitão José Maria - residential
+Rua Hermerich - residential
+Rua Maestro João - residential
+Rua Capitão José Maria Santana - residential
+Rua Papa João XXIII - residential
+Rua Professor Alberto Pacheco - residential
+Alameda Fábio Ribeiro Gomes - residential
+Rua Domingos Cipriano - residential
+Rua Otávio da Silva Araújo - residential
+Rua Floriano Peixoto - residential
+Avenida Brasil - tertiary
+Rua Dona Gertrudes - residential
+Travessa Francisco Gouveia - residential
+Avenida Santa Rita - tertiary
+Cemitério Dom Viçoso
+Alameda Albano Braga - residential
+Travessa Pergentino Rodrigues - residential
+Colégio de Aplicação Universitário
+Rua das Estrelas - residential
+Rua Sebastião Cupertino - tertiary
+Rua Francisco José da Silva - residential
+Rua Prefeito Moacir Dias Andrades - tertiary
+Travessa Dona Mariazinha - residential
+Rua Horácio Borges - residential
+Rua José Soares da Rocha - tertiary
+Rua Mário Dutra dos Santos - residential
+Rua Guanabara - residential
+Rua Joaquim Policarpo - residential
+Rua João Batista de Oliveira - residential
+Rua Nasser Simão Muanis - tertiary
+Rua José Timóteo Silva - residential
+Rua Benevenuto Saraiva - residential
+Rua Dona Carlota - tertiary
+Rua Formiga - residential
+Rua Violeta - residential
+Rua Benjamin do Carmo - residential
+Alameda Vai e Volta - residential
+Rua Juventino Alencar - residential
+Rua Cônego Modesto - tertiary
+Rua Professor Frederico Vanetti - residential
+Rua Elvira Vieira - residential
+Rua Antônio Torres - residential
+Rua Didico Bonicontro - residential
+Rua Afonso Pena - residential
+Rua Presidente Médici - residential
+Rua Salvador D'Antonino - residential
+Rua Nagib Balut - residential
+Rua João Alfredo - residential
+Rua Helio Stanciola - residential
+Rua Marcos VInícius - residential
+Rua Fuad Chequer - residential
+Rua José Teotônio Pacheco - residential
+Travessa Sagrados Corações - pedestrian
+Avenida Peter Henry Rolfs - secondary
+Avenida Santa Rita - tertiary
+Rua Jacob Lopes de Castro - secondary
+Rua Guararapes - residential
+Rua Aimorés - residential
+Rua Álvaro Gouveia - residential
+Rua Eurico Marangom - residential
+Rua José da Cruz Reis - residential
+Rua Santana - residential
+Rua João Carlos da Cruz - residential
+Travessa Felício - residential
+Praça Doutor Cristóvão Lopes Carvalho - residential
+Edíficio Shotaru Shimoia - Depart, de Biologia
+PVA
+PVB
+Edifício Arthur Bernardes
+Imprensa
+Alojamento Velho
+Edíficio Bello Lisboa - Alojamento Velho
+Rua Padre Serafim - primary
+Rua Doutor Brito - tertiary
+Rua Presidente Tancredo Neves - tertiary
+Rua Francisco Machado - residential
+Rua Cristóvão Longuinho Santana - residential
+Rua Cimba T Jaceba - residential
+Rua Nasser Simão Muanis - residential
+Rua da Mariquinha - residential
+Avenida Joaquim Lopes de Faria - secondary
+Rua Vila Gianetti - residential
+Rua Vila Gianetti - unclassified
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Rua Mariquinha Maciel - residential
+Rua João Batista da Costa - residential
+Rua Duque de Caxias - residential
+Rua João Paulino Gouveia - residential
+Rua José Vidigal - residential
+Rua Dona Boneca - residential
+Rua Juscelino Kubitschek - residential
+Travessa Josino Lopes Ladeira - residential
+Benevenuto Saraiva - residential
+Rua Laura de Freitas Ribeiro - residential
+Rua José Simeão da Cunha - residential
+Rua São Judas - residential
+Rua R - residential
+Rua Israel Pinheiro - residential
+Rua José Manoel Cabral - residential
+Rua Padre Álvaro Correia Borges - residential
+Rua Joseli Aguiar Neves - residential
+Rua Hélio de Souza Lima - residential
+Travessa Um - residential
+Rua Marcos R. de Arruda - residential
+Rua Angelina Bernardes - residential
+Rua Dona Militina - residential
+Rua São Miguel - residential
+Rua Arapongas - residential
+Rua Chiquito Frontino - residential
+Rua Jorge Ramos - residential
+Rua Raimundo da Paixão - residential
+Rua do Caju - residential
+Rua Cajuri - residential
+Rua José Mayrink - residential
+Rua Joaquim Andrade - residential
+Rua José Guimarães de Souza - tertiary
+Avenida das Arábias - residential
+Rua Teresa Araújo - residential
+Rua Capitão Arnaldo - residential
+Rua José G. Souza - residential
+Rua A - residential
+Rua Planaltina - residential
+Rua Rio Doce - residential
+Rua Nhanhá Simonine - residential
+Rua Zé de Tata - residential
+Rua Adelino M. Azevedo - residential
+Rua José Dias do Carmo - residential
+Rua José de Alencar - residential
+Rua Machado de Assis - residential
+Avenida Vicentina de Barros - residential
+Travessa Quatro - residential
+Rua Plínio Dias de Andrade - residential
+Rua Costantino Isidoro Neves - residential
+Rua Tupinambás - residential
+Rua Antônio Ferreira Mendes - residential
+Rua Aimorés - residential
+Rua Marli Azevedo - residential
+Travessa Doutor Felicíssimo - residential
+Rua Tupis - residential
+Rua Ivone Lentine - residential
+Rua Joaquim Andrade - residential
+Rua Doutor Horta - residential
+Rua Custódio Parreira - residential
+Rua Oliveira - residential
+Rua Geraldo Ribeiro - residential
+Rua Dona Mimi Pacheco Bhering - residential
+Rua Bárbara Simonini - residential
+Rua Castrolino A de Castro - residential
+Rua José de Castro Cardoso - residential
+Rua Novo Horizonte - residential
+Rua Alice Moreira Pinto - residential
+Rua Abdo Zahran Jamim - residential
+Rua São Pedro - residential
+Rua José Romualdo de Lima - residential
+Rua José Damásio Aruda - residential
+Rua Manoel Soares de Freitas - residential
+Rua Jesus Felipe - residential
+Rua Getúlio Vargas - residential
+Rua Manoel Clemente - residential
+Rua Randolfo L de Faria - residential
+Rua Josefino Fialho Freitas - residential
+Rua Joaquim Rocha Oliveira - residential
+Rua Alagoas - residential
+Rua José Rigueira Filho - residential
+Rua Terezinha de Jesus Pereira - residential
+Rua Vicente de Paula - residential
+Rua Nossa Senhora do Carmo - residential
+Rua Guarani - residential
+Rua Tupinambás - residential
+Rua F - residential
+Rua Aymorés - residential
+Rua Reinaldo de Jesus Araújo - tertiary
+Avenida Maria de Castro Silva - residential
+Rua Wiliam Martins Ramos - residential
+Travessa F - residential
+Rua Drumond - residential
+Travessa G - residential
+Rua José Lopes da Silva - residential
+Travessa T - residential
+Rua São Dimas - residential
+Rua do Conforto - residential
+Rua São Dimas - residential
+Rua Alípio Peres - residential
+Rua do Sol - residential
+Rua Ana Amélia - residential
+Rua Carlos Lacerda - residential
+Rua Mato Grosso - residential
+Rua G - residential
+Travessa Diamantna - residential
+Rua Dona Zair Santos - residential
+Rua Princesa Isabel - residential
+Rua Diamantina - residential
+Rua São Bento - residential
+Rua Goiás - residential
+Rua Professor Arlindo de Paula Gonçalves - residential
+Rua Tabelião Machado - residential
+Rua Pedro Gomide Filho - residential
+Rua Augusta Siqueira - residential
+Rua Emídio Aniceto Dornelo - residential
+Rua São José - residential
+Rua Elvira Santana - residential
+Via da Saúde - unclassified
+Avenida Quinquim Fontes - tertiary
+Rua B - residential
+Rua Amador Bezerra Reco - residential
+Rua Vicente da Paixão - residential
+Rua Padre Antônio Pinto - residential
+Rua Maria de Castro Silva - residential
+Rua dos Estudantes - residential
+Rua Major Marciano Pinheiro - residential
+Rua Rafael Silva Araujo - residential
+Rua Francisco Santana - residential
+Rua Antônio V. Pinheiro - residential
+Rua Antônio Valério Pinheiro - residential
+Rua F. Comastri - residential
+Rua José Borges Ferreira - residential
+Rua João Martins de Oliveira - residential
+Rua Alípio Augusto - residential
+Rua Cirílio da Paixão - residential
+Rua Maria Clementina Ladeira - residential
+Rua Adilia Parreira - residential
+Rua J. Cardoso - residential
+Rua Antônio Júlio - tertiary
+Rua Rahme Curi - residential
+Rua Agenor Pires Dantas - residential
+Rua S. Paranhos - residential
+Rua Joaquim Oliveira - tertiary
+Rua Janote S. Reis - residential
+Rua Antônio Valério Pinheiro - residential
+Rua Antônio Santos - residential
+Rua Aziz Alexandre - residential
+Rua Antônio Ferreira Silva - residential
+Rua S. S. Domingues - residential
+Rua Efigênia Soares da Silva - residential
+Avenida Vicentina de Barros - residential
+Rua Maria Aparecida Sant Ana - residential
+Rua Francisco Damasceno - residential
+Rua Cláudio José Mariano Rocha - tertiary
+Rua Joaquim Nogueira - residential
+Rua Luis Mitchel - residential
+Rua José Casimiro Silva - residential
+Rua Geraldo Rodrigues da Cunha - residential
+Rua Maria Muanis - residential
+Rua José D. Duarte - residential
+Rua Alfa Chequer - residential
+Rua Nicolau Martins - residential
+Rua Joaquim Nogueira - residential
+Rua Ricardo A. da Silva - residential
+Rua José V. Lopes - residential
+Rua Santana do Garambel - residential
+Rua Maria dos Anjos - residential
+Rua Gilberto Mello - residential
+Rua Vitor de Carvalho - residential
+Rua Francisco Estabão Araújo - residential
+Rua José Augusto de Castro - residential
+Rua José B. Santana - residential
+Rua João Bosco R. de Andrade - residential
+Rua Germano de Carvalho - tertiary
+Rua Deco Vidigal - residential
+Rua José da Cruz Reis - residential
+Rua Filomena Petrilha Castro - residential
+Rua Agenor Pires Dantas - residential
+Rua Vicente Brustoline - residential
+Rua Maria Francisca Amorim - residential
+Rua Nossa Senhora Aparecida - residential
+Rua Maria Aparecida Sant Ana - residential
+Rua S. Paranhos - residential
+Rua Joaquim Nogueira - residential
+Rua Teotônio Pacheco - tertiary
+Rua Padre Serafim - primary
+Alameda Albano Braga - residential
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Centro de Ciências Exatas
+Rua Verano Faria - residential
+Rua Francisco Lopes Galvão - residential
+Rua Padre Serafim - primary
+Rua Padre Serafim - primary
+Rua José Braz Costa - residential
+Rua Doutor José Felicíssimo de Oliveira - residential
+Rua da Conceição - tertiary
+Rua Feijó Bhering - residential
+Rua Vila Gianetti - unclassified
+Avenida Bueno Brandão - tertiary_link
+Rua dos Passos - tertiary
+Travessa Simonini - residential
+Rua Sílvio Romeu - residential
+Travessa Purdue - residential
+Rua Clóvis Clodoveu de Castro - residential
+Rua Raul Campos - residential
+Rua Professora Argina Ferreira - residential
+Rua Silva Pontes - residential
+Rua Santana - residential
+Rua Antônio Vintim - residential
+Rua Três - residential
+Rua Sebastião Ferreira - residential
+Rua Paris - residential
+Travessa dos Passos - residential
+Rua Maria L. Araújo - residential
+Rua Geninho Lentini - residential
+Rua José N. Vaz de Melo - residential
+Rua Roystonea - residential
+Rua Professor Schlotteldt - residential
+Rua José U. Paiva - residential
+Rua João José Araújo - residential
+Rua Altamiro da Conceição Saraiva - tertiary
+Rua Maria das Neves de Jesus - residential
+Rua João Franklin Fontes - tertiary
+Rua da Conceição - tertiary
+Rua Antônio Cesário Fialho - residential
+Ribeirão São Bartolomeu
+Ribeirão São Bartolomeu
+Ribeirão São Bartolomeu
+Rua Morro do Cruzeiro - tertiary
+Avenida das Arábias - residential
+Rodovia Oraida Mendes Castro - secondary
+Rua Fernando Monteiro Rocha - residential
+Rua Professora Valéria Martins de Freitas - residential
+Rua Francisco Antônio de Souza Campos - residential
+Rua Alexandre Miguel Said Aad - residential
+Rua Doutor Zilmar Sari - residential
+Rua Prefeito Carlos Raimundo Torres - residential
+Rua Vereador Ruy Barbosa de Assis Castro - residential
+Parque da Ciência
+Avenida Maria de Paula Santana - primary
+Aeroporto de Viçosa
+Rodovia BR-120 - primary
+Rodovia BR-120 BR-356 - primary
+Departamento De Geografia
+Rua Sobradinho - residential
+Rua Brasiliana - residential
+Rua Núcleo Bandeirantes - residential
+Rua Gama - residential
+Rua Geraldo Calixto - residential
+Rua Goiania - residential
+Rua Rui Barbosa - residential
+Rua Três Poderes - residential
+Praça José Santana
+Córrego da Conceição
+ASAV
+Viçosa Atlético Clube
+Praça de Esportes
+Viçosa Clube
+Clube Campestre
+Avenida dos Lagos - unclassified
+Ed. Silvio Starling Brandão (Fitotecnia, Solos , Fitopatologia)
+Rodoviária Municipal - bus_station
+Córrego da Conceição
+Córrego da Conceição
+Praça Silviano Brandão
+Rua Virgílio Val - residential
+Avenida Bueno Brandão - tertiary
+Praça Emílio Jardim
+Rua Benedito Valadares - tertiary
+Rua Sebastião Lopes Carvalho - tertiary
+Antiga Estação Ferroviária
+Avenida Bueno Brandão - tertiary
+Praça Mário Del Giúdice
+Avenida Bueno Brandão - tertiary_link
+Avenida Marechal Humberto Castelo Branco - primary
+Rua Senador Vaz de Melo - tertiary
+Avenida Peter Henry Rolfs - secondary
+Praça do Rosário
+Shopping Calçadão - mallShopping da Moda - mallPraça Doutor Cristóvão Lopes de Carvalho
+Viçosa Shopping - mallAvenida Marechal Castelo Branco - primary
+Hospital São Sebastião - hospital
+Campo da ASAV
+Escola Estadual Dr. Raimundo Alves Torres - school
+Rua do Pintinho - residential
+Rua Álvaro Gouveia - residential
+Casa Arthur Bernardes
+Avenida Marechal Castelo Branco - primary
+Rua José dos Santos - residential
+Restaurante Universitário - restaurant
+Biblioteca Central - library
+Departamento de Bioquímica
+PVC
+Espaço de Vivência - mallDepartamento de Economia Doméstica
+Horto Botânico da UFV
+Centro Administrativo Municipal - townhall
+Rua Maria Geralda Paranhos - residential
+Fórum Municipal
+Centro Educacional Dr. januário Andrade Fontes - school
+Rua São José - residential
+Rua Ana Cardoso Machado - residential
+Rua Vereador Almiro Pontes - residential
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Estacionamento da Reitoria - parking
+Sala Fernando Sabino - theatre
+Espaço Multi-uso
+Restaurante Multi-uso - restaurant
+DCE Piscina
+Estacionamento Ed. Arthur Bernardes - parking
+Vigilância - police
+Universidade Federal de Viçosa - university
+Engenharia Florestal
+Alojamento Feminino
+Avenida Purdue - unclassified
+Departamento de Educação Física
+Piscina Poliesportiva
+Ginásio Poliesportivo
+Pista de Atletismo - pedestrian
+Praça das Quatro Pilastras
+Zootecnia
+Restaurante Universitário II - restaurant
+Departamento da Química
+Reitoria
+Laboratório de Desenvolvimento Infantil
 Escola Estadual Effie Rolfs - school
 Departamento de Medicina
 Divisão de Saúde - hospital
+Departamento de Educação
+Piscicultura
+Parque Municipal do Cristo Redentor
+ETA I
+Praça Antônio Augusto de Araújo
+Praça Fernando Vidigal de Carvalho
+Praça Senhor dos Passos
+Subestação Viçosa
+Rua Maria Célia Gonçalves Faustino - residential
+Escola Estadual Raul de Leoni - school
+Rua dos Passos - tertiary
+Hospital São João Batista - hospital
+Rua Jacob Lopes de Castro - secondary
+Córrego Santo Antônio
+Rua José Vidigal - residential
+Rua José Medina Floresta - tertiary
+Avenida Maria de Paula Santana - primary
+Rua Prefeito Moacir Dias Andrades - tertiary
+Rua Prefeito Moacir Dias Andrades - tertiary
+Complexo Penitenciário de Viçosa - police
+Campo do Carecão
+Escola Estadual Santa Rita de Cássia - school
+Rua Juquinha Brumano - residential
+Rua professor Silvio Starling Brandão - residential
+Rua Sílvio Romeu - residential
+Rua Francisco Machado - residential
+Rua Olívia C. Almeida - residential
+Praça Ramos
+Rua José Almeida Ramos - residential
+Rua Glim Ramos - residential
+Rua Rosalina da Silva Santos - residential
+Rua Bruno Martinho - residential
+Travessa Seis - residential
+Rua Rui Barbosa - residential
+Travessa José Maria - residential
+Rua Cantiolínio Bráz Fernander - residential
+Rua Paraná - residential
+Rua Três - residential
+Rua Paraíba - residential
+Travessa Princesa Isabel - residential
+Rua Olavo Bilac - residential
+Beco Olavo Bilac - residential
+Rua Jovelino Golçalves - residential
+Rua São Carlos - residential
+Rua Wenceslau Braz - residential
+Rua Ceará - residential
+Rua Carlos Lacerda - residential
+Rua Vincenzo d’Antonino - tertiary
+Rua Dandara Guimarães de Almeida - residential
+Rua Raimundo A. Moreira - residential
+Rua Otávio B. Coelho - residential
+Rua Márcio Araújo - residential
+Rua Francisco Ferreira de Paula - residential
+Rua Maria Barbosa dos Santos - residential
+Rua Santa Bárbara - residential
+Rua São Vicente - residential
+Rua Francisco Marino da Silva - residential
+Rua José Antônio Pontes - residential
+Travessa Félix - service
+Rua José Antônio Teixeira - residential
+Rua José Damásio Aruda - residential
+Rua Senhor do Bomfim - residential
+Rua Santo Antônio - residential
+Rua José Lopes de Oliveira - residential
+Travessa Geraldo Ribeiro - residential
+Rua Lúcia Mota - residential
+Escola Municipal Ministro Edmundo Lins - school
+Escola Municipal Coronel Arthur da Silva Bernardes - school
+Praça Maestro Hervé Corodovil
+Rua Julieta de Freitas - residential
+Conjunto Habitacional César Sant’Anna Filho
+Rua José Filomeno Gouveia - residential
+Rua Rosa Mistica - service
+Rua José Carlos Dias - service
+Alameda Carlos Dias - residential
+Rua Campo Belo - service
+Rua Ipanema - service
+Rua Copacabana - service
+Rua Nossa Senhora do Carmo - service
+Rua Antônio Dias - service
+Rua C - residential
+Rua Doutor Milton Bandeira - tertiary
+Rua Doutor Milton Bandeira - tertiary
+Espaço Aberto de Eventos da UFV
+Rua dos Passos - tertiary
+Rua Doutor Brito - tertiary
+Avenida Marechal Castelo Branco - secondary
+Avenida Marechal Castelo Branco - primary
+Rua dos Passos - tertiary
+Centro de Ensino e Extensão (CEE)
+Departamento de Tecnologia de Alimentos (DTA) II
+Departamento de Tecnologia de Alimentos (DTA) I
+Edificio Anita Teixeira
+Via Digital
+Laboratorio de Engenharia de Agrimensura
+Laboratorio de Engenharia Civil
+Rua Castro Alves - residential
+Colegio Nossa senhora do carmo - school
+Praça P.H. Rolfs
+Barzinho DCE - fast_food
+Caixa Econômica Federal - bank
+Praça do DCE
+BIOAGRO
+Avenida Purdue - unclassified
+UFV Credi - bank
+Banco do Brasil - bank
+Laticínios Funarbe (Produtos Viçosa)
+Departamento de Arquitetura e Urbanismo
+Recanto das Cigarras
+CEAD
+Praça Antônio Chequer
+Antigo Cine Brasil
+Rua dos Estudantes - residential
+Rua Alexina Maria do Carmo - residential
+Rua Sofia Bernardes - residential
+Rua João Mafia - residential
+Praça Abdala Simão
+Rua Madre Maria das Neves - residential
+Rua Doutor Felicíssimo - residential
+Rua Prefeito Parrique - residential
+Praça 16 de Julho
+Travessa do Enfermeiro - residential
+Rua Prefeito Parrique - residential
+Rua Joaquim Francisco de Souza - residential
+Avenida Juscelino Kubitscheck - residential
+Rua Horácio Borges - residential
+Rua João Batista da Costa - residential
+Rua Arlindo P. Conceição - residential
+Rua Tunico Bernardo - residential
+Rua Eloy Saraiva - residential
+Rua Chiquito Frantino - residential
+Rua José Soares - residential
+Rua José Medina Floresta - tertiary
+Rua João Batista da Costa - residential
+Rua Lindolfo Rocha Oliveira - residential
+Rua Dona Mariinha - residential
+Avenida Marechal Castelo Branco - primary
+Avenida Marechal Castelo Branco - primary
+Rua Paulo Mário del Giúdice - tertiary_link
+Rua Paulo Mário del Giúdice - tertiary
+Avenida Marechal Castelo Branco - primary
+Avenida Marechal Castelo Branco - primary
+Via Alternativa - unclassified
+Via Alternativa - unclassified
+Rua Luiz Bhering - residential
+Rua Maria Claudina - residential
+Praça Fernando Mollá Borges
+Rua B - residential
+Rua Juquinha Condé - residential
+Rua Juquinha Condé - residential
+Rua E1 - residential
+Rua D - residential
+Rua Juquinha Condé - residential
+Rua F - residential
+Rua H - residential
+Rua E2 - residential
+Rua Dom Silverio - residential
+República Lusfaianus
+Estrada dos Nobres - tertiary
+Rua Francisco Lopes Galvão - residential
+Rua Lino Lopes Rosado - residential
+Rua Janaina - residential
+Rua Juquinha de Paula - residential
+Travessa José Manoel Cabral - residential
+Rua São Carmo - residential
+Rua Moacir F. Souza - residential
+Alameda do Adão - residential
+Rua Anita Chequer - residential
+Rua Manoelita Silva - tertiary
+Rua Maria de Castro Silva - residential
+Rua CIrilo de Castro - residential
+Rua Antônio Camilo Lelis - residential
+Travessa Wiliam Martins Ramos - residential
+Rua E - residential
+Rua Manoelita Silva - residential
+Rua Maria Aux. de S. Castro - residential
+Rua N - residential
+Rua Chico Mendes - residential
+Rua José Zaidan - residential
+Avenida das Arábias - residential
+Rua Tamôios - residential
+Rua Santa Teresinha - residential
+Rua João Mairinck - residential
+Rua José Maria Santana - tertiary
+Rua Fabiano Janote - residential
+Rua Raimundo A. Moreira - residential
+Rua Raimundo A. Moreira - tertiary
+Avenida das Arábias - tertiary
+Rua João Valadares - residential
+Rua Maria Eusébia - residential
+Rua Antonele Bering - residential
+Rua Major Marciano Pinheiro - residential
+Rua Martinez Alves Torres - residential
+Rua Lauro de U. Cintra - residential
+Rua Shotaro Shimoia - residential
+Rua J. P. Filho - tertiary
+Rua General Mourao Filho - residential
+Rua José Mendes Cardoso - residential
+Rua Shotaro Shimoia - tertiary
+Rua José S. da Silva - residential
+Rua José S. da Silva - residential
+Rua J. Cardoso - residential
+Rua Manoel N. Pinheiro - residential
+Rua Maria Francisca Amorim - residential
+Rua José L. D. Carvalho - residential
+Rua Maria Francisca Amorim - residential
+Rua Maria Francisca Amorim - residential
+Rua José Borges Chagas - residential
+Antigo Edifício da Química
+10ª Companhia PM Independente
+Consórcio de Saúde - hospital
+Centro Viva-Vida - hospital
+Rua Gomes Barbosa - tertiary
+Avenida da Agronomia - residential
+Rua João Franklin Fontes - residential
+Avenida Maria de Paula Santana - primary
+Rua São Carlos - residential
+Rua Bruno Martinho - residential
+Rua Egídio Santana - residential
+Rodovia Oraida Mendes Castro - secondary
+Herbario Ecologia
+Rua Prefeito João Franco - residential
+Travessa do Cruzeiro - residential
+Rua José Oliveira Andrade - tertiary
+Rua Luciana Monteiro Fonseca - tertiary
+Rua Bernardina Xavier - residential
+Rua José Rocha Filho - residential
+Rua David Salomão - residential
+Avenida Silva Araújo - secondary
+Prédio da Licenciatura - PLI
+Capela do Imaculado Coração de Maria
+Rua Santa Bárbara - residential
+Rua Carlos Pinto - residential
+Rua Doutor Raimundo Alves Torres - residential
+Rua Antônio S. Gomide - residential
+Travessa Dona Sinhá - residential
+Travessa Joana D'Arc - residential
+Travessa Joana D'Arc - residential
+Travessa Joana D'Arc - residential
+Rua Alexandre Ferreira Silva - residential
+Travessa Franklin Martins - residential
+Rua Nossa Senhora de Fátima - residential
+Rua Cabo Tomas - residential
+Vila São Sebastião - residential
+Rua Santo Antônio - residential
+Rua José Silva Lima - residential
+Rua Bernadino Francisco Costa - residential
+Rua G - residential
+Rua Eurico Sales Tiburcio - residential
+Rua Eurico Marangom - residential
+Avenida São João Batista - residential
+Rua José Basílio Figueiredo Júnior - residential
+Instituto Municipal de Assistência ao Servidor (IMAS)
+Associação dos Taxistas de Viçosa
+Rua Maria Geralda Paranhos - residential
+Praça Professor Edgar de Vasconcelos Barros
+Arena
+Centro de Especialidades da UFV - hospital
+Associação dos Municípios da Microrregião da Zona da Mata Norte (AMMAN)
+Instituto Médico Legal (IML) - police
+21ª Delegacia de Polícia Civil - police
+Rua Arthur Lehner de Souza - unclassified
+Rua Aníbal Pereira Santiago - unclassified
+Rua Sargento Guido - residential
+Associação dos Ex-Alunos da UFV
+Rua Vereador Chiquito Izidoro - residential
+Rua Vereador Euter Paniago - residential
+Rua Vereador José Chequer - residential
+Rua Ezequiel Pinto - tertiary
+Avenida Peter Henry Rolfs - secondary
+Amantino - supermarketRua Maria de Castro Silva - residential
+Rua Maria de Castro Silva - residential
+Rua Antônio Camilo Lelis - residential
+Rua Antônio Camilo Lelis - residential
+Distrito Industrial
+Escola Estadual Professor Sebastião Lopes de Carvalho
+Escola Municipal Padre José Francisco da Silva
+UBS Nova Viçosa / Posses
+Rua Assad Nazar - tertiary
+Rua Joaquim Nogueira - residential
+Rua Joaquim Nogueira - tertiary
+Rua Cláudio José Mariano Rocha - residential
+Rua José Augusto de Castro - tertiary
+Rua José Augusto de Castro - residential
+Rua João Bosco R. de Andrade - residential
+Rua João Bosco R. de Andrade - residential
+Rua Joaquim Nogueira - tertiary
+APOV
+Rua Paulo Mário del Giúdice - residential
+Rua Paulo Mário del Giúdice - tertiary
+Escola Municipal Professor Paulo Mário Del Giúdice
+Avenida Peter Henry Rolfs - secondary
+Avenida Peter Henry Rolfs - secondary
+Igreja Nossa Senhora de Fátima - place_of_worship
+Praça Levindo Coelho
+Igreja Matriz Santa Rita de Cássia - place_of_worship
+Predio Dança
+Casa de vegetaçao
+casa de vegetaçao
+Departamento de Letras e Artes (DLA)
+Almoxarifado Municipal
+Departamento Municipal de Parques e Jardins
+Ribeirão São Bartolomeu
+Rua Anita Chequer - residential
+Rua Anita Chequer - residential
+Rua Cônego Modesto - tertiary
+Rua Cônego Modesto - tertiary
+Rua João Carlos da Cruz - residential
+Rua João Carlos da Cruz - residential
+Rua Presidente Tancredo Neves - tertiary
+Rua Presidente Tancredo Neves - tertiary
+Rio Turvo Sujo
+Entomologia
+Insetário
+Casa dos Cupins
+Apiário
+Divisão de Patrimônio
+Divisão de Materiais
+Rua Peter Henry Rolfs - primary
+Rua Padre Serafim - primary
+Rua Padre Serafim - primary
+Via Alternativa - unclassified
+Departamento de Direito
+Laticínios FUNARBE
+Abastecimento Garagem Central
+Ducha - Garagem Central
+Garagem Central
+Galpão 1 - Garagem Central
+Galpão 2 - Garagem Central
+FUNARBE - Fundação Arthur Bernardes
+Centreinar - Centro Nacional de Treinamento em Armazenagem
+Estacionamento do Centreinar - parking
+Sede da Vigilância
+Estacionamento Vigilância - parking
+Rua José G. Souza - tertiary
+Rua Ezequiel Pinto - residential
+Rua Juventino Alencar - tertiary
+Rua Manoelita Silva - tertiary
+Rua Eurico Marangom - residential
+Rua Maria de Castro Silva - tertiary
+Rua Reinaldo Araújo - residential
+Rua Padre Serafim - primary
+Rua José Antõnio Rodrigues - residential
+Praça da Capela
+Planeta Bola
+Ministério Público Estadual - courthouse
+TG 04-027
+Avenida Peter Henry Rolfs - secondary
+GPC/DIM/GEF
+Terraplanagem UFV
+DAG - Divisão de Agua e Esgoto
+Supermercado Escola - FUNARBE
+Estacionamento Supermercado Escola - parking
+Estacionamento CEE - parking
 Estacionamento da Divisão de Saúde - parking
+Estacionamento Engenharia Agrícola - parking
+Departamento de Engenharia Agrícola - public_building
+Anexo do Departamento de Engenharia Agrícola - public_building
+Alameda Papa João XXIII - residential
+Pracinha da Papa João XXIII
+Condomínio Papa João XXIII
+Avenida da Agronomia - tertiary
+Praça de Vivência
+LOTE VAGO
+Via da Saúde - unclassified
+Via da Saúde - unclassified
+Via da Veterinária - residential
+Rua José Soares da Rocha - residential
+Rua R - residential
+Avenida Maria de Paula Santana - primary
+Rua Ezequiel Pinto - tertiary
+Rua Ezequiel Pinto - tertiary
+Rua Dona Militina - residential
+Parque da Lagoa da UFV
+Gramado do Banco Itaú
+Praça do Centro de Vivência
+Hospital Veterinário
+Departamento de Economia Rural
+Departamentos de Engenharia de Produção, Mecânica e Elétrica
+
+Alojamento Masculino
+Garagem Municipal
+Conjunto Habitacional Benjamin Cardoso

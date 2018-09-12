@@ -45,10 +45,10 @@ global entertainment
 entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub',
                  'planetarium','social_centre','stripclub','studio','swingerclub','theatre']
 global other_Amenity
-other_Amenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthhouse','coworking_spece','creamtorium',
+other_Amenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthouse','coworking_spece','creamtorium',
           'crypt','dive_centre','dojo','embassy','fire_station','game_feeding','grave_feeding','grave_yard','hunting_stand',
           'internet_cafe','kitchen','kneipp_water_cure','marketplace','photo_booth','place_of_worship','police','post_box',
-          'post_office','prison','public_bath','ranger_station','recycling','rescue_station','sanitary_dump_station',
+          'post_office','prison','public_bath','public_building','ranger_station','recycling','rescue_station','sanitary_dump_station',
           'shelter','shower','table','telephone','toilets','townhall','vendingg_machine','wasted_disposal',
           'waste_transfer_station','watering_place','water_point']
 
@@ -148,7 +148,7 @@ global edification
 edification = ['place','office','building']
 
 global place
-place = ['administratively_declared_places','populated_settlements_urban','pupulated_settlements_urban_and_rural','other_places']
+place = ['administratively_declared_places','populated_settlements_urban','populated_settlements_urban_and_rural','other_places']
 global administratively_declared_places
 administratively_declared_places = ['country','state','region','province','district','county','municipality']
 global populated_settlements_urban
@@ -159,18 +159,18 @@ global other_places
 other_places = ['continent','archipelago','island','islet','square','locality']
 
 global office
-office = ['accountant','adoptin_agency','advertising_agency','aarchitect','association','charity','company','education_institution',
+office = ['accountant','adoptin_agency','advertising_agency','architect','association','charity','company','education_institution',
           'employment_agency','energy_supplier','estate_agent','forestry','foundation','government','guide','healer','insurance',
           'it','lawyer','logistic','moving_company','newspaper','ngo','notary','physician','political_party','private_investigator'
           'property_management','quango','real_estate_agent','religion','research','surveyor','tax','tax_advisor','telecommunications'
           'therapist','travel_agent','water_utility']
 
 global building
-building = ['accommodation','Commercial','religious','civic_amenity','other_building', 'yes']
+building = ['accommodation','Commercial','Religious','civic_amenity','other_building', 'yes', 'supermarket']
 global accommodation
 accommodation = ['apartments','farm','hotel','house','detached','residential','dormitory','terrace','houseboat','bungalow','static_caravan']
 global Commercial
-Commercial = ['commercial','industrial','retail','warehouse','kiosk','cabin']
+Commercial = ['commercial','office','industrial','retail','warehouse','kiosk','cabin']
 global religious
 religious = ['religious','cathedral','chapel','church','mosque','temple','synagogue','shrine']
 global civic_amenity
@@ -234,12 +234,13 @@ def driveGraph(listDic):
         roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         findRelation(arq)
+        print("\nnumero de entidades:"+ str(len(entity)))
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
         arq.close()
 
         render('dot', 'png', 'schema.gv')
-    return "Graph checked!\n"
+    return "\nGraph checked!"
 
 
 ######################################################################################### DIVERSION
@@ -324,13 +325,13 @@ def findClassEdification(tag):
     elif tag in Commercial:
         return "Commercial"
     elif tag in religious:
-        return "religious"
+        return "Religious"
     elif tag in building:
         return "building"
     elif tag in civic_amenity:
         return "civic_amenity"
     elif tag in other_building:
-        return "other building"
+        return "other_building"
 
     elif tag in administratively_declared_places:
         return "administratively_declared_places"
@@ -340,6 +341,9 @@ def findClassEdification(tag):
         return "populated_settlements_urban_and_rural"
     elif tag in other_places:
         return "other_places"
+
+    else:
+        return "building"
 
 
 def edificationGraph(arq, listEdification):
@@ -494,6 +498,7 @@ def findClass(name, tag):
 def entityRelation(slave, master):
     return ("\n\t\t" + str(slave) + " -> " + str(master) + "[arrowhead=onormal]")
 
+
 def valueKey(dic, val):
     for k, v in dic.items():
         if v == val:
@@ -597,7 +602,7 @@ def findRelation(arq):
         elif v in Commercial and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'Commercial')))
         elif v in religious and controllerPackages[k] == 'edification':
-            arq.write(entityRelation(k, valueKey(mother, 'religious')))
+            arq.write(entityRelation(k, valueKey(mother, 'Religious')))
         elif v in civic_amenity and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'civic_amenity')))
         elif v in other_building and controllerPackages[k] == 'edification':
@@ -616,8 +621,6 @@ def findRelation(arq):
         elif v in place and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'place')))
 
-    return print("\nRelation checked!")
-
 
 def packageRelation(arq, list, name, packageName):
     flg = []
@@ -625,6 +628,7 @@ def packageRelation(arq, list, name, packageName):
     listControlSecond = []
     global contNode
     global mother
+    global entity
 
     for i in range(len(list)):  ##  NOME TABELA
         if name in list[i] and list[i][name] not in listControlthird:
@@ -643,6 +647,7 @@ def packageRelation(arq, list, name, packageName):
                     arq.write(entityAtt(j))
             arq.write(entityAtt("coordenadas") + "\n\t\t\t</TABLE>>]")
             listControlthird.append(list[i][name])
+            entity[contNode] = list[i][name]
 
     for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
         if flg[i] not in listControlSecond:

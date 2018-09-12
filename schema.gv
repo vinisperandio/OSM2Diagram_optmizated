@@ -4,62 +4,50 @@ digraph structs {
 		node [color=black style=filled]
 		color=lightgrey style=filled
 		label=DIVERSION
-	}
-	subgraph cluster_SERVICES {
-		node [color=black style=filled]
-		color=lightgrey style=filled
-		label=SERVICES
 		0[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">university</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+				<TD align="center"><font color="black">cinema</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
 			</TR>
 			<hr/>
 			<TR>
-				<TD align="left">addr:city</TD>
-			 </TR>
-			<TR>
-				<TD align="left">addr:postcode</TD>
-			 </TR>
-			<TR>
-				<TD align="left">name</TD>
-			 </TR>
-			<TR>
-				<TD align="left">website</TD>
-			 </TR>
-			<TR>
-				<TD align="left">wikipedia</TD>
-			 </TR>
-			<TR>
-				<TD align="left">coordinates</TD>
+				<TD align="left">coordenadas</TD>
 			 </TR>
 			</TABLE>>]
 		1[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">amenity</font>  </TD>
-			</TR>
-			</TABLE>>]
-		2[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
-			<TABLE color="black" border="0">
-			 <TR>
-				<TD align="center"><font color="black">school</font>  
+				<TD align="center"><font color="black">theatre</font>  
 				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
 			</TR>
 			<hr/>
 			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
 				<TD align="left">name</TD>
 			 </TR>
 			<TR>
-				<TD align="left">coordinates</TD>
+				<TD align="left">coordenadas</TD>
 			 </TR>
 			</TABLE>>]
+		2[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">entertainment</font>  </TD>
+			</TR>
+			</TABLE>>]
+	}
+	subgraph cluster_SERVICES {
+		node [color=black style=filled]
+		color=lightgrey style=filled
+		label=SERVICES
 		3[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">parking</font>  
-				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+				<TD align="center"><font color="black">fast_food</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
 			</TR>
 			<hr/>
 			<TR>
@@ -72,13 +60,384 @@ digraph structs {
 		4[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">education</font>  </TD>
+				<TD align="center"><font color="black">amenity</font>  </TD>
 			</TR>
 			</TABLE>>]
 		5[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
+				<TD align="center"><font color="black">restaurant</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		6[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">fuel</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		7[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">taxi</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		8[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">bank</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">atm</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		9[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">parking</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		10[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">school</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		11[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">post_office</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		12[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">atm</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		13[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">car_wash</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		14[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">place_of_worship</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">religion</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		15[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">bar</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		16[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">cafe</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		17[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">bicycle_parking</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		18[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">fire_station</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		19[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">telephone</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		20[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">ice_cream</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		21[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">pub</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		22[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">kindergarten</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		23[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">university</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		24[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">bus_station</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		25[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">library</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		26[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">townhall</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		27[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">police</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		28[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">courthouse</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">description</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		29[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">public_building</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		30[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">sustenance</font>  </TD>
+			</TR>
+			</TABLE>>]
+		31[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
 				<TD align="center"><font color="black">transportation</font>  </TD>
+			</TR>
+			</TABLE>>]
+		32[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">financial</font>  </TD>
+			</TR>
+			</TABLE>>]
+		33[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">education</font>  </TD>
+			</TR>
+			</TABLE>>]
+		34[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">other_Amenity</font>  </TD>
 			</TR>
 			</TABLE>>]
 	}
@@ -86,7 +445,80 @@ digraph structs {
 		node [color=black style=filled]
 		color=lightgrey style=filled
 		label=HEALTH
-		6[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		35[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">pharmacy</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordenadas</TD>
+			 </TR>
+			</TABLE>>]
+		36[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">doctors</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordenadas</TD>
+			 </TR>
+			</TABLE>>]
+		37[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">veterinary</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordenadas</TD>
+			 </TR>
+			</TABLE>>]
+		38[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">dentist</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">healthcare</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordenadas</TD>
+			 </TR>
+			</TABLE>>]
+		39[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">clinic</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">healthcare</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordenadas</TD>
+			 </TR>
+			</TABLE>>]
+		40[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">hospital</font>  
@@ -100,7 +532,7 @@ digraph structs {
 				<TD align="left">coordenadas</TD>
 			 </TR>
 			</TABLE>>]
-		7[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		41[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">healthCare</font>  </TD>
@@ -111,7 +543,7 @@ digraph structs {
 		node [color=black style=filled]
 		color=lightgrey style=filled
 		label=ROAD_MESH
-		8[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		42[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">turning_circle</font>  
@@ -122,13 +554,35 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		9[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		43[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">highway</font>  </TD>
 			</TR>
 			</TABLE>>]
-		10[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		44[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">traffic_signals</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		45[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">bus_stop</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		46[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">crossing</font>  
@@ -142,7 +596,42 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		11[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		47[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">primary</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">IBGE:CD_ADMINIS</TD>
+			 </TR>
+			<TR>
+				<TD align="left">lanes</TD>
+			 </TR>
+			<TR>
+				<TD align="left">maxspeed</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">oneway</TD>
+			 </TR>
+			<TR>
+				<TD align="left">ref</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">surface</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		48[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">residential</font>  
@@ -153,13 +642,30 @@ digraph structs {
 				<TD align="left">name</TD>
 			 </TR>
 			<TR>
-				<TD align="left">surface</TD>
+				<TD align="left">oneway</TD>
 			 </TR>
 			<TR>
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		12[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		49[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">tertiary</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		50[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">unclassified</font>  
@@ -179,16 +685,160 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		13[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		51[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">pedestrian</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">bicycle</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		52[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">secondary</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">oneway</TD>
+			 </TR>
+			<TR>
+				<TD align="left">surface</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		53[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">tertiary_link</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">oneway</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		54[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">service</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> w</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">service</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		55[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">aerodrome</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">icao</TD>
+			 </TR>
+			<TR>
+				<TD align="left">int_name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">wikipedia</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		56[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">aeroway</font>  </TD>
+			</TR>
+			</TABLE>>]
+		57[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">station</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">building</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		58[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">railway</font>  </TD>
+			</TR>
+			</TABLE>>]
+		59[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">other highway features</font>  </TD>
 			</TR>
 			</TABLE>>]
-		14[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		60[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">roads</font>  </TD>
+			</TR>
+			</TABLE>>]
+		61[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">special roads</font>  </TD>
+			</TR>
+			</TABLE>>]
+		62[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">link roads</font>  </TD>
+			</TR>
+			</TABLE>>]
+		63[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">station and shop</font>  </TD>
 			</TR>
 			</TABLE>>]
 	}
@@ -196,10 +846,268 @@ digraph structs {
 		node [color=black style=filled]
 		color=lightgrey style=filled
 		label=EDIFICATION
-		15[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		64[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">town</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">wikidata</TD>
+			 </TR>
+			<TR>
+				<TD align="left">wikipedia</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		65[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">place</font>  </TD>
+			</TR>
+			</TABLE>>]
+		66[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">suburb</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		67[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">neighbourhood</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		68[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">hamlet</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		69[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">ngo</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		70[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">office</font>  </TD>
+			</TR>
+			</TABLE>>]
+		71[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">government</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">government</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		72[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">it</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:suburb</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">opening_hours</TD>
+			 </TR>
+			<TR>
+				<TD align="left">phone</TD>
+			 </TR>
+			<TR>
+				<TD align="left">source</TD>
+			 </TR>
+			<TR>
+				<TD align="left">website</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		73[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">architect</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:housenumber</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:suburb</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">opening_hours</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		74[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">quango</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		75[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">chapel</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		76[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">building</font>  </TD>
+			</TR>
+			</TABLE>>]
+		77[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">yes</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> b</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		78[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">university</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">short_name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		79[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">public</font>  
 				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
 			</TR>
 			<hr/>
@@ -210,34 +1118,376 @@ digraph structs {
 				<TD align="left">coordinates</TD>
 			 </TR>
 			</TABLE>>]
-		16[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		80[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
-				<TD align="center"><font color="black">building</font>  </TD>
+				<TD align="center"><font color="black">DEQ</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		81[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">apartments</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:housenumber</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:suburb</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		82[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">LEA</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		83[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">LEC</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		84[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">commercial</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		85[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">house</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:housenumber</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:suburb</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		86[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">school</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		87[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">church</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:city</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:postcode</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		88[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">hospital</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		89[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">office</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		90[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">supermarket</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		91[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">residential</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">addr:housenumber</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:street</TD>
+			 </TR>
+			<TR>
+				<TD align="left">addr:suburb</TD>
+			 </TR>
+			<TR>
+				<TD align="left">name</TD>
+			 </TR>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		92[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">greenhouse</font>  
+				<font FACE="sigmoda" POINT-SIZE="20.0"> e</font></TD>
+			</TR>
+			<hr/>
+			<TR>
+				<TD align="left">coordinates</TD>
+			 </TR>
+			</TABLE>>]
+		93[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">populated_settlements_urban_and_rural</font>  </TD>
 			</TR>
 			</TABLE>>]
-		17[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+		94[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">populated_settlements_urban</font>  </TD>
+			</TR>
+			</TABLE>>]
+		95[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">Religious</font>  </TD>
+			</TR>
+			</TABLE>>]
+		96[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
 			<TABLE color="black" border="0">
 			 <TR>
 				<TD align="center"><font color="black">civic_amenity</font>  </TD>
 			</TR>
 			</TABLE>>]
+		97[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">accommodation</font>  </TD>
+			</TR>
+			</TABLE>>]
+		98[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">Commercial</font>  </TD>
+			</TR>
+			</TABLE>>]
+		99[style = "filled, bold" penwidth = "1" fillcolor="white" label=<
+			<TABLE color="black" border="0">
+			 <TR>
+				<TD align="center"><font color="black">other_building</font>  </TD>
+			</TR>
+			</TABLE>>]
 	}
-		0 -> 4[arrowhead=onormal]
+		0 -> 2[arrowhead=onormal]
+		1 -> 2[arrowhead=onormal]
 		2 -> 4[arrowhead=onormal]
-		3 -> 5[arrowhead=onormal]
-		4 -> 1[arrowhead=onormal]
-		5 -> 1[arrowhead=onormal]
-		6 -> 7[arrowhead=onormal]
-		7 -> 1[arrowhead=onormal]
-		8 -> 13[arrowhead=onormal]
-		10 -> 13[arrowhead=onormal]
-		11 -> 14[arrowhead=onormal]
-		12 -> 14[arrowhead=onormal]
-		13 -> 9[arrowhead=onormal]
-		14 -> 9[arrowhead=onormal]
-		15 -> 17[arrowhead=onormal]
-		17 -> 16[arrowhead=onormal]
+		3 -> 30[arrowhead=onormal]
+		5 -> 30[arrowhead=onormal]
+		6 -> 31[arrowhead=onormal]
+		7 -> 31[arrowhead=onormal]
+		8 -> 32[arrowhead=onormal]
+		9 -> 31[arrowhead=onormal]
+		10 -> 33[arrowhead=onormal]
+		11 -> 34[arrowhead=onormal]
+		12 -> 32[arrowhead=onormal]
+		13 -> 31[arrowhead=onormal]
+		14 -> 34[arrowhead=onormal]
+		15 -> 30[arrowhead=onormal]
+		16 -> 30[arrowhead=onormal]
+		17 -> 31[arrowhead=onormal]
+		18 -> 34[arrowhead=onormal]
+		19 -> 34[arrowhead=onormal]
+		20 -> 30[arrowhead=onormal]
+		21 -> 30[arrowhead=onormal]
+		22 -> 33[arrowhead=onormal]
+		23 -> 33[arrowhead=onormal]
+		24 -> 31[arrowhead=onormal]
+		25 -> 33[arrowhead=onormal]
+		26 -> 34[arrowhead=onormal]
+		27 -> 34[arrowhead=onormal]
+		28 -> 34[arrowhead=onormal]
+		29 -> 34[arrowhead=onormal]
+		30 -> 4[arrowhead=onormal]
+		31 -> 4[arrowhead=onormal]
+		32 -> 4[arrowhead=onormal]
+		33 -> 4[arrowhead=onormal]
+		34 -> 4[arrowhead=onormal]
+		35 -> 41[arrowhead=onormal]
+		36 -> 41[arrowhead=onormal]
+		37 -> 41[arrowhead=onormal]
+		38 -> 41[arrowhead=onormal]
+		39 -> 41[arrowhead=onormal]
+		40 -> 41[arrowhead=onormal]
+		41 -> 4[arrowhead=onormal]
+		42 -> 59[arrowhead=onormal]
+		44 -> 59[arrowhead=onormal]
+		45 -> 59[arrowhead=onormal]
+		46 -> 59[arrowhead=onormal]
+		47 -> 60[arrowhead=onormal]
+		48 -> 60[arrowhead=onormal]
+		49 -> 60[arrowhead=onormal]
+		50 -> 60[arrowhead=onormal]
+		51 -> 61[arrowhead=onormal]
+		52 -> 60[arrowhead=onormal]
+		53 -> 62[arrowhead=onormal]
+		54 -> 60[arrowhead=onormal]
+		55 -> 56[arrowhead=onormal]
+		57 -> 63[arrowhead=onormal]
+		59 -> 43[arrowhead=onormal]
+		60 -> 43[arrowhead=onormal]
+		61 -> 43[arrowhead=onormal]
+		62 -> 43[arrowhead=onormal]
+		63 -> 58[arrowhead=onormal]
+		64 -> 93[arrowhead=onormal]
+		66 -> 94[arrowhead=onormal]
+		67 -> 94[arrowhead=onormal]
+		68 -> 93[arrowhead=onormal]
+		69 -> 70[arrowhead=onormal]
+		70 -> 98[arrowhead=onormal]
+		71 -> 70[arrowhead=onormal]
+		72 -> 70[arrowhead=onormal]
+		73 -> 70[arrowhead=onormal]
+		74 -> 70[arrowhead=onormal]
+		75 -> 95[arrowhead=onormal]
+		77 -> 76[arrowhead=onormal]
+		78 -> 96[arrowhead=onormal]
+		79 -> 96[arrowhead=onormal]
+		81 -> 97[arrowhead=onormal]
+		84 -> 98[arrowhead=onormal]
+		85 -> 97[arrowhead=onormal]
+		86 -> 96[arrowhead=onormal]
+		87 -> 95[arrowhead=onormal]
+		88 -> 96[arrowhead=onormal]
+		89 -> 98[arrowhead=onormal]
+		90 -> 76[arrowhead=onormal]
+		91 -> 97[arrowhead=onormal]
+		92 -> 99[arrowhead=onormal]
+		93 -> 65[arrowhead=onormal]
+		94 -> 65[arrowhead=onormal]
+		95 -> 76[arrowhead=onormal]
+		96 -> 76[arrowhead=onormal]
+		97 -> 76[arrowhead=onormal]
+		98 -> 76[arrowhead=onormal]
+		99 -> 76[arrowhead=onormal]
 	rankdir=BT
 	splines=ortho
 }
