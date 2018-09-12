@@ -155,7 +155,7 @@ print(graph.driveGraph(listAllEntities))
 
 
 #### GERAR SCRIP TABELAS
-arqScript = open("script", 'w+')
+arqScript = open("Resultado/script", 'w+')
 for i in range(len(listAllEntities)):
     if "name" in listAllEntities[i]:
         arqScript.write(listAllEntities[i]['name'])
@@ -172,7 +172,7 @@ arqScript.close()
 
 
 ###### GERAR RELATORIO
-arqNode = open("relatorio", 'w+')
+arqNode = open("Resultado/relatorio", 'w+')
 for i in range(len(listIncom)):
     num = 0
     arqNode.write(listIncom[i]["stereotype"] + "\n")

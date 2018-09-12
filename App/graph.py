@@ -226,7 +226,7 @@ def driveGraph(listDic):
                 if j in edification:
                     listEdification.append(listWay[i].copy())
 
-        arq = open("schema.gv", 'w+')
+        arq = open("Resultado/schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
         diversionGraph(arq, listDiversion)
@@ -240,8 +240,8 @@ def driveGraph(listDic):
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
         arq.close()
 
-        render('dot', 'png', 'schema.gv')
-        os.remove("schema.gv")
+        render('dot', 'png', 'Resultado/schema.gv')
+        os.remove("Resultado/schema.gv")
     return "\nGraph checked!"
 
 
