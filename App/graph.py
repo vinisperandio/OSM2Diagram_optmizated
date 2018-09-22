@@ -263,7 +263,7 @@ def diversionGraph(arq, listDiversion):
 ######################################################################################### HEALTH
 def findClassHealth(tag):
     if tag in healthCare:
-        return "healthCare"
+        return "healthcare"
     return
 
 
@@ -519,7 +519,7 @@ def findRelation(arq):
         if v in entertainment and controllerPackages[k] == 'diversion':
             arq.write(entityRelation(k, valueKey(mother,'entertainment')))
         elif v in healthCare and controllerPackages[k] == 'health':
-            arq.write(entityRelation(k, valueKey(mother,'healthCare')))
+            arq.write(entityRelation(k, valueKey(mother,'healthcare')))
         elif v in education and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother,'education')))
         elif v in transportation and controllerPackages[k] == 'service':
@@ -647,7 +647,7 @@ def packageRelation(arq, list, name, packageName):
             for j in list[i].keys():  ##  ATRIBUTOS TABELA
                 if "stereotype" not in j and "lat" not in j and "lon" not in j and name not in j:
                     arq.write(entityAtt(j))
-            arq.write(entityAtt("coordenadas") + "\n\t\t\t</TABLE>>]")
+            arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
             listControlthird.append(list[i][name])
             entity[contNode] = list[i][name]
 
