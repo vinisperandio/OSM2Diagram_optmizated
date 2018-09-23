@@ -9,7 +9,6 @@ def coordinates(listAll, i):
 
     if listAll[i]['stereotype'] == 'Point':
         stereotype = "Point"
-        print(listAll[i]['stereotype'])
         stereotypeFLG = 0
     elif listAll[i]['stereotype'] == 'Line':
         stereotype = "LineString"
@@ -44,7 +43,7 @@ def othersAtrib(listAll, i):
 
 
 
-def scriptGeneration(listAll):
+def scriptGeneration(listAll, mapName):
     arqScript = open("Resultado/script", 'w+')
     listScript = []
     script = ""
@@ -71,7 +70,9 @@ def scriptGeneration(listAll):
         script += coordinates(listAll, i)
         listScript.append(script)
 
+
     listScript.sort()
+    arqScript.write("use "+ mapName +"\n")
     for x in listScript:
         arqScript.write(x)
 

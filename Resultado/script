@@ -1,3 +1,4 @@
+use map
 db.crossing.insert({ crossing : traffic_signals, geometries: { type: "Point", coordinates:  [ -20.7572465, -42.8752592 ]  }
 db.hospital.insert({ name: Divisão de Saúde, geometries: { type: "Polygon", coordinates: [ [  [ -20.7618990, -42.8619154 ] , [ -20.7623048, -42.8619312 ] , [ -20.7623641, -42.8615013 ] , [ -20.7619795, -42.8614989 ] , [ -20.7618990, -42.8619154 ]  ] ] }
 db.parking.insert({ name: Estacionamento da Divisão de Saúde, geometries: { type: "Polygon", coordinates: [ [  [ -20.7618499, -42.8611584 ] , [ -20.7618800, -42.8609384 ] , [ -20.7623966, -42.8609679 ] , [ -20.7623790, -42.8611932 ] , [ -20.7618499, -42.8611584 ]  ] ] }

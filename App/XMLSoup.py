@@ -157,7 +157,8 @@ print(graph.driveGraph(listAllEntities))
 
 
 #### GERAR SCRIP TABELAS
-scriptMongo.scriptGeneration(listAllEntities)
+mapName = xml_file.name[4:-4]
+scriptMongo.scriptGeneration(listAllEntities, mapName)
 
 
 ###### GERAR RELATORIO
