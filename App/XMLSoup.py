@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import graph
+import scriptMongo
 import time
+import  os
 import sys
 
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
@@ -26,11 +28,11 @@ def find_coord_stereotypes_Way(list):
             stereotypeList.append(nd.get('ref'))
 
     if len(stereotypeList) == 1:
-        dicElements["stereotype"] = "point"
+        dicElements["stereotype"] = "Point"
     elif stereotypeList[0] == stereotypeList[len(stereotypeList) - 1]:
-        dicElements["stereotype"] = "polygon"
+        dicElements["stereotype"] = "Polygon"
     else:
-        dicElements["stereotype"] = "line"
+        dicElements["stereotype"] = "Line"
 
     for tag in list.find_all('tag'):
         k = tag.get('k')
@@ -50,7 +52,7 @@ def find_coord_stereotypes_Node(list):
         v = tag.get('v')
         dicElements[k] = v
 
-    dicElements["stereotype"] = "point"
+    dicElements["stereotype"] = "Point"
     return
 
 def find_coord_stereotypes_Relation(list):
@@ -155,20 +157,7 @@ print(graph.driveGraph(listAllEntities))
 
 
 #### GERAR SCRIP TABELAS
-arqScript = open("Resultado/script", 'w+')
-for i in range(len(listAllEntities)):
-    if "name" in listAllEntities[i]:
-        arqScript.write(listAllEntities[i]['name'])
-    if "amenity" in listAllEntities[i]:
-        arqScript.write(" - " + listAllEntities[i]['amenity'])
-    if "highway" in listAllEntities[i]:
-        arqScript.write(" - " + listAllEntities[i]['highway'])
-    if "shop" in listAllEntities[i]:
-        arqScript.write(" - " + listAllEntities[i]['shop'])
-    else:
-        arqScript.write("\n")
-print("Script Table completed")
-arqScript.close()
+scriptMongo.scriptGeneration(listAllEntities)
 
 
 ###### GERAR RELATORIO

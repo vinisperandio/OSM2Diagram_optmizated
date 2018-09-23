@@ -466,11 +466,11 @@ def entityName(contNode, list, stereotype):
 
 def entityStereotype(name):
     stereotype = "  "
-    if name == "line":
+    if name == "Line":
         stereotype += "\n\t\t\t\t<font FACE=\"sigmoda\" POINT-SIZE=\"20.0\"> w</font>"
-    if name == "point":
+    if name == "Point":
         stereotype += "\n\t\t\t\t<font FACE=\"sigmoda\" POINT-SIZE=\"20.0\"> b</font>"
-    if name == "polygon":
+    if name == "Polygon":
         stereotype += "\n\t\t\t\t<font FACE=\"sigmoda\" POINT-SIZE=\"20.0\"> e</font>"
 
     stereotype += "</TD>"
@@ -509,8 +509,8 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     global mother
-    print(mother)
-    print(controllerPackages)
+    #print(mother)
+    #print(controllerPackages)
     # print(superClass)
     # print(subClass)
     # print(entity)
