@@ -1,8 +1,7 @@
 from bs4 import BeautifulSoup
 import graph
-import scriptMongo
 import time
-import  os
+import scriptMongo
 import sys
 
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
@@ -28,11 +27,11 @@ def find_coord_stereotypes_Way(list):
             stereotypeList.append(nd.get('ref'))
 
     if len(stereotypeList) == 1:
-        dicElements["stereotype"] = "Point"
+        dicElements["stereotype"] = "point"
     elif stereotypeList[0] == stereotypeList[len(stereotypeList) - 1]:
-        dicElements["stereotype"] = "Polygon"
+        dicElements["stereotype"] = "polygon"
     else:
-        dicElements["stereotype"] = "Line"
+        dicElements["stereotype"] = "line"
 
     for tag in list.find_all('tag'):
         k = tag.get('k')
@@ -52,7 +51,7 @@ def find_coord_stereotypes_Node(list):
         v = tag.get('v')
         dicElements[k] = v
 
-    dicElements["stereotype"] = "Point"
+    dicElements["stereotype"] = "point"
     return
 
 def find_coord_stereotypes_Relation(list):
@@ -157,9 +156,7 @@ print(graph.driveGraph(listAllEntities))
 
 
 #### GERAR SCRIP TABELAS
-mapName = xml_file.name[4:-4]
-scriptMongo.scriptGeneration(listAllEntities, mapName)
-
+scriptMongo.scriptGeneration(listAllEntities, xml_file.name)
 
 ###### GERAR RELATORIO
 arqNode = open("Resultado/relatorio", 'w+')

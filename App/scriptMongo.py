@@ -72,8 +72,13 @@ def scriptGeneration(listAll, mapName):
 
 
     listScript.sort()
-    arqScript.write("use "+ mapName +"\n")
+    arqScript.write("use "+ mapName +"\n\n")
+    arrab = listScript[0].split(".")[1]
     for x in listScript:
+
+        if x.split(".")[1] != arrab:
+            arqScript.write("\n")
+            arrab = x.split(".")[1]
         arqScript.write(x)
 
     arqScript.close()

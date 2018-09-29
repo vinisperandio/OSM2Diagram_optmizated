@@ -318,7 +318,7 @@ def roadMeshGraph(arq, listRoadMesh):
 
 ######################################################################################### EDIFICATION
 def findClassEdification(tag):
-    print(tag)
+#    print(tag)
     if tag in office:
         return "office"
 
@@ -426,7 +426,7 @@ def subGraph(arq, namePackage, package, list):
                 entity[contNode] = list[i][k]
                 controllerPackages[contNode] = namePackage
                 flg.append(findClass(namePackage, list[i][k]))
-                print(list[i][k])
+#                print(list[i][k])
                 contNode = contNode + 1
                 arq.write("\n\t\t\t<hr/>")
                 for j in list[i].keys():  ##  TABLE ATT
