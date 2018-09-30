@@ -46,7 +46,6 @@ def coordinates(listAll, i):
     stereotype = flgMulti + stereotype
     scriptStereotype = "geometries: { type: " + "\"" + stereotype + "\","
     script = scriptStereotype + scriptCoordinates
-    #script = script[:-1]
     script += charStereotypeClose[stereotypeFLG] + " }})\n"
 
     return script
