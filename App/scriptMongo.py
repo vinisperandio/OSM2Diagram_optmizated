@@ -105,6 +105,3 @@ def scriptGeneration(listAll, mapName):
     print("Script Table completed")
 
     return
-
-
-# db.school.insert({name:"elfie holfs", locations: {type: "Point",coordinates: [123123, 123123]}});
