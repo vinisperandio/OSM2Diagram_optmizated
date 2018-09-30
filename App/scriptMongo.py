@@ -1,11 +1,16 @@
 
 def coordinates(listAll, i):
+    scriptStereotype = ""
+    scriptCoordinates = ""
     script = ""
     charStereotypeOpen = ["", "[ ", "[ [ "]
     charStereotypeClose = ["", " ]", " ] ]"]
     stereotypeFLG = 0
-    num = 0
+    num = 1
     stereotype = ""
+    flgMulti = ""
+    charVirgula = [",", ""]
+    flgVirgula = 0
 
     if listAll[i]['stereotype'] == 'Point':
         stereotype = "Point"
@@ -17,16 +22,32 @@ def coordinates(listAll, i):
         stereotype = "Polygon"
         stereotypeFLG = 2
 
-    script += "geometries: { type: " + "\"" + stereotype + "\","
-    script += " coordinates: " + charStereotypeOpen[stereotypeFLG]
+    scriptCoordinates = " coordinates: " + charStereotypeOpen[stereotypeFLG]
+    flgLat = listAll[i]['lat0']
+    flgLon = listAll[i]['lon0']
+    scriptCoordinates += " [ "
+    scriptCoordinates += str(listAll[i]['lat0']) + ", " + str(listAll[i]['lon0'])
+    scriptCoordinates += " ] "
     while 'lat' + str(num) in listAll[i].keys():
-        script += " [ "
-        script += str(listAll[i]['lat' + str(num)]) + ", " + str(listAll[i]['lon' + str(num)])
-        num += 1
-        script += " ] ,"
+        scriptCoordinates += charVirgula[flgVirgula] +" [ "
+        scriptCoordinates += str(listAll[i]['lat' + str(num)]) + ", " + str(listAll[i]['lon' + str(num)])
+        scriptCoordinates += " ] "
+        flgVirgula = 0
+        if flgLat == listAll[i]['lat'+str(num)] and flgLon == listAll[i]['lon'+str(num)]:
+            if 'lat' + str(num+1) in listAll[i].keys():
+                scriptCoordinates += charStereotypeClose[stereotypeFLG] + ", " + charStereotypeOpen[stereotypeFLG]
+                flgLat = listAll[i]['lat'+str(num)]
+                flgLon = listAll[i]['lon'+str(num)]
+                flgMulti = "Multi"
+                flgVirgula = 1
 
-    script = script[:-1]
-    script += charStereotypeClose[stereotypeFLG] + " }\n"
+        num += 1
+
+    stereotype = flgMulti + stereotype
+    scriptStereotype = "geometries: { type: " + "\"" + stereotype + "\","
+    script = scriptStereotype + scriptCoordinates
+    #script = script[:-1]
+    script += charStereotypeClose[stereotypeFLG] + " }})\n"
 
     return script
 
@@ -37,9 +58,9 @@ def othersAtrib(listAll, i):
     remove = ["name","stereotype","amenity","highway","shop","building"]
     for j in listAll[i].keys():
         if j not in remove and "lat" not in j and "lon" not in j :
-            script += j + " : " + listAll[i][j] + ", "
+            script += j + " : \"" + listAll[i][j] + "\", "
 
-    return script
+    return script.replace("addr:", "")
 
 
 
@@ -64,7 +85,7 @@ def scriptGeneration(listAll, mapName):
 
 
         if "name" in listAll[i]:
-            script += "name: "+ listAll[i]['name'] + ", "
+            script += "name: \""+ listAll[i]['name'] + "\", "
 
         script += othersAtrib(listAll, i)
         script += coordinates(listAll, i)

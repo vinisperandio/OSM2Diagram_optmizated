@@ -27,11 +27,11 @@ def find_coord_stereotypes_Way(list):
             stereotypeList.append(nd.get('ref'))
 
     if len(stereotypeList) == 1:
-        dicElements["stereotype"] = "point"
+        dicElements["stereotype"] = "Point"
     elif stereotypeList[0] == stereotypeList[len(stereotypeList) - 1]:
-        dicElements["stereotype"] = "polygon"
+        dicElements["stereotype"] = "Polygon"
     else:
-        dicElements["stereotype"] = "line"
+        dicElements["stereotype"] = "Line"
 
     for tag in list.find_all('tag'):
         k = tag.get('k')
@@ -51,7 +51,7 @@ def find_coord_stereotypes_Node(list):
         v = tag.get('v')
         dicElements[k] = v
 
-    dicElements["stereotype"] = "point"
+    dicElements["stereotype"] = "Point"
     return
 
 def find_coord_stereotypes_Relation(list):
@@ -66,7 +66,7 @@ def find_coord_stereotypes_Relation(list):
                     dicElements["lon" + str(flg)] = coord.get('lon')
                     flg = flg + 1
 
-    dicElements["stereotype"] = "polygon"
+    dicElements["stereotype"] = "Polygon"
 
     for tag in list.find_all('tag'):
         if tag.get('k') == 'type':
@@ -130,7 +130,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map.osm") as xml_file:
+with open("App/map_relation.osm") as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -156,7 +156,8 @@ print(graph.driveGraph(listAllEntities))
 
 
 #### GERAR SCRIP TABELAS
-scriptMongo.scriptGeneration(listAllEntities, xml_file.name)
+fileName = xml_file.name
+scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
 
 ###### GERAR RELATORIO
 arqNode = open("Resultado/relatorio", 'w+')
