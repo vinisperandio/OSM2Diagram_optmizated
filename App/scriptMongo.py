@@ -61,19 +61,17 @@ def othersAtrib(listAll, i):
 
     return script.replace("addr:", "")
 
-def OpenJson(listScript):
+def openJSON(listScript):
     dotA = listScript.find('.') + 1
     dotB = listScript.find('.', dotA)
-    arqJSON = open("Resultado/" + str(listScript[0][dotA:dotB]) + ".json", 'w+')
+    arqJSON = open("Resultado/" + str(listScript[dotA:dotB]) + ".json", 'w+')
 
     return arqJSON
 
 def scriptGeneration(listAll, mapName):
     arqScript = open("Resultado/script.txt", 'w+')
     listScript = []
-    listScriptJSON = []
     script = ""
-    scriptJSON = ""
 
     for i in range(len(listAll)):
 
@@ -101,25 +99,26 @@ def scriptGeneration(listAll, mapName):
     listScript.sort()
     arqScript.write("use "+ mapName +"\n\n")
     arrabN = listScript[0].split(".")[1]
-    arqJSON = OpenJson(listScript[0])
+    arqJSON = openJSON(listScript[0])
     for x in listScript:
-        arqJSON.write(x)
 
         if x.split(".")[1] != arrabN:
             arqJSON.close()
-            arqJSON = open()
+            arqJSON = openJSON(x)
             arqScript.write("\n")
             arrabN = x.split(".")[1]
+
         arqScript.write(x)
+        arqJSON.write(x[x.find('{'):x.find(')')]+"\n")
 
     arqScript.close()
     arqJSON.close()
-    print("Script Table completed")
-    asd = listScript[0].find('.')
-    print(asd)
-    print(listScript[0].find('.', asd+1))
-    print(listScript[0][3:11])
-    print(listScript[0].find('{'))
-    print(listScript[0][19:])
 
+    print("Script Table completed")
+    # asd = listScript[0].find('.')
+    # print(asd)
+    # print(listScript[0].find('.', asd+1))
+    # print(listScript[0][3:11])
+    # print(listScript[0].find('{'))
+    # print(listScript[0][19:])
     return
