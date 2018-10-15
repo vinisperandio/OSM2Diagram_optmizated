@@ -81,14 +81,50 @@ def scriptGeneration(listAll, mapName):
         if "amenity" in listAll[i]:
             script = "db."+listAll[i]['amenity']+".insert({ "
 
-        elif "highway" in listAll[i]:
-            script = "db."+listAll[i]['highway']+".insert({ "
-
         elif "shop" in listAll[i]:
             script = "db."+listAll[i]['shop']+".insert({ "
 
+        elif "highway" in listAll[i]:
+            script = "db."+listAll[i]['highway']+".insert({ "
+
+        elif "aerialway" in listAll[i]:
+            script = "db."+listAll[i]['aerialway']+".insert({ "
+
+        elif "aeroway" in listAll[i]:
+            script = "db."+listAll[i]['aeroway']+".insert({ "
+
+        elif "railway" in listAll[i]:
+            script = "db."+listAll[i]['railway']+".insert({ "
+
+        elif "route" in listAll[i]:
+            script = "db."+listAll[i]['route']+".insert({ "
+
+        elif "public_transportation" in listAll[i]:
+            script = "db."+listAll[i]['public_transportation']+".insert({ "
+
         elif "building" in listAll[i]:
             script = "db."+listAll[i]['building']+".insert({ "
+        elif "place" in listAll[i]:
+            script = "db."+listAll[i]['place']+".insert({ "
+        elif "office" in listAll[i]:
+            script = "db." + listAll[i]['office'] + ".insert({ "
+
+        elif "leisure" in listAll[i]:
+            script = "db."+listAll[i]['leisure']+".insert({ "
+
+        elif "tourism" in listAll[i]:
+            script = "db."+listAll[i]['tourism']+".insert({ "
+
+        elif "historic" in listAll[i]:
+            script = "db."+listAll[i]['historic']+".insert({ "
+
+        elif "man_made" in listAll[i]:
+            script = "db."+listAll[i]['man_made']+".insert({ "
+
+        elif "sport" in listAll[i]:
+            script = "db."+listAll[i]['sport']+".insert({ "
+
+
         else:
             script = ""
 

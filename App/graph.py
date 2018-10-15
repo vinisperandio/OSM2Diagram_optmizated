@@ -5,10 +5,39 @@ import os
 global diversion
 diversion = ['leisure','historic','touriusm','man_made','sport']
 global leisure
+leisure = ['adult_gaming_centre', 'amusement_arcade', 'beachj_resort', 'bandstand', 'bird_hide', 'common', 'dance',
+           'disc_golf_course', 'dog_park', 'escape_game', 'firepit', 'fishing', 'fitness_centre', 'fitness_station',
+           'garden', 'hackerspace', 'horse_riding', 'ice_rink', 'marina', 'miniature_golf', 'nature_reserve', 'park',
+           'picnic_table', 'pitch', 'playground', 'slipway', 'sports_centre', 'stadium', 'summer_camp', 'swimming_area',
+           'swimming_pool', 'track', 'water_park', 'wildlife_hide']
 global historic
+historic = ['aircraft', 'aqueduct', 'archaeological_site', 'battlefield', 'boundary_stone', 'building', 'cannon','castle',
+            'castle_wall', 'church', 'city_gate', 'citywalls', 'farm', 'fort', 'gallows', 'highwater_mark', 'locomotive',
+            'manor', 'memorial', 'milestone', 'monastery', 'monument', 'optical_telegraph', 'pillory', 'railway_car', 'ruins',
+            'rune_stone', 'ship', 'tomb', 'tower', 'wayside_cross', 'wayside_shrine', 'wreck', 'yes']
 global touriusm
+touriusm = ['alpine_hut', 'apartment', 'aquarium', 'artwork', 'attraction', 'camp_site', 'caravan_site', 'chalet', 'gallery',
+            'guest_house', 'hostel', 'hotel', 'information', 'motel', 'museum', 'picnic_site', 'theme_park', 'viewpoint',
+            'wilderness_hut', 'zoo', 'yes']
 global man_made
+man_made = ['adit', 'beacon', 'breakwater', 'bridge', 'bunker_silo', 'campanile', 'chimney', 'communication_tower', 'crane',
+            'cross', 'cutline', 'clearcut', 'dovecote', 'drinking_fountain', 'dyke', 'embankment','flagpole', 'gasometer',
+            'groyne', 'guy', 'kiln', 'lighthouse', 'mast', 'mineshalft', 'monitoring_station', 'obelisk', 'observatory',
+            'offshore_platform', 'petroleum_well', 'pier', 'pipeline', 'pumping_station', 'reservoir_covered', 'silo',
+            'snow_fence', 'snow_net', 'storage_tank', 'street_cabinet', 'surveillance', 'survey_point', 'telescope', 'tower',
+            'wastewater_plant', 'watermill', 'water_tower', 'water_well', 'water_tap', 'water_works', 'wildlife_crossing',
+            'windmill', 'works', 'yes']
 global sport
+sport = ['9pin','10pin','american_football','aikido','archery','athletics','australian_football','badminton','bandy',
+         'base','baseball','basketball','beachvolleyball','	billiards','bmx','bobsleigh','boules','bowls','boxing',
+         'canadian_football','canoe','chess','cliff_diving','climbing','climbing_adventure','cockfighting','cricket',
+         'croquet','curling','cycling','darts','dog_racing','equestrian','fencing','field_hockey','free_flying','futsal',
+         'gaelic_games','golf','gymnastics','handball','hapkido','horseshoes','horse_racing','ice_hockey','ice_skating',
+         'ice_stock','judo','karate','karting','kitesurfing','korfball','lacrosse','model_aerodrome','motocross','motor',
+         'multi','netball','obstacle_course','orienteering','paddle_tennis','padel','parachuting','paragliding','pelota',
+         'racquet','rc_car','roller_skating','rowing','rugby_league','rugby_union','running','sailing','scuba_diving',
+         'shooting','skateboard','soccer','sumo','surfing','swimming','table_tennis','table_soccer','taekwondo','tennis',
+         'toboggan','volleyball','water_polo','water_ski','weightlifting','wrestling','yoga']
 #---------------------------------------------HEALTH-------------------------------------------------------------------------
 global health
 health = ['emergency']
@@ -16,10 +45,16 @@ health = ['emergency']
 global emergency
 emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_Structure', 'other_Station']
 global medical_rescue
+medical_rescue = ['ambulance_station', 'defibrilator', 'first_aid_kit', 'landing_site', 'emergency_ward_entrance']
 global firefighters
+firefighters = ['dry_riser_inlet', 'fire_alarm_box', 'fire_extinguisher', 'fire_flapper', 'fire_hose',
+                       'fire_hydrant', 'water_tank', 'fire_water_pond', 'suction_point']
 global lifeguards
+lifeguards = ['lifeguard', 'lifeguard_base', 'lifeguard_tower', 'lifeguard_platform', 'life_ring']
 global other_Structure
+other_Structure = ['mountain_rescue', 'ses_station']
 global other_Station
+other_Station = ['assembly_point', 'access_point', 'phone', 'rescue_box', 'siren']
 
 #---------------------------------------------PACKAGED SERVICES--------------------------------------------------------------------------
 global service
@@ -208,6 +243,7 @@ def driveGraph(listDic):
     listDiversion = []
     listEdification = []
 
+
     if not listWay:
         return "Graph failed!"
     else:
@@ -225,6 +261,8 @@ def driveGraph(listDic):
                     listRoadMesh.append(listWay[i].copy())
                 if j in edification:
                     listEdification.append(listWay[i].copy())
+                if j in diversion:
+                    listDiversion.append(listWay[i].copy())
 
         arq = open("Resultado/schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
@@ -249,13 +287,24 @@ def driveGraph(listDic):
 def findClassDiversion(tag):
     if tag in entertainment:
         return "entertainment"
+    elif tag in leisure:
+        return "leisure"
+    elif tag in historic:
+        return "historic"
+    elif tag in touriusm:
+        return "touriusm"
+    elif tag in man_made:
+        return "man_made"
+    elif tag in sport:
+        return "sport"
     return
+
 
 
 def diversionGraph(arq, listDiversion):
     arq.write(initPackage("DIVERSION"))
     packageRelation(arq, listDiversion, "amenity", "diversion")  ##AMENITY
-    subGraph(arq, "Diversion", diversion, listDiversion)
+    subGraph(arq, "diversion", diversion, listDiversion)
 
     return "DIVERSION checked!"
 
@@ -264,6 +313,16 @@ def diversionGraph(arq, listDiversion):
 def findClassHealth(tag):
     if tag in healthCare:
         return "healthcare"
+    elif tag in medical_rescue:
+        return "medical_rescue"
+    elif tag in firefighters:
+        return "firefighters"
+    elif tag in lifeguards:
+        return "lifeguards"
+    elif tag in other_Station:
+        return "other_Station"
+    elif tag in other_Structure:
+        return "other_Structure"
     return
 
 
@@ -509,8 +568,8 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     global mother
-    #print(mother)
-    #print(controllerPackages)
+    print(mother)
+    print(controllerPackages)
     # print(superClass)
     # print(subClass)
     # print(entity)
@@ -530,7 +589,7 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother,'sustenance')))
         elif v in other_Amenity and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother,'other_Amenity')))
-        elif v in amenity and controllerPackages[k] == 'service' or controllerPackages[k] == 'health' or controllerPackages[k] == 'diversion':
+        elif (v in amenity and controllerPackages[k] == 'service') or (v in amenity and controllerPackages[k] == 'health') or (v in amenity and controllerPackages[k] == 'diversion'):
             arq.write(entityRelation(k, valueKey(mother,'amenity')))
 
         elif v in food_beverages and controllerPackages[k] == 'service':
@@ -559,6 +618,32 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'other_Shop')))
         elif v in shop and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother, 'shop')))
+
+        elif v in leisure and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'leisure')))
+
+        elif v in historic and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'historic')))
+
+        elif v in touriusm and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'touriusm')))
+
+        elif v in man_made and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'man_made')))
+
+        elif v in sport and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'sport')))
+
+        elif v in medical_rescue and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'medical_rescue')))
+        elif v in firefighters and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'firefighters')))
+        elif v in lifeguards and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother,'lifeguards')))
+        elif v in other_Station and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother, 'other_Station')))
+        elif v in other_Structure and controllerPackages[k] == 'diversion':
+            arq.write(entityRelation(k, valueKey(mother, 'other_Structure')))
 
         elif v in other_Highway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'other highway features')))
