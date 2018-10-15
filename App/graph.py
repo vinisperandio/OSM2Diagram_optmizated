@@ -1,9 +1,54 @@
 from graphviz import Digraph, render
 import os
 
-#---------------------------------------------DIVERSION-------------------------------------------------------------------------
-global diversion
-diversion = ['leisure','historic','touriusm','man_made','sport']
+#---------------------------------------------PACKAGE DELIMITATION-------------------------------------------------------------------------
+global delimitation
+delimitation = ['barrier', 'boundary']
+
+global barrier
+barrier = ['linear_barriers','access control on highways']
+global linear_barriers
+linear_barriers = ['cable_barrier','city_wall','ditch','fence','guard_rail','handrail','hedge','kerb','retaining_wall',
+                   'tank_trap','wall']
+global access_control_on_highways
+access_control_on_highways = ['block','bollard','border_control','bump_gate','bus_trap','cattle_grid','chain','cycle_barrier',
+                              'debris','entrance','full-height_turnstile','gate','hampshire_gate','height_restrictor',
+                              'horse_stile','jersey_barrier','kent_carriage_gap','kissing_gate','lift_gate','log',
+                              'motorcycle_barrier','rope','sally_port','spikes','stile','sump_buster','swing_gate',
+                              'toll_booth','turnstile','yes']
+global boundary
+boundary = ['administrative','historic','maritime','national_park','political','postal_code','religious_administration','protected_area']
+
+#---------------------------------------------PACKAGE MILITARY-------------------------------------------------------------------------
+global Military
+Military = ['military']
+
+global military
+military = ['airfield','ammunition','bunker','barracks','checkpoint','danger_area','naval_base','nuclear_explosion_site',
+            'obstacle_course','office','range','training_area','trench','launchpad']
+
+#---------------------------------------------PACKAGE ELECTRICITY-------------------------------------------------------------------------
+global electricity
+electricity = ['power']
+
+global power
+power = ['plant','cable','compensator','converter','generator','heliostat','insulator','line','minor_line','pole','portal',
+         'catenary_mast','substation','switch','terminal','tower','transformer']
+
+#---------------------------------------------PACKAGE LANDUSE-------------------------------------------------------------------------
+global Landuse
+Landuse = ['landuse']
+
+global landuse
+landuse = ['commercial','construction','industrial','residential','retail','allotments','basin','brownfield','cemetery',
+           'depot','farmland','farmyard','forest','garages','grass','greenfield','greenhouse_horticulture','landfill',
+           'meadow','military','orchard','plant_nursery','port','quarry','railway','recreation_ground','religious','reservoir','salt_pond',
+           'village_green','vineyard']
+
+#---------------------------------------------PACKAGE LEISURE-------------------------------------------------------------------------
+global Leisure
+Leisure = ['leisure','historic','tourism','man_made','sport']
+
 global leisure
 leisure = ['adult_gaming_centre', 'amusement_arcade', 'beachj_resort', 'bandstand', 'bird_hide', 'common', 'dance',
            'disc_golf_course', 'dog_park', 'escape_game', 'firepit', 'fishing', 'fitness_centre', 'fitness_station',
@@ -15,8 +60,8 @@ historic = ['aircraft', 'aqueduct', 'archaeological_site', 'battlefield', 'bound
             'castle_wall', 'church', 'city_gate', 'citywalls', 'farm', 'fort', 'gallows', 'highwater_mark', 'locomotive',
             'manor', 'memorial', 'milestone', 'monastery', 'monument', 'optical_telegraph', 'pillory', 'railway_car', 'ruins',
             'rune_stone', 'ship', 'tomb', 'tower', 'wayside_cross', 'wayside_shrine', 'wreck', 'yes']
-global touriusm
-touriusm = ['alpine_hut', 'apartment', 'aquarium', 'artwork', 'attraction', 'camp_site', 'caravan_site', 'chalet', 'gallery',
+global tourism
+tourism = ['alpine_hut', 'apartment', 'aquarium', 'artwork', 'attraction', 'camp_site', 'caravan_site', 'chalet', 'gallery',
             'guest_house', 'hostel', 'hotel', 'information', 'motel', 'museum', 'picnic_site', 'theme_park', 'viewpoint',
             'wilderness_hut', 'zoo', 'yes']
 global man_made
@@ -38,7 +83,8 @@ sport = ['9pin','10pin','american_football','aikido','archery','athletics','aust
          'racquet','rc_car','roller_skating','rowing','rugby_league','rugby_union','running','sailing','scuba_diving',
          'shooting','skateboard','soccer','sumo','surfing','swimming','table_tennis','table_soccer','taekwondo','tennis',
          'toboggan','volleyball','water_polo','water_ski','weightlifting','wrestling','yoga']
-#---------------------------------------------HEALTH-------------------------------------------------------------------------
+
+#---------------------------------------------PACKAGE HEALTH-------------------------------------------------------------------------
 global health
 health = ['emergency']
 
@@ -61,7 +107,7 @@ global service
 service = ['shop', 'amenity', 'craft']
 
 global amenity
-amenity = ['sustenance','education', 'transportation', 'financial', 'healthCare', 'entertainment', 'other_Amenity']
+amenity = ['sustenance','education', 'transportation', 'financial', 'healthcare', 'entertainment', 'other_Amenity']
 global sustenance
 sustenance = ['bar','bbq','biergarten','cafe','drinking_water','fast_food','ice_cream','pub','restaurant']
 global education
@@ -74,8 +120,8 @@ transportation = ['bicycle_parking','bicycle_repair_station','bicycle_rental','b
                   'taxi','ticket_validator']
 global financial
 financial = ['atm','bank','bureau_de_change']
-global healthCare
-healthCare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home','pharmacy','social_facility',
+global healthcare
+healthcare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home','pharmacy','social_facility',
               'veterinary','blood_donation']
 global entertainment
 entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub',
@@ -130,7 +176,15 @@ other_Shop = ['bookmaker','copyshop','dry_cleaning','e-cigarette','funeral_direc
               'weapons','user_defined']
 
 global craft
-craft = ['agricultura_engines', 'bakery', 'carpenter']
+craft = ['agricultura_engines', 'bakery','basket_maker','beekeeper','blacksmith','boatbuilder','bookbinder','brewery',
+         'builder','cabinet_maker','car_repair','carpenter','carpet_layer','caterer','chimney_sweeper','clockmaker',
+         'confectionery','cooper','dental_technician','distillery','dressmaker','electronics_repair','embroiderer',
+         'electrician','engraver','floorer','gardener','glaziery','grinding_mill','handicraft','hvac','insulation',
+         'jeweller','joiner','key_cutter','locksmith','metal_construction','mint','musical_instrument','oil_mill',
+         'optician','organ_builder','painter','parquet_layer','photographer','photographic_laboratory','piano_tuner',
+         'plasterer','plumber','pottery','printmaker','rigger','roofer','saddler','sailmaker','sawmill','scaffolder',
+         'sculptor','shoemaker','stand_builder','stonemason','sun_protection','tailor','tiler','tinsmith','toolmaker',
+         'turner','upholsterer','watchmaker','window_construction','winery']
 
 #-----------------------------------------------PACKAGE ROAD MESH----------------------------------------------------------------------
 global road_mesh
@@ -144,15 +198,15 @@ aeroway = ['aerodrome','apron','gate','hangar','helipad','heliport','navigationa
            'taxiway','terminal','windsock']
 
 global highway
-highway = ['roads', 'link roads','special roads', 'path', 'lifecycle', 'other highway features']
+highway = ['roads', 'link roads','special roads', 'Path', 'lifecycle', 'other highway features']
 global roads
 roads = ['motorway','trunk','primary','secondary','tertiary','unclassified','residential','service']
 global linkRoads
 linkRoads = ['motorway_link','trunk_link','primary_link','secondary_link','tertiary_link']
 global special_road
 special_road = ['living_street','pedestrian','track','bus_guideway','escape','raceway','road']
-global path
-path = ['footway','bridleway','steps','path','cycleway','busway']
+global Path
+Path = ['footway','bridleway','steps','path','cycleway','busway']
 global lifecycle
 lifecycle = ['proposed','construction']
 global other_Highway
@@ -218,7 +272,41 @@ other_building = ['barn','bridge','bunker','carport','convervatory','constructio
                   'services','ruins','water_tower','user defined']
 
 
-#-----------------------------------------------STERIOTYPE-------------------------------------------------------------------
+#-----------------------------------------------PACKAGE VEGETATION--------------------------------------------------------------------
+global vegetation
+vegetation = ['natural','geological']
+
+global natural
+natural = ['vegetation_surface_related','water_related','landform_related']
+
+global vegetation_surface_related
+vegetation_surface_related = ['wood','tree_row','tree','scrub','heath','moor','grassland','fell','bare_rock','scree',
+                              'shingle','sand','mud']
+global water_related
+water_related = ['water','wetland','glacier','bay','cape','beach','coastline','spring','hot_spring','geyser','blowhole']
+global landform_related
+landform_related = ['peak','volcano','valley','ridge','arete','cliff','saddle','rock','stone','sinkhole','cave_entrance']
+
+global geological
+geological = ['moraine','outcrop','palaeontological_site']
+
+
+#-----------------------------------------------PACKAGE HYDROGRAPHY--------------------------------------------------------------------
+global hydrography
+hydrography = ['waterway']
+
+global waterway
+waterway = ['natural_watercourses','man_made_waterways','facilities','barriers_on_waterways','other_features_on_waterways']
+global natural_watercourses
+natural_watercourses = ['river','riverbank','stream','wadi','drystream']
+global man_made_waterways
+man_made_waterways = ['canal','drain','ditch','fairway']
+global facilities
+facilities = ['dock','boatyard']
+global barriers_on_waterways
+barriers_on_waterways = ['dam','weir','stream_end','waterfall','lock_gate']
+global other_features_on_waterways
+other_features_on_waterways = ['turning_point','water_point','fuel']
 
 
 #-----------------------------------------------VARIAVEIS CONTROLE-----------------------------------------------------------
@@ -240,8 +328,14 @@ def driveGraph(listDic):
     listService = []
     listRoadMesh = []
     listHealth = []
-    listDiversion = []
+    listLeisure = []
     listEdification = []
+    listLandUse = []
+    listElectricity = []
+    listMilitary = []
+    listDelimitation = []
+    listVegetation = []
+    listHydrography = []
 
 
     if not listWay:
@@ -251,27 +345,49 @@ def driveGraph(listDic):
             for j in listWay[i].keys():
                 if j in service:
                     if 'amenity' in listWay[i].keys():
-                        if listWay[i]['amenity'] in healthCare:
+                        if listWay[i]['amenity'] in healthcare:
                             listHealth.append(listWay[i].copy())
                         elif listWay[i]['amenity'] in entertainment:
-                            listDiversion.append(listWay[i].copy())
+                            listLeisure.append(listWay[i].copy())
                         else:
                             listService.append(listWay[i].copy())
                 if j in road_mesh:
                     listRoadMesh.append(listWay[i].copy())
                 if j in edification:
                     listEdification.append(listWay[i].copy())
-                if j in diversion:
-                    listDiversion.append(listWay[i].copy())
+                if j in Leisure:
+                    listLeisure.append(listWay[i].copy())
+                if j in Landuse:
+                    listLandUse.append(listWay[i].copy())
+                if j in electricity:
+                    listElectricity.append(listWay[i].copy())
+                if j in Military:
+                    listMilitary.append(listWay[i].copy())
+                if j in delimitation:
+                    listDelimitation.append(listWay[i].copy())
+                if j in vegetation:
+                    if 'natural' in listWay[i].keys():
+                        if listWay[i]['natural'] in water_related:
+                            listHydrography.append(listWay[i].copiy())
+                        else:
+                            listVegetation.append(listWay[i].copy())
+                if j in hydrography:
+                    listHydrography.append(listWay[i].copy())
 
         arq = open("Resultado/schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
-        diversionGraph(arq, listDiversion)
+        landUseGraph(arq, listLandUse)
+        leisureGraph(arq, listLeisure)
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
         roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
+        electricityGraph(arq, listElectricity)
+        delimitationGraph(arq, listDelimitation)
+        militaryGraph(arq, listMilitary)
+        hydrographyGraph(arq, listHydrography)
+        vegetationGraph(arq, listVegetation)
         findRelation(arq)
         print("\nnumero de entidades:"+ str(len(entity)))
 
@@ -280,19 +396,124 @@ def driveGraph(listDic):
 
         render('dot', 'png', 'Resultado/schema.gv')
         os.remove("Resultado/schema.gv")
-    return "\nGraph checked!"
+    return "Graph checked!"
 
 
-######################################################################################### DIVERSION
-def findClassDiversion(tag):
+######################################################################################### HYDROGRAPHY
+def findClassHydrography(tag):
+    if tag in natural_watercourses:
+        return "natural_watercourses"
+    elif tag in facilities:
+        return "facilities"
+    elif tag in man_made_waterways:
+        return "man_made_waterways"
+    elif tag in barriers_on_waterways:
+        return "barriers_on_waterways"
+    elif tag in other_features_on_waterways:
+        return "other_features_on_waterways"
+    elif tag in water_related:
+        return "water_related"
+    return
+
+
+def hydrographyGraph(arq, listhydrography):
+    arq.write(initPackage("HYDROGRAPHY"))
+    packageRelation(arq, listhydrography, "vegetation", "hydrography")  ##VEGETATION
+    subGraph(arq, "hydrography", hydrography, listhydrography)
+
+    return "HYDROGRAPHY checked!"
+
+
+######################################################################################### VEGETATION
+def findClassVegetation(tag):
+    if tag in vegetation_surface_related:
+        return "vegetation_surface_related"
+    elif tag in landform_related:
+        return "landform_related"
+
+    elif tag in geological:
+        return "geological"
+    return
+
+
+def vegetationGraph(arq, listVegetation):
+    arq.write(initPackage("VEGETATION"))
+    subGraph(arq, "vegetation", vegetation, listVegetation)
+
+    return "VEGETATION checked!"
+
+
+######################################################################################### DELIMITATION
+def findClassDelimitation(tag):
+    if tag in linear_barriers:
+        return "linear_barriers"
+    elif tag in access_control_on_highways:
+        return "access_control_on_highways"
+
+    elif tag in boundary:
+        return "boundary"
+    return
+
+
+def delimitationGraph(arq, listDelimitation):
+    arq.write(initPackage("DELIMITATION"))
+    subGraph(arq, "delimitation", delimitation, listDelimitation)
+
+    return "DELIMITATION checked!"
+
+
+######################################################################################### MILITARY
+def findClassMilitary(tag):
+    if tag in military:
+        return "military"
+    return
+
+
+def militaryGraph(arq, listMilitary):
+    arq.write(initPackage("MILITARY"))
+    subGraph(arq, "Military", Military, listMilitary)
+
+    return "MILITARY checked!"
+
+
+######################################################################################### ELECTRICITY
+def findClassElectricity(tag):
+    if tag in power:
+        return "power"
+    return
+
+
+def electricityGraph(arq, listElectricity):
+    arq.write(initPackage("ELECTRICITY"))
+    subGraph(arq, "electricity", electricity, listElectricity)
+
+    return "ELECTRICITY checked!"
+
+
+######################################################################################### LANDUSE
+def findClassLanduse(tag):
+    if tag in landuse:
+        return "landuse"
+    return
+
+
+def landUseGraph(arq, listLandUse):
+    arq.write(initPackage("LANDUSE"))
+    subGraph(arq, "Landuse", Landuse, listLandUse)
+
+    return "LANDUSE checked!"
+
+
+######################################################################################### LEISURE
+def findClassLeisure(tag):
     if tag in entertainment:
         return "entertainment"
     elif tag in leisure:
         return "leisure"
     elif tag in historic:
         return "historic"
-    elif tag in touriusm:
-        return "touriusm"
+    elif tag in tourism:
+        return "tourism"
     elif tag in man_made:
         return "man_made"
     elif tag in sport:
@@ -300,18 +521,17 @@ def findClassDiversion(tag):
     return
 
 
+def leisureGraph(arq, listLeisure):
+    arq.write(initPackage("LEISURE"))
+    packageRelation(arq, listLeisure, "amenity", "Leisure")  ##AMENITY
+    subGraph(arq, "Leisure", Leisure, listLeisure)
 
-def diversionGraph(arq, listDiversion):
-    arq.write(initPackage("DIVERSION"))
-    packageRelation(arq, listDiversion, "amenity", "diversion")  ##AMENITY
-    subGraph(arq, "diversion", diversion, listDiversion)
-
-    return "DIVERSION checked!"
+    return "Leisure checked!"
 
 
 ######################################################################################### HEALTH
 def findClassHealth(tag):
-    if tag in healthCare:
+    if tag in healthcare:
         return "healthcare"
     elif tag in medical_rescue:
         return "medical_rescue"
@@ -338,8 +558,8 @@ def emergencyGraph(arq, listHealth):
 def findClassroad_mesh(tag):
     if tag in roads:
         return "roads"
-    elif tag in path:
-        return "path"
+    elif tag in Path:
+        return "Path"
     elif tag in linkRoads:
         return "link roads"
     elif tag in lifecycle:
@@ -377,7 +597,6 @@ def roadMeshGraph(arq, listRoadMesh):
 
 ######################################################################################### EDIFICATION
 def findClassEdification(tag):
-#    print(tag)
     if tag in office:
         return "office"
 
@@ -485,7 +704,7 @@ def subGraph(arq, namePackage, package, list):
                 entity[contNode] = list[i][k]
                 controllerPackages[contNode] = namePackage
                 flg.append(findClass(namePackage, list[i][k]))
-#                print(list[i][k])
+                #print(list[i][k])
                 contNode = contNode + 1
                 arq.write("\n\t\t\t<hr/>")
                 for j in list[i].keys():  ##  TABLE ATT
@@ -502,7 +721,8 @@ def subGraph(arq, namePackage, package, list):
                     listControlMain.append(k)
 
     for i in range(len(flg)):  ## SubClasses = roads, path SECOND LEVEL
-        if flg[i] in road_mesh or flg[i] in diversion or flg[i] in service or flg[i] in edification:
+        if flg[i] in road_mesh or flg[i] in Leisure or flg[i] in service or flg[i] in edification or flg[i] in Landuse \
+                or flg[i] in electricity or flg[i] in Military or flg[i] in delimitation or flg[i] in vegetation or flg[i] in vegetation:
             None
         else:
             if flg[i] not in listControlSub:
@@ -549,10 +769,22 @@ def findClass(name, tag):
         return findClassService(tag)
     elif name == 'health':
         return findClassHealth(tag)
-    elif name == 'diversion':
-        return findClassDiversion(tag)
+    elif name == 'Leisure':
+        return findClassLeisure(tag)
     elif name == 'edification':
         return findClassEdification(tag)
+    elif name == 'Landuse':
+        return findClassLanduse(tag)
+    elif name == 'electricity':
+        return findClassElectricity(tag)
+    elif name == 'Military':
+        return findClassMilitary(tag)
+    elif name == 'delimitation':
+        return findClassDelimitation(tag)
+    elif name == 'vegetation':
+        return findClassVegetation(tag)
+    elif name == 'hydrography':
+        return findClassHydrography(tag)
 
 
 ######################################################################################### REALATION
@@ -575,9 +807,10 @@ def findRelation(arq):
     # print(entity)
 
     for k,v in mother.items():
-        if v in entertainment and controllerPackages[k] == 'diversion':
+        #print(v + " - " + controllerPackages[k])
+        if v in entertainment and controllerPackages[k] == 'Leisure':
             arq.write(entityRelation(k, valueKey(mother,'entertainment')))
-        elif v in healthCare and controllerPackages[k] == 'health':
+        elif v in healthcare and controllerPackages[k] == 'health':
             arq.write(entityRelation(k, valueKey(mother,'healthcare')))
         elif v in education and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother,'education')))
@@ -589,7 +822,7 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother,'sustenance')))
         elif v in other_Amenity and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother,'other_Amenity')))
-        elif (v in amenity and controllerPackages[k] == 'service') or (v in amenity and controllerPackages[k] == 'health') or (v in amenity and controllerPackages[k] == 'diversion'):
+        elif (v in amenity and controllerPackages[k] == 'service') or (v in amenity and controllerPackages[k] == 'health') or (v in amenity and controllerPackages[k] == 'Leisure'):
             arq.write(entityRelation(k, valueKey(mother,'amenity')))
 
         elif v in food_beverages and controllerPackages[k] == 'service':
@@ -619,31 +852,56 @@ def findRelation(arq):
         elif v in shop and controllerPackages[k] == 'service':
             arq.write(entityRelation(k, valueKey(mother, 'shop')))
 
-        elif v in leisure and controllerPackages[k] == 'diversion':
+        elif v in craft and controllerPackages[k] == 'service':
+
+            arq.write(entityRelation(k, valueKey(mother, 'craft')))
+
+        elif v in leisure and controllerPackages[k] == 'Leisure':
             arq.write(entityRelation(k, valueKey(mother,'leisure')))
 
-        elif v in historic and controllerPackages[k] == 'diversion':
+        elif v in historic and controllerPackages[k] == 'Leisure':
             arq.write(entityRelation(k, valueKey(mother,'historic')))
 
-        elif v in touriusm and controllerPackages[k] == 'diversion':
-            arq.write(entityRelation(k, valueKey(mother,'touriusm')))
+        elif v in tourism and controllerPackages[k] == 'Leisure':
+            arq.write(entityRelation(k, valueKey(mother,'tourism')))
 
-        elif v in man_made and controllerPackages[k] == 'diversion':
+        elif v in man_made and controllerPackages[k] == 'Leisure':
             arq.write(entityRelation(k, valueKey(mother,'man_made')))
 
-        elif v in sport and controllerPackages[k] == 'diversion':
+        elif v in sport and controllerPackages[k] == 'Leisure':
             arq.write(entityRelation(k, valueKey(mother,'sport')))
 
-        elif v in medical_rescue and controllerPackages[k] == 'diversion':
+        elif v in landuse and controllerPackages[k] == 'Landuse':
+            arq.write(entityRelation(k, valueKey(mother,'landuse')))
+
+        elif v in power and controllerPackages[k] == 'electricity':
+            arq.write(entityRelation(k, valueKey(mother,'power')))
+
+        elif v in military and controllerPackages[k] == 'Military':
+            arq.write(entityRelation(k, valueKey(mother,'military')))
+
+        elif v in linear_barriers and controllerPackages[k] == 'delimitation':
+            arq.write(entityRelation(k, valueKey(mother,'linear_barriers')))
+        elif v in access_control_on_highways and controllerPackages[k] == 'delimitation':
+            arq.write(entityRelation(k, valueKey(mother,'access_control_on_highways')))
+        elif v in barrier and controllerPackages[k] == 'delimitation':
+            arq.write(entityRelation(k, valueKey(mother, 'barrier')))
+
+        elif v in boundary and controllerPackages[k] == 'delimitation':
+            arq.write(entityRelation(k, valueKey(mother,'boundary')))
+
+        elif v in medical_rescue and controllerPackages[k] == 'health':
             arq.write(entityRelation(k, valueKey(mother,'medical_rescue')))
-        elif v in firefighters and controllerPackages[k] == 'diversion':
+        elif v in firefighters and controllerPackages[k] == 'health':
             arq.write(entityRelation(k, valueKey(mother,'firefighters')))
-        elif v in lifeguards and controllerPackages[k] == 'diversion':
+        elif v in lifeguards and controllerPackages[k] == 'health':
             arq.write(entityRelation(k, valueKey(mother,'lifeguards')))
-        elif v in other_Station and controllerPackages[k] == 'diversion':
+        elif v in other_Station and controllerPackages[k] == 'health':
             arq.write(entityRelation(k, valueKey(mother, 'other_Station')))
-        elif v in other_Structure and controllerPackages[k] == 'diversion':
+        elif v in other_Structure and controllerPackages[k] == 'health':
             arq.write(entityRelation(k, valueKey(mother, 'other_Structure')))
+        elif v in emergency and controllerPackages[k] == 'health':
+            arq.write(entityRelation(k, valueKey(mother, 'emergency')))
 
         elif v in other_Highway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'other highway features')))
@@ -653,8 +911,8 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'link roads')))
         elif v in special_road and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'special roads')))
-        elif v in path and controllerPackages[k] == 'road_mesh':
-            arq.write(entityRelation(k, valueKey(mother, 'path')))
+        elif v in Path and controllerPackages[k] == 'road_mesh':
+            arq.write(entityRelation(k, valueKey(mother, 'Path')))
         elif v in lifecycle and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'lifecycle')))
         elif v in highway and controllerPackages[k] == 'road_mesh':
@@ -708,6 +966,28 @@ def findRelation(arq):
         elif v in place and controllerPackages[k] == 'edification':
             arq.write(entityRelation(k, valueKey(mother, 'place')))
 
+        elif v in landform_related and controllerPackages[k] == 'vegetation':
+            arq.write(entityRelation(k, valueKey(mother, 'landform_related')))
+        elif v in vegetation_surface_related and controllerPackages[k] == 'vegetation':
+            arq.write(entityRelation(k, valueKey(mother, 'vegetation_surface_related and shop')))
+        elif v in geological and controllerPackages[k] == 'vegetation':
+            arq.write(entityRelation(k, valueKey(mother, 'geological')))
+        elif (v in natural and controllerPackages[k] == 'vegetation') or (v in natural and controllerPackages[k] == 'hydrography'):
+            arq.write(entityRelation(k, valueKey(mother,'natural')))
+
+        if v in water_related and controllerPackages[k] == 'hydrography':
+            arq.write(entityRelation(k, valueKey(mother,'water_related')))
+        if v in natural_watercourses and controllerPackages[k] == 'hydrography':
+            arq.write(entityRelation(k, valueKey(mother,'natural_watercourses')))
+        if v in facilities and controllerPackages[k] == 'hydrography':
+            arq.write(entityRelation(k, valueKey(mother,'facilities')))
+        if v in barriers_on_waterways and controllerPackages[k] == 'hydrography':
+            arq.write(entityRelation(k, valueKey(mother,'barriers_on_waterways')))
+        if v in other_features_on_waterways and controllerPackages[k] == 'hydrography':
+            arq.write(entityRelation(k, valueKey(mother, 'other_features_on_waterways')))
+        if v in waterway and controllerPackages[k] == 'hydrography':
+            arq.write(entityRelation(k, valueKey(mother,'waterway')))
+
 
 def packageRelation(arq, list, name, packageName):
     flg = []
@@ -720,12 +1000,14 @@ def packageRelation(arq, list, name, packageName):
     for i in range(len(list)):  ##  NOME TABELA
         if name in list[i] and list[i][name] not in listControlthird:
             arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
-            mother[contNode] = list[i]['amenity']
+            mother[contNode] = list[i][name]
             controllerPackages[contNode] = packageName
             if packageName == 'health':
                 flg.append(findClassHealth(list[i]['amenity']))
-            elif packageName == 'diversion':
-                flg.append(findClassDiversion(list[i]['amenity']))
+            elif packageName == 'Leisure':
+                flg.append(findClassLeisure(list[i]['amenity']))
+            elif packageName == 'hydrography':
+                flg.append(findClassHydrography(list[i]['vegetation']))
 
             contNode = contNode + 1
             arq.write("\n\t\t\t<hr/>")

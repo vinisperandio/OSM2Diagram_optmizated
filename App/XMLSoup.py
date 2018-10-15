@@ -178,7 +178,7 @@ for i in range(len(listIncom)):
 print("Arq Incomplete nodes")
 arqNode.close()
 end = time.time()
-print("\n"+ str(round(end-ini, 4))+" ms")
+print(str(round(end-ini, 4))+" ms")
 
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
