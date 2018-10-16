@@ -84,10 +84,8 @@ def scriptGeneration(listAll, mapName):
     for i in range(len(listAll)):
         if "amenity" in listAll[i]:
             script = "db."+listAll[i]['amenity']+".insert({ "
-
         elif "shop" in listAll[i]:
             script = "db."+listAll[i]['shop']+".insert({ "
-
         elif "craft" in listAll[i]:
             script = "db."+listAll[i]['craft']+".insert({ "
 
@@ -96,21 +94,28 @@ def scriptGeneration(listAll, mapName):
 
         elif "leisure" in listAll[i]:
             script = "db." + listAll[i]['leisure'] + ".insert({ "
-
         elif "tourism" in listAll[i]:
             script = "db." + listAll[i]['tourism'] + ".insert({ "
-
         elif "historic" in listAll[i]:
             script = "db." + listAll[i]['historic'] + ".insert({ "
-
         elif "man_made" in listAll[i]:
             script = "db." + listAll[i]['man_made'] + ".insert({ "
-
         elif "sport" in listAll[i]:
             script = "db." + listAll[i]['sport'] + ".insert({ "
 
         elif "landuse" in listAll[i]:
             script = "db." + listAll[i]['landuse'] + ".insert({ "
+
+        elif "military" in listAll[i]:
+            script = "db." + listAll[i]['military'] + ".insert({ "
+
+        elif "power" in listAll[i]:
+            script = "db." + listAll[i]['power'] + ".insert({ "
+
+        elif "barrier" in listAll[i]:
+            script = "db." + listAll[i]['barrier'] + ".insert({ "
+        elif "boundary" in listAll[i]:
+            script = "db." + listAll[i]['boundary'] + ".insert({ "
 
         elif "highway" in listAll[i]:
             script = "db."+listAll[i]['highway']+".insert({ "
@@ -137,7 +142,16 @@ def scriptGeneration(listAll, mapName):
         elif "office" in listAll[i]:
             script = "db." + listAll[i]['office'] + ".insert({ "
 
+        elif "waterway" in listAll[i]:
+            script = "db." + listAll[i]['waterway'] + ".insert({ "
+
+        elif "natural" in listAll[i]:
+            script = "db." + listAll[i]['natural'] + ".insert({ "
+        elif "geological" in listAll[i]:
+            script = "db." + listAll[i]['geological'] + ".insert({ "
+
         else:
+            break
             script = ""
 
         if "name" in listAll[i]:

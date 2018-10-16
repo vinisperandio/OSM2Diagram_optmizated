@@ -969,7 +969,7 @@ def findRelation(arq):
         elif v in landform_related and controllerPackages[k] == 'vegetation':
             arq.write(entityRelation(k, valueKey(mother, 'landform_related')))
         elif v in vegetation_surface_related and controllerPackages[k] == 'vegetation':
-            arq.write(entityRelation(k, valueKey(mother, 'vegetation_surface_related and shop')))
+            arq.write(entityRelation(k, valueKey(mother, 'vegetation_surface_related')))
         elif v in geological and controllerPackages[k] == 'vegetation':
             arq.write(entityRelation(k, valueKey(mother, 'geological')))
         elif (v in natural and controllerPackages[k] == 'vegetation') or (v in natural and controllerPackages[k] == 'hydrography'):

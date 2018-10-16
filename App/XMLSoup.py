@@ -95,7 +95,7 @@ def find_tag_coord(test, tagType):
                 listIncom.append(dicElements.copy())
 
     elif tagType == 'node':
-        if test.find('tag'):
+        if test.find('tag') and not(test.find(k="source")):
             find_coord_stereotypes_Node(test)
             listNode.append(dicElements.copy())
         else:
@@ -130,7 +130,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_relation.osm") as xml_file:
+with open("App/map_ufv.osm") as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
