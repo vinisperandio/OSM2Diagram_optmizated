@@ -36,7 +36,7 @@ def coordinates(listAll, i):
                 if 'lat' + str(num+1) in listAll[i].keys():
                     scriptCoordinates += charStereotypeClose[stereotypeFLG] + ", " + charStereotypeOpen[stereotypeFLG]
                     flgLat = listAll[i]['lat'+str(num+1)]
-                    print(flgLat)
+                    #print(flgLat)
                     flgLon = listAll[i]['lon'+str(num+1)]
                     flgMulti = "Multi"
                     flgVirgula = 1
@@ -80,6 +80,8 @@ def scriptGeneration(listAll, mapName):
     listScript = []
     scriptInsert = ""
     scriptJson = ""
+    flgGeneric = 0
+
 
     for i in range(len(listAll)):
         if "amenity" in listAll[i]:
@@ -151,15 +153,16 @@ def scriptGeneration(listAll, mapName):
             script = "db." + listAll[i]['geological'] + ".insert({ "
 
         else:
-            break
-            script = ""
+            flgGeneric = 1
 
-        if "name" in listAll[i]:
-            script += "\"name\": \""+ listAll[i]['name'] + "\", "
+        if flgGeneric != 1:
+            if "name" in listAll[i]:
+                script += "\"name\": \""+ listAll[i]['name'] + "\", "
 
-        script += othersAtrib(listAll, i)
-        script += coordinates(listAll, i)
-        listScript.append(script)
+            script += othersAtrib(listAll, i)
+            script += coordinates(listAll, i)
+            listScript.append(script)
+        flgGeneric = 0
 
     listScript.sort()
     arqScript.write("use "+ mapName +"\n\n")

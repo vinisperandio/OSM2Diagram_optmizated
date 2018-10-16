@@ -368,7 +368,7 @@ def driveGraph(listDic):
                 if j in vegetation:
                     if 'natural' in listWay[i].keys():
                         if listWay[i]['natural'] in water_related:
-                            listHydrography.append(listWay[i].copiy())
+                            listHydrography.append(listWay[i].copy())
                         else:
                             listVegetation.append(listWay[i].copy())
                 if j in hydrography:
@@ -800,8 +800,8 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     global mother
-    print(mother)
-    print(controllerPackages)
+    #print(mother)
+    #print(controllerPackages)
     # print(superClass)
     # print(subClass)
     # print(entity)
