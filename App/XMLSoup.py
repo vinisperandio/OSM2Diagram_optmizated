@@ -84,10 +84,11 @@ def find_ID(list):
 
 def find_tag_coord(test, tagType):
     if tagType == 'way':
-        if test.find(k="name"):
+        if test.find('tag'):
             find_coord_stereotypes_Way(test)
             listWay.append(dicElements.copy())
-        else:
+        #else:
+        if not test.find(k="name"):
             if find_ID(test) in idMultipolygon:
                 None
             else:
@@ -130,7 +131,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_ufv.osm") as xml_file:
+with open("App/map.osm", encoding='utf-8') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
