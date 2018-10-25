@@ -4,6 +4,7 @@ import time
 import scriptMongo
 import sys
 
+
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
 dicWay = {}    # dicionario das tags Way
 listWay = []   # lista que recebe todos os blocos XML da tag Way
