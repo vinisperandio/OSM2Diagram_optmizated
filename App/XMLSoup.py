@@ -132,7 +132,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_relation.osm", encoding='windows-1252') as xml_file:
+with open("App/map_ufv.osm", encoding='windows-1252') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -174,17 +174,22 @@ for i in listNames:
         arq = json.load(file)
     data = json.dumps(arq)
 
-    linestring = data.find('LineString')
-    multipolygon = data.find('MultiPolygon')
-    point = data.find('Point')
+    linestring = data.count('LineString')
+    multipolygon = data.count('Polygon')
+    point = data.count('Point')
+    print(linestring)
+    print(multipolygon)
+    print(point)
+    print(i)
+    print()
 
-    if linestring > multipolygon and linestring > point:
+    if linestring > multipolygon:
         os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
-    elif multipolygon > linestring and multipolygon > point:
+    elif multipolygon > linestring:
+        print(i)
         os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
     else:
         os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-
 
 
 ###### GERAR RELATORIO
