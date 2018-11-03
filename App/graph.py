@@ -21,7 +21,7 @@ boundary = ['administrative','historic','maritime','national_park','political','
 
 #---------------------------------------------PACKAGE MILITARY-------------------------------------------------------------------------
 global Military
-Military = ['military']
+Military = ['Military']
 
 global military
 military = ['airfield','ammunition','bunker','barracks','checkpoint','danger_area','naval_base','nuclear_explosion_site',
@@ -74,7 +74,7 @@ man_made = ['adit', 'beacon', 'breakwater', 'bridge', 'bunker_silo', 'campanile'
             'windmill', 'works', 'yes']
 global sport
 sport = ['9pin','10pin','american_football','aikido','archery','athletics','australian_football','badminton','bandy',
-         'base','baseball','basketball','beachvolleyball','	billiards','bmx','bobsleigh','boules','bowls','boxing',
+         'base','baseball','basketball','beachvolleyball','	billiards','bmx','bobsleigh','boules','bowls','bowling_alley','boxing',
          'canadian_football','canoe','chess','cliff_diving','climbing','climbing_adventure','cockfighting','cricket',
          'croquet','curling','cycling','darts','dog_racing','equestrian','fencing','field_hockey','free_flying','futsal',
          'gaelic_games','golf','gymnastics','handball','hapkido','horseshoes','horse_racing','ice_hockey','ice_skating',
@@ -89,7 +89,7 @@ global health
 health = ['emergency']
 
 global emergency
-emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_Structure', 'other_Station']
+emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_Structure', 'other_Station', 'emergency']
 global medical_rescue
 medical_rescue = ['ambulance_station', 'defibrilator', 'first_aid_kit', 'landing_site', 'emergency_ward_entrance']
 global firefighters
@@ -109,9 +109,9 @@ service = ['shop', 'amenity', 'craft']
 global amenity
 amenity = ['sustenance','education', 'transportation', 'financial', 'healthcare', 'entertainment', 'other_Amenity']
 global sustenance
-sustenance = ['bar','bbq','biergarten','cafe','drinking_water','fast_food','ice_cream','pub','restaurant']
+sustenance = ['bar','bbq','biergarten','cafe','drinking_water','fast_food','food_court','ice_cream','pub','restaurant']
 global education
-education = ['college', 'kindergarten', 'library', 'archive', 'public_bookcase', 'school', 'music_school',
+education = ['college', 'kindergarten', 'childcare', 'library', 'archive', 'public_bookcase', 'school', 'music_school',
              'driving_school', 'language_school', 'university', 'research_institute']
 global transportation
 transportation = ['bicycle_parking','bicycle_repair_station','bicycle_rental','boat_rental','bus_station', 'fuel',
@@ -124,7 +124,7 @@ global healthcare
 healthcare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home','pharmacy','social_facility',
               'veterinary','blood_donation']
 global entertainment
-entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub',
+entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub', 'love_hotel'
                  'planetarium','social_centre','stripclub','studio','swingerclub','theatre']
 global other_Amenity
 other_Amenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthouse','coworking_spece','creamtorium',
@@ -346,6 +346,8 @@ def driveGraph(listDic):
                 if j in service:
                     if 'amenity' in listWay[i].keys():
                         if listWay[i]['amenity'] in healthcare:
+                            None
+                            print(listWay[i]['amenity'])
                             listHealth.append(listWay[i].copy())
                         elif listWay[i]['amenity'] in entertainment:
                             listLeisure.append(listWay[i].copy())
@@ -353,6 +355,8 @@ def driveGraph(listDic):
                             listService.append(listWay[i].copy())
                 if j in road_mesh:
                     listRoadMesh.append(listWay[i].copy())
+                if j in emergency:
+                    listHealth.append(listHealth.copy())
                 if j in edification:
                     listEdification.append(listWay[i].copy())
                 if j in Leisure:
@@ -465,7 +469,7 @@ def delimitationGraph(arq, listDelimitation):
 ######################################################################################### MILITARY
 def findClassMilitary(tag):
     if tag in military:
-        return "military"
+        return "Military"
     return
 
 
@@ -878,7 +882,7 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother,'power')))
 
         elif v in military and controllerPackages[k] == 'Military':
-            arq.write(entityRelation(k, valueKey(mother,'military')))
+            arq.write(entityRelation(k, valueKey(mother,'Military')))
 
         elif v in linear_barriers and controllerPackages[k] == 'delimitation':
             arq.write(entityRelation(k, valueKey(mother,'linear_barriers')))

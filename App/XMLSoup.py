@@ -1,7 +1,9 @@
+import json
 from bs4 import BeautifulSoup
 import graph
 import time
 import scriptMongo
+import os
 import sys
 
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
@@ -81,7 +83,6 @@ def find_ID(list):
     id_soup = BeautifulSoup(str(list), 'lxml')
     return id_soup.way['id']
 
-
 def find_tag_coord(test, tagType):
     if tagType == 'way':
         if test.find('tag'):
@@ -131,7 +132,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_vicosa2.osm", encoding='utf-8') as xml_file:
+with open("App/map_relation.osm", encoding='windows-1252') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -158,7 +159,33 @@ print(graph.driveGraph(listAllEntities))
 
 #### GERAR SCRIP TABELAS
 fileName = xml_file.name
-scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
+listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
+listNames = sorted(set(listNames))
+print(listNames)
+
+
+#### GERAR SHP
+linestring=0
+multipolygon=0
+point=0
+
+for i in listNames:
+    with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file:
+        arq = json.load(file)
+    data = json.dumps(arq)
+
+    linestring = data.find('LineString')
+    multipolygon = data.find('MultiPolygon')
+    point = data.find('Point')
+
+    if linestring > multipolygon and linestring > point:
+        os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
+    elif multipolygon > linestring and multipolygon > point:
+        os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+    else:
+        os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+
+
 
 ###### GERAR RELATORIO
 arqNode = open("Resultado/relatorio", 'w+')

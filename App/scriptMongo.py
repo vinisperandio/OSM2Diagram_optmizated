@@ -1,4 +1,5 @@
 
+
 def coordinates(listAll, i):
     charStereotypeOpen = ["", "[ ", "[ [ "]
     charStereotypeClose = ["", " ]", " ] ]"]
@@ -58,7 +59,6 @@ def coordinates(listAll, i):
     return script
 
 
-
 def othersAtrib(listAll, i):
     script = ""
     remove = ["name","stereotype","amenity","highway","shop","building"]
@@ -68,6 +68,7 @@ def othersAtrib(listAll, i):
 
     return script.replace("addr:", "")
 
+
 def openJSON(listScript):
     dotA = listScript.find('.') + 1
     dotB = listScript.find('.', dotA)
@@ -75,12 +76,14 @@ def openJSON(listScript):
 
     return arqJSON
 
+
 def scriptGeneration(listAll, mapName):
     arqScript = open("Resultado/script.txt", 'w+')
     listScript = []
     scriptInsert = ""
     scriptJson = ""
     flgGeneric = 0
+    lisNames = []
 
 
     for i in range(len(listAll)):
@@ -159,6 +162,10 @@ def scriptGeneration(listAll, mapName):
             if "name" in listAll[i]:
                 script += "\"name\": \""+ listAll[i]['name'] + "\", "
 
+            start = (script.find('.') + 1)
+            end = script.find('.', start)
+            lisNames.append(script[start:end])
+
             script += othersAtrib(listAll, i)
             script += coordinates(listAll, i)
             listScript.append(script)
@@ -191,4 +198,5 @@ def scriptGeneration(listAll, mapName):
     arqJSON.close()
 
     print("Script Table completed")
-    return
+
+    return lisNames
