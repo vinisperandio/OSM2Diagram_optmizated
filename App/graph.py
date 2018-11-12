@@ -804,8 +804,8 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     global mother
-    #print(mother)
-    #print(controllerPackages)
+    print(mother)
+    print(controllerPackages)
     # print(superClass)
     # print(subClass)
     # print(entity)
