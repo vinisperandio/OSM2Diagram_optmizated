@@ -578,7 +578,7 @@ def findClassroad_mesh(tag):
     elif tag in station_and_shop:
         return "station and shop"
     elif tag in other_Railway:
-        return "other railway"
+        return "other Railway"
 
     elif tag in aerialway:
         return "aerialway"
