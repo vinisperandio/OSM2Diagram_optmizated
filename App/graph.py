@@ -124,7 +124,7 @@ global healthcare
 healthcare = ['baby_hatch','clinic','dentist','doctors','hospital','nursing_home','pharmacy','social_facility',
               'veterinary','blood_donation']
 global entertainment
-entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub', 'love_hotel'
+entertainment = ['arts_centre','brothel','casino','cinema','community_centre','fountain','gambling','nightclub','love_hotel',
                  'planetarium','social_centre','stripclub','studio','swingerclub','theatre']
 global other_Amenity
 other_Amenity = ['animal_boarding','animal_shelter','baking_oven','bench','clock','courthouse','coworking_spece','creamtorium',
@@ -215,14 +215,14 @@ other_Highway = ['bus_stop','crossing','elevator','emergency_access_point','give
                 'User Defined']
 
 global railway
-railway = ['tracks', 'station and shop', 'other_Railway']
+railway = ['tracks','station and shop','other Railways']
 global tracks
 tracks = ['abandoned','construction','disused','funicular','light_rail','miniature','monorail','narrow_gauge','preserved',
           'rail','subway','tram']
 global station_and_shop
 station_and_shop = ['halt','stop_position','platform','station','subway_entrance','tram_stop']
-global other_Railway
-other_Railway = ['buffer_stop','derail','crossing','level_crossing','signal','switch','railway_crossing','turntable',
+global other_Railways
+other_Railways = ['buffer_stop','derail','crossing','level_crossing','signal','switch','railway_crossing','turntable',
                  'roundhouse','traverser','wash','user defined']
 
 global public_transportation
@@ -346,8 +346,6 @@ def driveGraph(listDic):
                 if j in service:
                     if 'amenity' in listWay[i].keys():
                         if listWay[i]['amenity'] in healthcare:
-                            None
-                            print(listWay[i]['amenity'])
                             listHealth.append(listWay[i].copy())
                         elif listWay[i]['amenity'] in entertainment:
                             listLeisure.append(listWay[i].copy())
@@ -577,8 +575,8 @@ def findClassroad_mesh(tag):
         return "tracks"
     elif tag in station_and_shop:
         return "station and shop"
-    elif tag in other_Railway:
-        return "other Railway"
+    elif tag in other_Railways:
+        return "other Railways"
 
     elif tag in aerialway:
         return "aerialway"
@@ -806,9 +804,9 @@ def findRelation(arq):
     global mother
     print(mother)
     print(controllerPackages)
-    # print(superClass)
-    # print(subClass)
-    # print(entity)
+    print(superClass)
+    print(subClass)
+    print(entity)
 
     for k,v in mother.items():
         #print(v + " - " + controllerPackages[k])
@@ -857,7 +855,6 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'shop')))
 
         elif v in craft and controllerPackages[k] == 'service':
-
             arq.write(entityRelation(k, valueKey(mother, 'craft')))
 
         elif v in leisure and controllerPackages[k] == 'Leisure':
@@ -922,13 +919,15 @@ def findRelation(arq):
         elif v in highway and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'highway')))
 
-        elif v in other_Railway and controllerPackages[k] == 'road_mesh':
-            arq.write(entityRelation(k, valueKey(mother, 'other_Railway')))
+        elif v in other_Railways and controllerPackages[k] == 'road_mesh':
+            print(v +" - "+ str(valueKey(mother, 'other Railways')))
+            arq.write(entityRelation(k, valueKey(mother, 'other Railways')))
         elif v in station_and_shop and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'station and shop')))
         elif v in tracks and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'tracks')))
         elif v in railway and controllerPackages[k] == 'road_mesh':
+            print("ra")
             arq.write(entityRelation(k, valueKey(mother, 'railway')))
 
         elif v in aerialway and controllerPackages[k] == 'road_mesh':

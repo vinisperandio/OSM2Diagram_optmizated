@@ -169,27 +169,27 @@ linestring=0
 multipolygon=0
 point=0
 
-for i in listNames:
-    with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file:
-        arq = json.load(file)
-    data = json.dumps(arq)
-
-    linestring = data.count('LineString')
-    multipolygon = data.count('Polygon')
-    point = data.count('Point')
-    print(linestring)
-    print(multipolygon)
-    print(point)
-    print(i)
-    print()
-
-    if linestring > multipolygon:
-        os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
-    elif multipolygon > linestring:
-        print(i)
-        os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-    else:
-        os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+# for i in listNames:
+#     with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file:
+#         arq = json.load(file)
+#     data = json.dumps(arq)
+#
+#     linestring = data.count('LineString')
+#     multipolygon = data.count('Polygon')
+#     point = data.count('Point')
+#     print(linestring)
+#     print(multipolygon)
+#     print(point)
+#     print(i)
+#     print()
+#
+#     if linestring > multipolygon:
+#         os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
+#     elif multipolygon > linestring:
+#         print(i)
+#         os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+#     else:
+#         os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
 
 
 ###### GERAR RELATORIO
