@@ -1026,10 +1026,10 @@ def packageRelation(arq, list, name, packageName):
                 listControlthird.append(list[i][name])
                 entity[contNode] = list[i][name]
                 flgremove.append(i)
-                print(i)
 
             else:
                 del list[i]
+                i -= 1
 
     for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
         if flg[i] not in listControlSecond:
