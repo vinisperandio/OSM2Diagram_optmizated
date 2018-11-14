@@ -89,7 +89,7 @@ global health
 health = ['emergency']
 
 global emergency
-emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_Structure', 'other_Station', 'emergency']
+emergency = ['medical_rescue', 'firefighters', 'lifeguards', 'other_Structure', 'other_Station']
 global medical_rescue
 medical_rescue = ['ambulance_station', 'defibrilator', 'first_aid_kit', 'landing_site', 'emergency_ward_entrance']
 global firefighters
@@ -347,14 +347,17 @@ def driveGraph(listDic):
                     if 'amenity' in listWay[i].keys():
                         if listWay[i]['amenity'] in healthcare:
                             listHealth.append(listWay[i].copy())
+                            j = 0
+                            i += i
+                            break
                         elif listWay[i]['amenity'] in entertainment:
                             listLeisure.append(listWay[i].copy())
                         else:
                             listService.append(listWay[i].copy())
                 if j in road_mesh:
                     listRoadMesh.append(listWay[i].copy())
-                if j in emergency:
-                    listHealth.append(listHealth.copy())
+                if j in health:
+                    listHealth.append(listWay[i].copy())
                 if j in edification:
                     listEdification.append(listWay[i].copy())
                 if j in Leisure:
@@ -383,6 +386,7 @@ def driveGraph(listDic):
         leisureGraph(arq, listLeisure)
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
+        print(listHealth)
         roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         electricityGraph(arq, listElectricity)
@@ -552,6 +556,7 @@ def emergencyGraph(arq, listHealth):
     arq.write(initPackage("HEALTH"))
     packageRelation(arq, listHealth, "amenity", "health")  ##AMENITY
     subGraph(arq, "health", health, listHealth)
+
 
     return "HEALTH checked!"
 
@@ -920,14 +925,12 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'highway')))
 
         elif v in other_Railways and controllerPackages[k] == 'road_mesh':
-            print(v +" - "+ str(valueKey(mother, 'other Railways')))
             arq.write(entityRelation(k, valueKey(mother, 'other Railways')))
         elif v in station_and_shop and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'station and shop')))
         elif v in tracks and controllerPackages[k] == 'road_mesh':
             arq.write(entityRelation(k, valueKey(mother, 'tracks')))
         elif v in railway and controllerPackages[k] == 'road_mesh':
-            print("ra")
             arq.write(entityRelation(k, valueKey(mother, 'railway')))
 
         elif v in aerialway and controllerPackages[k] == 'road_mesh':
@@ -994,6 +997,7 @@ def findRelation(arq):
 
 def packageRelation(arq, list, name, packageName):
     flg = []
+    flgremove = []
     listControlthird = []
     listControlSecond = []
     global contNode
@@ -1001,25 +1005,31 @@ def packageRelation(arq, list, name, packageName):
     global entity
 
     for i in range(len(list)):  ##  NOME TABELA
-        if name in list[i] and list[i][name] not in listControlthird:
-            arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
-            mother[contNode] = list[i][name]
-            controllerPackages[contNode] = packageName
-            if packageName == 'health':
-                flg.append(findClassHealth(list[i]['amenity']))
-            elif packageName == 'Leisure':
-                flg.append(findClassLeisure(list[i]['amenity']))
-            elif packageName == 'hydrography':
-                flg.append(findClassHydrography(list[i]['vegetation']))
+        if name in list[i]:
+            if (list[i]['amenity'] or list[i]['vegetation']) not in listControlthird:
+                arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
+                mother[contNode] = list[i][name]
+                controllerPackages[contNode] = packageName
+                if packageName == 'health':
+                    flg.append(findClassHealth(list[i]['amenity']))
+                elif packageName == 'Leisure':
+                    flg.append(findClassLeisure(list[i]['amenity']))
+                elif packageName == 'hydrography':
+                    flg.append(findClassHydrography(list[i]['vegetation']))
 
-            contNode = contNode + 1
-            arq.write("\n\t\t\t<hr/>")
-            for j in list[i].keys():  ##  ATRIBUTOS TABELA
-                if "stereotype" not in j and "lat" not in j and "lon" not in j and name not in j:
-                    arq.write(entityAtt(j))
-            arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
-            listControlthird.append(list[i][name])
-            entity[contNode] = list[i][name]
+                contNode = contNode + 1
+                arq.write("\n\t\t\t<hr/>")
+                for j in list[i].keys():  ##  ATRIBUTOS TABELA
+                    if "stereotype" not in j and "lat" not in j and "lon" not in j and name not in j:
+                        arq.write(entityAtt(j))
+                arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
+                listControlthird.append(list[i][name])
+                entity[contNode] = list[i][name]
+                flgremove.append(i)
+                print(i)
+
+            else:
+                del list[i]
 
     for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
         if flg[i] not in listControlSecond:
@@ -1030,4 +1040,5 @@ def packageRelation(arq, list, name, packageName):
             contNode = contNode + 1
         else:
             None
+
 
