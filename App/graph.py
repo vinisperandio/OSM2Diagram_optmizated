@@ -807,11 +807,11 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     global mother
-    print(mother)
-    print(controllerPackages)
-    print(superClass)
-    print(subClass)
-    print(entity)
+    # print(mother)
+    # print(controllerPackages)
+    # print(superClass)
+    # print(subClass)
+    # print(entity)
 
     for k,v in mother.items():
         #print(v + " - " + controllerPackages[k])
@@ -993,6 +993,9 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'other_features_on_waterways')))
         if v in waterway and controllerPackages[k] == 'hydrography':
             arq.write(entityRelation(k, valueKey(mother,'waterway')))
+        else:
+            arq.write(entityRelation())
+
 
 
 def packageRelation(arq, list, name, packageName):
@@ -1003,8 +1006,11 @@ def packageRelation(arq, list, name, packageName):
     global contNode
     global mother
     global entity
+    i = 0
 
-    for i in range(len(list)):  ##  NOME TABELA
+
+    while i < len(list):  ##  NOME TABELA
+        #print(str(i) + " - " + str(len(list)))
         if name in list[i]:
             if (list[i]['amenity'] or list[i]['vegetation']) not in listControlthird:
                 arq.write(entityName(contNode, list[i][name], entityStereotype(list[i]["stereotype"])))
@@ -1031,11 +1037,14 @@ def packageRelation(arq, list, name, packageName):
                 del list[i]
                 i -= 1
 
-    for i in range(len(flg)):  ## SubClasses = HEALTHCARE .....
-        if flg[i] not in listControlSecond:
-            arq.write(entityName(contNode, flg[i], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
-            mother[contNode] = flg[i]
-            listControlSecond.append(flg[i])
+        i += 1
+
+
+    for j in range(len(flg)):  ## SubClasses = HEALTHCARE .....
+        if flg[j] not in listControlSecond:
+            arq.write(entityName(contNode, flg[j], entityStereotype(None)) + "\n\t\t\t</TABLE>>]")
+            mother[contNode] = flg[j]
+            listControlSecond.append(flg[j])
             controllerPackages[contNode] = packageName
             contNode = contNode + 1
         else:

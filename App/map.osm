@@ -613,6 +613,8 @@
   <nd ref="5459028921"/>
   <nd ref="5459028925"/>
   <nd ref="5459028212"/>
+  <tag k="amenity" v="hospital"/>
+  <tag k="name" v="Divisão"/>
  </way>
  <way id="566996659" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028220"/>
@@ -636,14 +638,9 @@
   <nd ref="5459028214"/>
   <nd ref="5459028216"/>
   <nd ref="5459028926"/>
-  <tag k="addr:city" v="Ubá"/>
-  <tag k="addr:postcode" v="36500-000"/>
-  <tag k="addr:street" v="Rua Vicente Leite"/>
-  <tag k="addr:suburb" v="Centro"/>
-  <tag k="amenity" v="hospital"/>
-  <tag k="emergency" v="yes"/>
-  <tag k="name" v="Hospital São Vicente de Paulo"/>
-  <tag k="phone" v="+553235391555"/>
+  <tag k="building" v="LEC"/>
+  <tag k="building:levels" v="2"/>
+  <tag k="name" v="Laboratorio de Engenharia Civil"/>
  </way>
  <way id="566996661" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028932"/>

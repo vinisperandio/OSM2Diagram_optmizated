@@ -132,7 +132,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map.osm", encoding='windows-1252') as xml_file:
+with open("App/map.osm") as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
