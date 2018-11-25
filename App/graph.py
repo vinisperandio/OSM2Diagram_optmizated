@@ -386,7 +386,7 @@ def driveGraph(listDic):
         leisureGraph(arq, listLeisure)
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
-        print(listHealth)
+        #print(listHealth)
         roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         electricityGraph(arq, listElectricity)
@@ -395,7 +395,7 @@ def driveGraph(listDic):
         hydrographyGraph(arq, listHydrography)
         vegetationGraph(arq, listVegetation)
         findRelation(arq)
-        print("\nnumero de entidades:"+ str(len(entity)))
+        #print("\nnumero de entidades:"+ str(len(entity)))
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
         arq.close()
@@ -806,7 +806,7 @@ def valueKey(dic, val):
 
 
 def findRelation(arq):
-    global mother
+    #global mother
     # print(mother)
     # print(controllerPackages)
     # print(superClass)
@@ -814,7 +814,7 @@ def findRelation(arq):
     # print(entity)
 
     for k,v in mother.items():
-        #print(v + " - " + controllerPackages[k])
+        #print(v + " - " + controllerPackages[k] + " - " + str(k))
         if v in entertainment and controllerPackages[k] == 'Leisure':
             arq.write(entityRelation(k, valueKey(mother,'entertainment')))
         elif v in healthcare and controllerPackages[k] == 'health':
@@ -993,9 +993,6 @@ def findRelation(arq):
             arq.write(entityRelation(k, valueKey(mother, 'other_features_on_waterways')))
         if v in waterway and controllerPackages[k] == 'hydrography':
             arq.write(entityRelation(k, valueKey(mother,'waterway')))
-        else:
-            arq.write(entityRelation())
-
 
 
 def packageRelation(arq, list, name, packageName):

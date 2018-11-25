@@ -132,7 +132,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map.osm") as xml_file:
+with open("App/map_ufv.osm", encoding='windows-1252') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -162,6 +162,7 @@ fileName = xml_file.name
 listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
 listNames = sorted(set(listNames))
 print(listNames)
+print("Number of entity:" + str(len(listNames)))
 
 
 #### GERAR SHP
@@ -211,7 +212,9 @@ for i in range(len(listIncom)):
 print("Arq Incomplete nodes")
 arqNode.close()
 end = time.time()
-print(str(round(end-ini, 4))+" ms")
+clock = round(end-ini, 3)
+print(str(clock)+" ms")
+print(clock/60)
 
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():
