@@ -342,6 +342,7 @@ def driveGraph(listDic):
         return "Graph failed!"
     else:
         for i in range(len(listWay)):  # separate the entities according to packages
+            flg=-1
             for j in listWay[i].keys():
                 if j in service:
                     if 'amenity' in listWay[i].keys():
@@ -361,7 +362,12 @@ def driveGraph(listDic):
                 if j in edification:
                     listEdification.append(listWay[i].copy())
                 if j in Leisure:
-                    listLeisure.append(listWay[i].copy())
+                    if flg == i:
+                        continue
+                    else:
+                        listLeisure.append(listWay[i].copy())
+                        flg = i
+
                 if j in Landuse:
                     listLandUse.append(listWay[i].copy())
                 if j in electricity:
@@ -379,6 +385,7 @@ def driveGraph(listDic):
                 if j in hydrography:
                     listHydrography.append(listWay[i].copy())
 
+
         arq = open("Resultado/schema.gv", 'w+')
         arq.write("digraph structs { \n\tnode [shape=box]")
 
@@ -386,7 +393,6 @@ def driveGraph(listDic):
         leisureGraph(arq, listLeisure)
         serviceGraph(arq, listService)
         emergencyGraph(arq, listHealth)
-        #print(listHealth)
         roadMeshGraph(arq, listRoadMesh)
         edificationGraph(arq, listEdification)
         electricityGraph(arq, listElectricity)
@@ -395,7 +401,6 @@ def driveGraph(listDic):
         hydrographyGraph(arq, listHydrography)
         vegetationGraph(arq, listVegetation)
         findRelation(arq)
-        #print("\nnumero de entidades:"+ str(len(entity)))
 
         arq.write("\n\trankdir=BT\n\tsplines=ortho\n}")
         arq.close()
@@ -694,6 +699,7 @@ def initPackage(name):
 
 def subGraph(arq, namePackage, package, list):
     flg = []
+    flgRep = []
     global superClass
     global subClass
     global entity
@@ -703,29 +709,36 @@ def subGraph(arq, namePackage, package, list):
     listControlSub = []
     listControlthird = []
 
+    print("dsadsadsa" + str(list))
     for k in package:
         for i in range(len(list)):  ##  TABLE NAME = university, third level
-            if k in list[i] and list[i][k] not in listControlthird:
-                arq.write(entityName(contNode, list[i][k], entityStereotype(list[i]["stereotype"])))
-                mother[contNode] = list[i][k]
-                entity[contNode] = list[i][k]
-                controllerPackages[contNode] = namePackage
-                flg.append(findClass(namePackage, list[i][k]))
-                #print(list[i][k])
-                contNode = contNode + 1
-                arq.write("\n\t\t\t<hr/>")
-                for j in list[i].keys():  ##  TABLE ATT
-                    if "stereotype" not in j and "lat" not in j and "lon" not in j and k not in j:
-                        arq.write(entityAtt(j))
-                arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
-                listControlthird.append(list[i][k])
-                if k not in listControlMain:
-                    arq.write(entityName(contNode, k, entityStereotype(None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
-                    mother[contNode] = k
-                    superClass[contNode] = k
+            if i in flgRep:
+                None
+            else:
+                if k in list[i] and list[i][k] not in listControlthird:
+                    flgRep.append(i)
+                    print(str(flgRep)+ " - "+str(i))
+                    arq.write(entityName(contNode, list[i][k], entityStereotype(list[i]["stereotype"])))
+                    mother[contNode] = list[i][k]
+                    entity[contNode] = list[i][k]
                     controllerPackages[contNode] = namePackage
+                    flg.append(findClass(namePackage, list[i][k]))
+                    #print(list[i][k])
                     contNode = contNode + 1
-                    listControlMain.append(k)
+                    arq.write("\n\t\t\t<hr/>")
+                    for j in list[i].keys():  ##  TABLE ATT
+                        if "stereotype" not in j and "lat" not in j and "lon" not in j and k not in j:
+                            arq.write(entityAtt(j))
+                    arq.write(entityAtt("coordinates") + "\n\t\t\t</TABLE>>]")
+                    listControlthird.append(list[i][k])
+                    if k not in listControlMain:
+                        arq.write(entityName(contNode, k, entityStereotype(None)) + "\n\t\t\t</TABLE>>]")  ## MainClass = highway FIRST LEVEL
+                        mother[contNode] = k
+                        superClass[contNode] = k
+                        controllerPackages[contNode] = namePackage
+                        contNode = contNode + 1
+                        listControlMain.append(k)
+
 
     for i in range(len(flg)):  ## SubClasses = roads, path SECOND LEVEL
         if flg[i] in road_mesh or flg[i] in Leisure or flg[i] in service or flg[i] in edification or flg[i] in Landuse \
@@ -807,11 +820,11 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     #global mother
-    # print(mother)
-    # print(controllerPackages)
-    # print(superClass)
-    # print(subClass)
-    # print(entity)
+    print(mother)
+    print(controllerPackages)
+    print(superClass)
+    print(subClass)
+    print(entity)
 
     for k,v in mother.items():
         #print(v + " - " + controllerPackages[k] + " - " + str(k))

@@ -622,7 +622,9 @@
   <nd ref="5459028922"/>
   <nd ref="5459028218"/>
   <nd ref="5459028220"/>
-  <tag k="emergency" v="ambulance_station"/>
+  <tag k="leisure" v="fitness_centre"/>
+  <tag k="name" v="Ação &amp; Água"/>
+  <tag k="sport" v="swimming;fitness"/>
  </way>
  <way id="566996660" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028926"/>
