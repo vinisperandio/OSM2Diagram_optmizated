@@ -640,9 +640,17 @@
   <nd ref="5459028214"/>
   <nd ref="5459028216"/>
   <nd ref="5459028926"/>
-  <tag k="building" v="LEC"/>
-  <tag k="building:levels" v="2"/>
-  <tag k="name" v="Laboratorio de Engenharia Civil"/>
+  <tag k="addr:city" v="Juiz de Fora"/>
+    <tag k="addr:housenumber" v="6345"/>
+    <tag k="addr:postcode" v="36080-060"/>
+    <tag k="addr:street" v="Avenida Brasil"/>
+    <tag k="addr:suburb" v="Mariano Procópio"/>
+    <tag k="lanes" v="1"/>
+    <tag k="leisure" v="track"/>
+    <tag k="name" v="Arena Kart JF"/>
+    <tag k="sport" v="motor;karting;Kart"/>
+    <tag k="surface" v="Asfalto"/>
+    <tag k="width" v="0"/>
  </way>
  <way id="566996661" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028932"/>

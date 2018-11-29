@@ -41,7 +41,7 @@ Landuse = ['landuse']
 
 global landuse
 landuse = ['commercial','construction','industrial','residential','retail','allotments','basin','brownfield','cemetery',
-           'depot','farmland','farmyard','forest','garages','grass','greenfield','greenhouse_horticulture','landfill',
+           'depot','farmland','farmyard','forest','garages','grass','greenfield','greenhouse_horticulture','landfill', 'harbour',
            'meadow','military','orchard','plant_nursery','port','quarry','railway','recreation_ground','religious','reservoir','salt_pond',
            'village_green','vineyard']
 
@@ -344,46 +344,58 @@ def driveGraph(listDic):
         for i in range(len(listWay)):  # separate the entities according to packages
             flg=-1
             for j in listWay[i].keys():
-                if j in service:
-                    if 'amenity' in listWay[i].keys():
-                        if listWay[i]['amenity'] in healthcare:
-                            listHealth.append(listWay[i].copy())
-                            j = 0
-                            i += i
-                            break
-                        elif listWay[i]['amenity'] in entertainment:
-                            listLeisure.append(listWay[i].copy())
-                        else:
-                            listService.append(listWay[i].copy())
-                if j in road_mesh:
-                    listRoadMesh.append(listWay[i].copy())
-                if j in health:
-                    listHealth.append(listWay[i].copy())
-                if j in edification:
-                    listEdification.append(listWay[i].copy())
-                if j in Leisure:
-                    if flg == i:
-                        continue
-                    else:
-                        listLeisure.append(listWay[i].copy())
+                if flg == i:
+                    continue
+                else:
+                    if j in service:
+                        if 'amenity' in listWay[i].keys():
+                            if listWay[i]['amenity'] in healthcare:
+                                listHealth.append(listWay[i].copy())
+                                j = 0
+                                i += i
+                                flg = i
+                                break
+                            elif listWay[i]['amenity'] in entertainment:
+                                listLeisure.append(listWay[i].copy())
+                                flg = i
+                            else:
+                                flg = i
+                                listService.append(listWay[i].copy())
+                    if j in road_mesh:
                         flg = i
-
-                if j in Landuse:
-                    listLandUse.append(listWay[i].copy())
-                if j in electricity:
-                    listElectricity.append(listWay[i].copy())
-                if j in Military:
-                    listMilitary.append(listWay[i].copy())
-                if j in delimitation:
-                    listDelimitation.append(listWay[i].copy())
-                if j in vegetation:
-                    if 'natural' in listWay[i].keys():
-                        if listWay[i]['natural'] in water_related:
-                            listHydrography.append(listWay[i].copy())
-                        else:
-                            listVegetation.append(listWay[i].copy())
-                if j in hydrography:
-                    listHydrography.append(listWay[i].copy())
+                        listRoadMesh.append(listWay[i].copy())
+                    if j in health:
+                        flg = i
+                        listHealth.append(listWay[i].copy())
+                    if j in edification:
+                        flg = i
+                        listEdification.append(listWay[i].copy())
+                    if j in Leisure:
+                            listLeisure.append(listWay[i].copy())
+                            flg = i
+                    if j in Landuse:
+                        flg = i
+                        listLandUse.append(listWay[i].copy())
+                    if j in electricity:
+                        flg = i
+                        listElectricity.append(listWay[i].copy())
+                    if j in Military:
+                        flg = i
+                        listMilitary.append(listWay[i].copy())
+                    if j in delimitation:
+                        flg = i
+                        listDelimitation.append(listWay[i].copy())
+                    if j in vegetation:
+                        if 'natural' in listWay[i].keys():
+                            if listWay[i]['natural'] in water_related:
+                                flg = i
+                                listHydrography.append(listWay[i].copy())
+                            else:
+                                flg = i
+                                listVegetation.append(listWay[i].copy())
+                    if j in hydrography:
+                        flg = i
+                        listHydrography.append(listWay[i].copy())
 
 
         arq = open("Resultado/schema.gv", 'w+')
