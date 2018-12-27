@@ -721,7 +721,7 @@ def subGraph(arq, namePackage, package, list):
     listControlSub = []
     listControlthird = []
 
-    print("dsadsadsa" + str(list))
+    #print("dsadsadsa" + str(list))
     for k in package:
         for i in range(len(list)):  ##  TABLE NAME = university, third level
             if i in flgRep:
@@ -729,7 +729,7 @@ def subGraph(arq, namePackage, package, list):
             else:
                 if k in list[i] and list[i][k] not in listControlthird:
                     flgRep.append(i)
-                    print(str(flgRep)+ " - "+str(i))
+                    #print(str(flgRep)+ " - "+str(i))
                     arq.write(entityName(contNode, list[i][k], entityStereotype(list[i]["stereotype"])))
                     mother[contNode] = list[i][k]
                     entity[contNode] = list[i][k]
@@ -832,11 +832,11 @@ def valueKey(dic, val):
 
 def findRelation(arq):
     #global mother
-    print(mother)
-    print(controllerPackages)
-    print(superClass)
-    print(subClass)
-    print(entity)
+    # print(mother)
+    # print(controllerPackages)
+    # print(superClass)
+    # print(subClass)
+    # print(entity)
 
     for k,v in mother.items():
         #print(v + " - " + controllerPackages[k] + " - " + str(k))

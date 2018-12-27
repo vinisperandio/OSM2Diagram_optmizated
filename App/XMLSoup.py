@@ -20,7 +20,7 @@ idMultipolygon = [] #guarda os ID dos multipolygons, para que eles nao entrem no
 def find_coord_stereotypes_Way(list):
     flg = 0
     stereotypeList = []
-
+    ini = time.time()
     for nd in list.find_all('nd'):
         for coord in soup.find_all(id=str(nd.get('ref'))):
             dicElements["lat" + str(flg)] = coord.get('lat')
@@ -40,6 +40,9 @@ def find_coord_stereotypes_Way(list):
         v = tag.get('v')
         dicElements[k] = v
     stereotypeList.clear()
+    end = time.time()
+    clock = round(end - ini, 3)
+    print(str(clock) + " ms")
     return
 
 def find_coord_stereotypes_Node(list):
@@ -85,15 +88,14 @@ def find_ID(list):
 
 def find_tag_coord(test, tagType):
     if tagType == 'way':
+        find_coord_stereotypes_Way(test)
         if test.find('tag'):
-            find_coord_stereotypes_Way(test)
             listWay.append(dicElements.copy())
         #else:
         if not test.find(k="name"):
             if find_ID(test) in idMultipolygon:
                 None
             else:
-                find_coord_stereotypes_Way(test)
                 listIncom.append(dicElements.copy())
 
     elif tagType == 'node':
@@ -132,7 +134,7 @@ def find_region_extent(list, ref):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_jf.osm") as xml_file:
+with open("App/map.osm", encoding='UTF-8') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -161,8 +163,8 @@ print(graph.driveGraph(listAllEntities))
 fileName = xml_file.name
 listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
 listNames = sorted(set(listNames))
-print(listNames)
-print("Number of entity:" + str(len(listNames)))
+# print(listNames)
+# print("Number of entity:" + str(len(listNames)))
 
 
 #### GERAR SHP
@@ -171,27 +173,26 @@ multipolygon=0
 point=0
 
 for i in listNames:
-    with open("Resultado/"+ i +".geojson") as file: #, encoding='windows-1252'
+    with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file: #, encoding='windows-1252'
         arq = json.load(file)
     data = json.dumps(arq)
 
     linestring = data.count('LineString')
     multipolygon = data.count('Polygon')
     point = data.count('Point')
-    print(linestring)
-    print(multipolygon)
-    print(point)
-    print(i)
-    print()
+    # print(linestring)
+    # print(multipolygon)
+    # print(point)
+    # print(i)
+    # print()
 
-    if linestring > multipolygon:
-        os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
-    elif multipolygon > linestring:
-        print(i)
-        os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-    else:
-        os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-
+    # if linestring > multipolygon:
+    #     os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
+    # elif multipolygon > linestring:
+    #     os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+    # else:
+    #     os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+    #
 
 ###### GERAR RELATORIO
 arqNode = open("Resultado/relatorio", 'w+')
@@ -209,7 +210,7 @@ for i in range(len(listIncom)):
     arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
 
-print("Arq Incomplete nodes")
+print("Arq Incomplete nodes checked!\n")
 arqNode.close()
 end = time.time()
 clock = round(end-ini, 3)
