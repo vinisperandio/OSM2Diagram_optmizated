@@ -69,12 +69,12 @@ def find_coord_stereotypes_Relation(list):
 
     for member in list.find_all('member'):
         idMultipolygon.append(member.get('ref'))
-        for way in soup.find_all(id=str(member.get('ref'))):
-            for nd in way.find_all('nd'):
-                for coord in soup.find_all(id=str(nd.get('ref'))):
-                    dicElements["lat" + str(flg)] = coord.get('lat')
-                    dicElements["lon" + str(flg)] = coord.get('lon')
-                    flg = flg + 1
+        refMember = member.get('ref')
+        for nd in dicWay[refMember].find_all('nd'):
+            refID = nd.get('ref')
+            dicElements["lat" + str(flg)] = dicMain[refID][0]
+            dicElements["lon" + str(flg)] = dicMain[refID][1]
+            flg = flg + 1
 
     dicElements["stereotype"] = "Polygon"
 
@@ -154,23 +154,22 @@ def insert_key_dic(dic):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map.osm") as xml_file: #, encoding='UTF-8'
+with open("App/map_vicosa.osm") as xml_file: #, encoding='UTF-8'
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
 
-
 for tag in soup.find_all(re.compile("^node")):
     dicMain[tag.get('id')] = [tag.get('lat'),tag.get('lon')]
+
+dicRelation = soup.find_all("relation")
+dicRelation = insert_key_dic(dicRelation)
 
 dicWay = soup.find_all("way")
 dicWay = insert_key_dic(dicWay)
 
 dicNode = soup.find_all("node")
 dicNode = insert_key_dic(dicNode)
-
-dicRelation = soup.find_all("relation")
-dicRelation = insert_key_dic(dicRelation)
 
 
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
@@ -186,6 +185,7 @@ for i in dicNode:
 
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 listAllEntities = listNode + listWay + listRelation
+print(listRelation[0])
 print(graph.driveGraph(listAllEntities))
 
 
