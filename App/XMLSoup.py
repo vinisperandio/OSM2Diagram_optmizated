@@ -162,7 +162,6 @@ with open("App/map.osm") as xml_file: #, encoding='UTF-8'
 
 for tag in soup.find_all(re.compile("^node")):
     dicMain[tag.get('id')] = [tag.get('lat'),tag.get('lon')]
-print(dicMain.items())
 
 dicWay = soup.find_all("way")
 dicWay = insert_key_dic(dicWay)
@@ -217,13 +216,13 @@ for i in listNames:
     # print(i)
     # print()
 
-    # if linestring > multipolygon:
-    #     os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
-    # elif multipolygon > linestring:
-    #     os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-    # else:
-    #     os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-    #
+    if linestring > multipolygon:
+        os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
+    elif multipolygon > linestring:
+        os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+    else:
+        os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+
 
 ###### GERAR RELATORIO
 arqNode = open("Resultado/relatorio", 'w+')
@@ -241,7 +240,7 @@ for i in range(len(listIncom)):
     arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
     arqNode.write(" -------------------------------------\n\n\n")
 
-print("Arq Incomplete nodes checked!\n")
+print("Arq Incomplete nodes checked!")
 arqNode.close()
 end = time.time()
 clock = round(end-ini, 3)
