@@ -1,11 +1,15 @@
 import json
+from builtins import print
+
 from bs4 import BeautifulSoup
 import graph
 import time
 import scriptMongo
+import re
 import os
 import sys
 
+dicMain = {}     # arquivo osm inteiro carregado
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
 dicWay = {}    # dicionario das tags Way
 listWay = []   # lista que recebe todos os blocos XML da tag Way
@@ -21,12 +25,14 @@ def find_coord_stereotypes_Way(list):
     flg = 0
     stereotypeList = []
     ini = time.time()
+
     for nd in list.find_all('nd'):
-        for coord in soup.find_all(id=str(nd.get('ref'))):
-            dicElements["lat" + str(flg)] = coord.get('lat')
-            dicElements["lon" + str(flg)] = coord.get('lon')
-            flg = flg + 1
-            stereotypeList.append(nd.get('ref'))
+        asd = nd.get('ref')
+        coord = "12345678"#str(dicMain[0])[5069:5069 + 48]
+        dicElements["lat" + str(flg)] = coord[2]
+        dicElements["lon" + str(flg)] = coord[4]
+        flg = flg + 1
+        stereotypeList.append(nd.get('ref'))
 
     if len(stereotypeList) == 1:
         dicElements["stereotype"] = "Point"
@@ -129,6 +135,21 @@ def find_region_extent(list, ref):
         num += 1
     return flgHi, flgLw
 
+def insert_key_dic(dic):
+    list = []
+    auxDic = {}
+
+    for i in range(len(dic)):
+        list.append(dic[i])
+        inID = str(list[0]).find("id=")
+        endID = str(list[0]).rfind("\"", inID, inID + 15)
+        st = str(list[0])[inID + 4:endID]
+        auxDic[st] = list[0]
+        list.clear()
+
+    dic.clear()
+    dic = auxDic.copy()
+    return dic
 
 #### LEITURA XML
 #with open(sys.argv[1]) as xml_file:
@@ -138,19 +159,36 @@ with open("App/map.osm", encoding='UTF-8') as xml_file:
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
+
+
+dicMain = soup.find_all("osm")
+# ref = "1618242538"
+# print(str(dicMain[0]).find(str(ref)))
+# dicMain[0].find("1618242538")
+# print(str(dicMain[0])[str(dicMain[0]).find(str(ref)):str(dicMain[0]).find(str(ref))+48])
+# asd = str(dicMain[0])[str(dicMain[0]).find(str(ref)):str(dicMain[0]).find(str(ref))+48]
+# asd = asd.split("\"")
+# print(asd)
+# print(asd[2])
+
 dicWay = soup.find_all("way")
+dicWay = insert_key_dic(dicWay)
+
 dicNode = soup.find_all("node")
+dicNode = insert_key_dic(dicNode)
+
 dicRelation = soup.find_all("relation")
+dicRelation = insert_key_dic(dicRelation)
 
 
 #### SINCRONIZANDO COORDENADAS E STEREOTYPES
-for i in range (len(dicRelation)):
+for i in dicRelation:
     find_tag_coord(dicRelation[i], 'relation')
 
-for i in range(len(dicWay)):
+for i in dicWay:
     find_tag_coord(dicWay[i], 'way')
 
-for i in range(len(dicNode)):
+for i in dicNode:
     find_tag_coord(dicNode[i], 'node')
 
 
