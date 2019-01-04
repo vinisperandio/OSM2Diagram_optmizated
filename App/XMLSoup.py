@@ -27,10 +27,9 @@ def find_coord_stereotypes_Way(list):
     ini = time.time()
 
     for nd in list.find_all('nd'):
-        asd = nd.get('ref')
-        coord = "12345678"#str(dicMain[0])[5069:5069 + 48]
-        dicElements["lat" + str(flg)] = coord[2]
-        dicElements["lon" + str(flg)] = coord[4]
+        refID = nd.get('ref')
+        dicElements["lat" + str(flg)] = dicMain[refID][0]
+        dicElements["lon" + str(flg)] = dicMain[refID][1]
         flg = flg + 1
         stereotypeList.append(nd.get('ref'))
 
@@ -155,21 +154,15 @@ def insert_key_dic(dic):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map.osm", encoding='UTF-8') as xml_file:
+with open("App/map.osm") as xml_file: #, encoding='UTF-8'
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
 
 
-dicMain = soup.find_all("osm")
-# ref = "1618242538"
-# print(str(dicMain[0]).find(str(ref)))
-# dicMain[0].find("1618242538")
-# print(str(dicMain[0])[str(dicMain[0]).find(str(ref)):str(dicMain[0]).find(str(ref))+48])
-# asd = str(dicMain[0])[str(dicMain[0]).find(str(ref)):str(dicMain[0]).find(str(ref))+48]
-# asd = asd.split("\"")
-# print(asd)
-# print(asd[2])
+for tag in soup.find_all(re.compile("^node")):
+    dicMain[tag.get('id')] = [tag.get('lat'),tag.get('lon')]
+print(dicMain.items())
 
 dicWay = soup.find_all("way")
 dicWay = insert_key_dic(dicWay)
@@ -211,7 +204,7 @@ multipolygon=0
 point=0
 
 for i in listNames:
-    with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file: #, encoding='windows-1252'
+    with open("Resultado/"+ i +".geojson") as file: #, encoding='windows-1252'
         arq = json.load(file)
     data = json.dumps(arq)
 
