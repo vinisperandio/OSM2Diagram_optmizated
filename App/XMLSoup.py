@@ -47,7 +47,7 @@ def find_coord_stereotypes_Way(list):
     stereotypeList.clear()
     end = time.time()
     clock = round(end - ini, 3)
-    print(str(clock) + " ms")
+    #print(str(clock) + " ms")
     return
 
 def find_coord_stereotypes_Node(list):
@@ -66,15 +66,18 @@ def find_coord_stereotypes_Node(list):
 
 def find_coord_stereotypes_Relation(list):
     flg = 0
+    aa = 0
 
     for member in list.find_all('member'):
-        idMultipolygon.append(member.get('ref'))
         refMember = member.get('ref')
-        for nd in dicWay[refMember].find_all('nd'):
-            refID = nd.get('ref')
-            dicElements["lat" + str(flg)] = dicMain[refID][0]
-            dicElements["lon" + str(flg)] = dicMain[refID][1]
-            flg = flg + 1
+        idMultipolygon.append(refMember)
+
+        if refMember in dicWay:
+            for nd in dicWay[refMember].find_all('nd'):
+                refID = nd.get('ref')
+                dicElements["lat" + str(flg)] = dicMain[refID][0]
+                dicElements["lon" + str(flg)] = dicMain[refID][1]
+                flg = flg + 1
 
     dicElements["stereotype"] = "Polygon"
 
@@ -154,7 +157,7 @@ def insert_key_dic(dic):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_vicosa.osm") as xml_file: #, encoding='UTF-8'
+with open("App/map_jf.osm", encoding='UTF-8') as xml_file: #, encoding='UTF-8'
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -185,15 +188,15 @@ for i in dicNode:
 
 #### CONSTRUINDO ESQUEMA CONCEITUAL
 listAllEntities = listNode + listWay + listRelation
-print(listRelation[0])
 print(graph.driveGraph(listAllEntities))
 
+print(listAllEntities)
 
 #### GERAR SCRIP TABELAS
 fileName = xml_file.name
 listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
-listNames = sorted(set(listNames))
-# print(listNames)
+# listNames = sorted(set(listNames))
+
 # print("Number of entity:" + str(len(listNames)))
 
 
@@ -203,7 +206,7 @@ multipolygon=0
 point=0
 
 for i in listNames:
-    with open("Resultado/"+ i +".geojson") as file: #, encoding='windows-1252'
+    with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file: #, encoding='windows-1252'
         arq = json.load(file)
     data = json.dumps(arq)
 
@@ -215,7 +218,7 @@ for i in listNames:
     # print(point)
     # print(i)
     # print()
-
+    print(i)
     if linestring > multipolygon:
         os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
     elif multipolygon > linestring:
