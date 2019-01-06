@@ -159,7 +159,8 @@
  <node id="2964380414" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:02Z" user="Artur Vieira" uid="2180959" lat="-20.7581560" lon="-42.8764219"/>
  <node id="2964380415" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:02Z" user="Artur Vieira" uid="2180959" lat="-20.7589887" lon="-42.8757741"/>
  <node id="2964380416" visible="true" version="3" changeset="54852607" timestamp="2017-12-22T23:00:07Z" user="Vetrator" uid="7327030" lat="-20.7577633" lon="-42.8754699">
-  <tag k="highway" v="turning_circle"/>
+  <tag k="highway" v="70 km/h"/>
+  <tag k="name:cs" v="Honorární konzulát České republiky"/>
  </node>
  <node id="2964380586" visible="true" version="2" changeset="24186422" timestamp="2014-07-16T17:51:05Z" user="Artur Vieira" uid="2180959" lat="-20.7536084" lon="-42.8753664"/>
  <node id="2964380587" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:04Z" user="Artur Vieira" uid="2180959" lat="-20.7537599" lon="-42.8759727"/>
@@ -639,7 +640,7 @@
   <nd ref="5459028218"/>
   <nd ref="5459028220"/>
   <tag k="leisure" v="fitness_centre"/>
-  <tag k="name" v="Ação &amp; Água"/>
+  <tag k="name" v="Ação &amp; +Água"/>
   <tag k="sport" v="swimming;fitness"/>
  </way>
  <way id="566996660" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
@@ -656,17 +657,20 @@
   <nd ref="5459028214"/>
   <nd ref="5459028216"/>
   <nd ref="5459028926"/>
-  <tag k="addr:city" v="Juiz de Fora"/>
-    <tag k="addr:housenumber" v="6345"/>
-    <tag k="addr:postcode" v="36080-060"/>
-    <tag k="addr:street" v="Avenida Brasil"/>
-    <tag k="addr:suburb" v="Mariano Procópio"/>
-    <tag k="lanes" v="1"/>
-    <tag k="leisure" v="track"/>
-    <tag k="name" v="Arena Kart JF"/>
-    <tag k="sport" v="motor;karting;Kart"/>
-    <tag k="surface" v="Asfalto"/>
-    <tag k="width" v="0"/>
+    <tag k="addr:city" v="Belo Horizonte"/>
+    <tag k="addr:housenumber" v="2140"/>
+    <tag k="addr:postcode" v="30160-012"/>
+    <tag k="addr:street" v="Rua da Bahia"/>
+    <tag k="amenity" v="embassy"/>
+    <tag k="building" v="yes"/>
+    <tag k="contact:email" v="belohorizonte@honorary.mzv.cz"/>
+    <tag k="contact:phone" v="005531/33303604"/>
+    <tag k="country" v="CZ"/>
+    <tag k="diplomatic" v="honorary_consulate"/>
+    <tag k="name" v="Honorary Consulate of the Czech Republic"/>
+    <tag k="name:cs" v="Honorární konzulát České republiky"/>
+    <tag k="opening_hours" v="Mo-Fr 09:00-12:00"/>
+    <tag k="website" v="https://www.mzv.cz/jnp/cz/o_ministerstvu/adresar_diplomatickych_misi/ceske_urady_v_zahranici/brazilie_honorarni_konzulat_belo.html"/>
  </way>
  <way id="566996661" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028932"/>

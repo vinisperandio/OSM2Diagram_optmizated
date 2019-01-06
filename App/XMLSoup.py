@@ -21,6 +21,9 @@ listIncom = []  # lista que recebe os blocos XML sem a TAG name
 listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serao modelados
 idMultipolygon = [] #guarda os ID dos multipolygons, para que eles nao entrem no arquivo RELATORIO
 
+def replace_attr(value):
+    return value.replace('/', '_').replace('\u010c', 'C').replace('\u200e', '').replace('\"', '')
+
 def find_coord_stereotypes_Way(list):
     flg = 0
     stereotypeList = []
@@ -43,7 +46,7 @@ def find_coord_stereotypes_Way(list):
     for tag in list.find_all('tag'):
         k = tag.get('k')
         v = tag.get('v')
-        dicElements[k] = v
+        dicElements[k] = replace_attr(v)
     stereotypeList.clear()
     end = time.time()
     clock = round(end - ini, 3)
@@ -59,7 +62,7 @@ def find_coord_stereotypes_Node(list):
     for tag in list.find_all('tag'):
         k = tag.get('k')
         v = tag.get('v')
-        dicElements[k] = v
+        dicElements[k] = replace_attr(v)
 
     dicElements["stereotype"] = "Point"
     return
@@ -87,7 +90,7 @@ def find_coord_stereotypes_Relation(list):
         else:
             k = tag.get('k')
             v = tag.get('v')
-            dicElements[k] = v
+            dicElements[k] = replace_attr(v)
     return
 
 def find_ID(list):
@@ -157,7 +160,7 @@ def insert_key_dic(dic):
 #with open(sys.argv[1]) as xml_file:
 ini = time.time()
 
-with open("App/map_jf.osm", encoding='UTF-8') as xml_file: #, encoding='UTF-8'
+with open("App/map_bh.osm", encoding='UTF-8') as xml_file: #, encoding='UTF-8'
     soup = BeautifulSoup(xml_file, 'lxml')
 
 #### PEGANDO TAGs WAY
@@ -190,7 +193,8 @@ for i in dicNode:
 listAllEntities = listNode + listWay + listRelation
 print(graph.driveGraph(listAllEntities))
 
-print(listAllEntities)
+#print(listAllEntities)
+
 
 #### GERAR SCRIP TABELAS
 fileName = xml_file.name
@@ -199,13 +203,13 @@ listNames = sorted(set(listNames))
 
 # print("Number of entity:" + str(len(listNames)))
 
-
 #### GERAR SHP
 linestring=0
 multipolygon=0
 point=0
 
 for i in listNames:
+    #print(i)
     with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file: #, encoding='windows-1252'
         arq = json.load(file, strict=False)
     data = json.dumps(arq)
@@ -218,7 +222,7 @@ for i in listNames:
     # print(point)
     # print(i)
     # print()
-    print(i)
+
     if linestring > multipolygon:
         os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
     elif multipolygon > linestring:
@@ -248,7 +252,7 @@ arqNode.close()
 end = time.time()
 clock = round(end-ini, 3)
 print(str(clock)+" ms")
-print(clock/60)
+print(str(clock/60)+" min")
 
 # for i in range(len(listWay)):
 #         for j in listWay[i].keys():

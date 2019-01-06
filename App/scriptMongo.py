@@ -172,8 +172,6 @@ def scriptGeneration(listAll, mapName):
         flgGeneric = 0
 
     listScript.sort()
-    listScript = [w.replace('/', '_') for w in listScript]
-
     arqScript.write("use "+ mapName +"\n\n")
     arrabN = listScript[0].split(".")[1]
     arqJSON = openJSON(listScript[0])
@@ -189,7 +187,7 @@ def scriptGeneration(listAll, mapName):
             scriptJson = "{\"type\": \"FeatureCollection\", \"features\": [\n"
             arrabN = x.split(".")[1]
             arqScript.write("\n")
-
+        #print(x)
         arqScript.write(x)
         scriptJson += x[x.find('{'):x.rfind(')')]+",\n"
 

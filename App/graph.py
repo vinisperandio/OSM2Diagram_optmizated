@@ -397,8 +397,8 @@ def driveGraph(listDic):
                         flg = i
                         listHydrography.append(listWay[i].copy())
 
-
-        arq = open("Resultado/schema.gv", 'w+')
+        import codecs
+        arq = codecs.open("Resultado/schema.gv", "w+", "UTF-8")
         arq.write("digraph structs { \n\tnode [shape=box]")
 
         landUseGraph(arq, listLandUse)
