@@ -295,6 +295,22 @@
  <node id="5459028933" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7621056" lon="-42.8608687"/>
  <node id="5459028934" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7620555" lon="-42.8605093"/>
  <node id="5459028935" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7620429" lon="-42.8605790"/>
+   <node id="3675546583" lat="-21.7396643" lon="-43.3735110" version="2" timestamp="2018-09-12T02:38:51Z" changeset="62506435" uid="8811050" user="gabrielcastrojf">
+    <tag k="addr:city" v="Juiz de Fora"/>
+    <tag k="addr:housenumber" v="6345"/>
+    <tag k="addr:postcode" v="36080-060"/>
+    <tag k="addr:street" v="Avenida Brasil"/>
+    <tag k="addr:suburb" v="Mariano Procópio"/>
+    <tag k="description" v="Pista de Kart&#x0a;Karts rentáveis - baterias de 10 ou 20 minutos&#x0a;No estacionamento do Shopping Jardim Norte / HAVAN"/>
+    <tag k="highway" v="raceway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="name" v="Arena Kart JF"/>
+    <tag k="oneway" v="no"/>
+    <tag k="phone" v="+55 32 98844-4444"/>
+    <tag k="sport" v="motor;kart"/>
+    <tag k="surface" v="Asfalto"/>
+    <tag k="website" v="https://www.arenapaintballjf.com.br/"/>
+  </node>
  <way id="148758575" visible="true" version="3" changeset="10593680" timestamp="2012-02-05T14:46:40Z" user="Fabrício" uid="593564">
   <nd ref="1618242538"/>
   <nd ref="1618242556"/>
