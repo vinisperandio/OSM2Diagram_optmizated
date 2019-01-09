@@ -21,13 +21,14 @@ listIncom = []  # lista que recebe os blocos XML sem a TAG name
 listAllEntities = [] # lista que contem todos os elementos das Tags NODE, WAY e Relations que serao modelados
 idMultipolygon = [] #guarda os ID dos multipolygons, para que eles nao entrem no arquivo RELATORIO
 
+
 def replace_attr(value):
-    return value.replace('/', '_').replace('\u010c', 'C').replace('\u200e', '').replace('\"', '')
+    return value.replace('/', '_').replace('\u010c', 'C').replace('\u200e', '').replace('\"', '').replace(' ','')
+
 
 def find_coord_stereotypes_Way(list):
     flg = 0
     stereotypeList = []
-    ini = time.time()
 
     for nd in list.find_all('nd'):
         refID = nd.get('ref')
@@ -48,10 +49,8 @@ def find_coord_stereotypes_Way(list):
         v = tag.get('v')
         dicElements[k] = replace_attr(v)
     stereotypeList.clear()
-    end = time.time()
-    clock = round(end - ini, 3)
-    #print(str(clock) + " ms")
     return
+
 
 def find_coord_stereotypes_Node(list):
     flg = 0
@@ -66,6 +65,7 @@ def find_coord_stereotypes_Node(list):
 
     dicElements["stereotype"] = "Point"
     return
+
 
 def find_coord_stereotypes_Relation(list):
     flg = 0
@@ -93,9 +93,11 @@ def find_coord_stereotypes_Relation(list):
             dicElements[k] = replace_attr(v)
     return
 
+
 def find_ID(list):
     id_soup = BeautifulSoup(str(list), 'lxml')
     return id_soup.way['id']
+
 
 def find_tag_coord(test, tagType):
     if tagType == 'way':
@@ -129,6 +131,7 @@ def find_tag_coord(test, tagType):
     dicElements.clear()
     return
 
+
 def find_region_extent(list, ref):
     num = 0
     flgHi = float(list[ref+str(0)])
@@ -139,6 +142,7 @@ def find_region_extent(list, ref):
         flgLw = min(flgLw, flg)
         num += 1
     return flgHi, flgLw
+
 
 def insert_key_dic(dic):
     list = []
@@ -156,108 +160,110 @@ def insert_key_dic(dic):
     dic = auxDic.copy()
     return dic
 
-#### LEITURA XML
-#with open(sys.argv[1]) as xml_file:
-ini = time.time()
 
-with open("App/map_bh.osm", encoding='UTF-8') as xml_file: #, encoding='UTF-8'
-    soup = BeautifulSoup(xml_file, 'lxml')
+def shp_generation(listNames):
+    linestring = 0
+    multipolygon = 0
+    point = 0
 
-#### PEGANDO TAGs WAY
+    for i in listNames:
+        # print(i)
+        with open("Resultado/" + i + ".geojson") as file:  # , encoding='windows-1252'
+            arq = json.load(file, strict=False)
+        data = json.dumps(arq)
 
-for tag in soup.find_all(re.compile("^node")):
-    dicMain[tag.get('id')] = [tag.get('lat'),tag.get('lon')]
+        linestring = data.count('LineString')
+        multipolygon = data.count('Polygon')
+        point = data.count('Point')
+        # print(linestring)
+        # print(multipolygon)
+        # print(point)
+        # print(i)
+        # print()
 
-dicRelation = soup.find_all("relation")
-dicRelation = insert_key_dic(dicRelation)
-
-dicWay = soup.find_all("way")
-dicWay = insert_key_dic(dicWay)
-
-dicNode = soup.find_all("node")
-dicNode = insert_key_dic(dicNode)
-
-
-#### SINCRONIZANDO COORDENADAS E STEREOTYPES
-for i in dicRelation:
-    find_tag_coord(dicRelation[i], 'relation')
-
-for i in dicWay:
-    find_tag_coord(dicWay[i], 'way')
-
-for i in dicNode:
-    find_tag_coord(dicNode[i], 'node')
+        if linestring > (multipolygon and point):
+            os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+        elif multipolygon > (linestring and point):
+            os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+        else:
+            os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+    return
 
 
-#### CONSTRUINDO ESQUEMA CONCEITUAL
-listAllEntities = listNode + listWay + listRelation
-print(graph.driveGraph(listAllEntities))
+def report_generation():
+    arqNode = open("Resultado/relatorio", 'w+')
+    for i in range(len(listIncom)):
+        num = 0
+        arqNode.write(listIncom[i]["stereotype"] + "\n")
+        while 'lat' + str(num) in listIncom[i].keys():
+            arqNode.write(str(listIncom[i]['lat' + str(num)]) + ", " + str(listIncom[i]['lon' + str(num)]) + "\n")
+            num += 1
+        latHi, latLw = find_region_extent(listIncom[i], 'lat')
+        lonHi, lonLw = find_region_extent(listIncom[i], 'lon')
+        arqNode.write(" -------------------------------------\n")
+        arqNode.write("|\t\t\t " + f'{lonHi:.7f}' + "\t\t\t  |\n")
+        arqNode.write("|" + f'{latLw:.7f}' + "\t\t\t " + f'{latHi:.7f}' + "  |\n")
+        arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
+        arqNode.write(" -------------------------------------\n\n\n")
 
-#print(listAllEntities)
+    print("Arq Incomplete nodes checked!")
+    arqNode.close()
+    return
+
+def start():
+
+    #### LEITURA XML
+    #with open(sys.argv[1]) as xml_file:
+    ini = time.time()
+
+    with open("App/map.osm") as xml_file: #, encoding='UTF-8'
+        soup = BeautifulSoup(xml_file, 'lxml')
+
+    #### PEGANDO TAGs WAY
+    for tag in soup.find_all(re.compile("^node")):
+        dicMain[tag.get('id')] = [tag.get('lat'),tag.get('lon')]
+
+    dicRelation = soup.find_all("relation")
+    dicRelation = insert_key_dic(dicRelation)
+
+    dicWay = soup.find_all("way")
+    dicWay = insert_key_dic(dicWay)
+
+    dicNode = soup.find_all("node")
+    dicNode = insert_key_dic(dicNode)
 
 
-#### GERAR SCRIP TABELAS
-fileName = xml_file.name
-listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
-listNames = sorted(set(listNames))
+    #### SINCRONIZANDO COORDENADAS E STEREOTYPES
+    for i in dicRelation:
+        find_tag_coord(dicRelation[i], 'relation')
 
-# print("Number of entity:" + str(len(listNames)))
+    for i in dicWay:
+        find_tag_coord(dicWay[i], 'way')
 
-#### GERAR SHP
-linestring=0
-multipolygon=0
-point=0
-
-for i in listNames:
-    #print(i)
-    with open("Resultado/"+ i +".geojson", encoding='windows-1252') as file: #, encoding='windows-1252'
-        arq = json.load(file, strict=False)
-    data = json.dumps(arq)
-
-    linestring = data.count('LineString')
-    multipolygon = data.count('Polygon')
-    point = data.count('Point')
-    # print(linestring)
-    # print(multipolygon)
-    # print(point)
-    # print(i)
-    # print()
-
-    if linestring > multipolygon:
-        os.system("ogr2ogr -nlt LINESTRING -skipfailures Resultado/"+i+".shp Resultado/"+i+".geojson")
-    elif multipolygon > linestring:
-        os.system("ogr2ogr -nlt MULTIPOLYGON -skipfailures Resultado/" + i + ".shp Resultado/" + i + ".geojson")
-    else:
-        os.system("ogr2ogr -f \"ESRI Shapefile\" Resultado/" + i + ".shp Resultado/" + i + ".geojson")
+    for i in dicNode:
+        find_tag_coord(dicNode[i], 'node')
 
 
-###### GERAR RELATORIO
-arqNode = open("Resultado/relatorio", 'w+')
-for i in range(len(listIncom)):
-    num = 0
-    arqNode.write(listIncom[i]["stereotype"] + "\n")
-    while 'lat'+str(num) in listIncom[i].keys():
-        arqNode.write(str(listIncom[i]['lat'+str(num)])+", "+str(listIncom[i]['lon'+str(num)])+ "\n")
-        num += 1
-    latHi, latLw = find_region_extent(listIncom[i], 'lat')
-    lonHi, lonLw = find_region_extent(listIncom[i], 'lon')
-    arqNode.write(" -------------------------------------\n")
-    arqNode.write("|\t\t\t "+f'{lonHi:.7f}'+"\t\t\t  |\n")
-    arqNode.write("|"+f'{latLw:.7f}'+"\t\t\t "+f'{latHi:.7f}'+"  |\n")
-    arqNode.write("|\t\t\t " + f'{lonLw:.7f}' + "\t\t\t  |\n")
-    arqNode.write(" -------------------------------------\n\n\n")
+    #### CONSTRUINDO ESQUEMA CONCEITUAL
+    listAllEntities = listNode + listWay + listRelation
+    print(graph.driveGraph(listAllEntities))
 
-print("Arq Incomplete nodes checked!")
-arqNode.close()
-end = time.time()
-clock = round(end-ini, 3)
-print(str(clock)+" ms")
-print(str(clock/60)+" min")
 
-# for i in range(len(listWay)):
-#         for j in listWay[i].keys():
-#             if "lat" not in j and "lon" not in j and "name" not in j:
-#                 print(j, end="   ")
-#             if j == "name":
-#                 print(listWay[i]['name'], end="    ")
-#         print()
+    #### GERAR SCRIP TABELAS
+    fileName = xml_file.name
+    listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
+    listNames = sorted(set(listNames))
+    print(listNames)
+
+    #### GERAR SHP
+    shp_generation(listNames)
+
+
+    ###### GERAR RELATORIO
+    report_generation()
+
+
+    end = time.time()
+    clock = round(end-ini, 3)
+    print(str(clock)+" ms")
+    print(str(clock/60)+" min")

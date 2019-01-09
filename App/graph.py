@@ -371,8 +371,8 @@ def driveGraph(listDic):
                         flg = i
                         listEdification.append(listWay[i].copy())
                     if j in Leisure:
-                            listLeisure.append(listWay[i].copy())
-                            flg = i
+                        listLeisure.append(listWay[i].copy())
+                        flg = i
                     if j in Landuse:
                         flg = i
                         listLandUse.append(listWay[i].copy())

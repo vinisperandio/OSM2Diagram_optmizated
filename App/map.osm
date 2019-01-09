@@ -159,9 +159,6 @@
  <node id="2964380414" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:02Z" user="Artur Vieira" uid="2180959" lat="-20.7581560" lon="-42.8764219"/>
  <node id="2964380415" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:02Z" user="Artur Vieira" uid="2180959" lat="-20.7589887" lon="-42.8757741"/>
  <node id="2964380416" visible="true" version="3" changeset="54852607" timestamp="2017-12-22T23:00:07Z" user="Vetrator" uid="7327030" lat="-20.7577633" lon="-42.8754699">
-  <tag k="highway" v="70 km/h"/>
-  <tag k="name:cs" v="Honorární konzulát České republiky"/>
- </node>
  <node id="2964380586" visible="true" version="2" changeset="24186422" timestamp="2014-07-16T17:51:05Z" user="Artur Vieira" uid="2180959" lat="-20.7536084" lon="-42.8753664"/>
  <node id="2964380587" visible="true" version="1" changeset="24162154" timestamp="2014-07-15T14:33:04Z" user="Artur Vieira" uid="2180959" lat="-20.7537599" lon="-42.8759727"/>
  <node id="2964380756" visible="true" version="2" changeset="26326315" timestamp="2014-10-25T17:34:07Z" user="Artur Vieira" uid="2180959" lat="-20.7600715" lon="-42.8635307"/>
@@ -296,22 +293,6 @@
  <node id="5459028933" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7621056" lon="-42.8608687"/>
  <node id="5459028934" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7620555" lon="-42.8605093"/>
  <node id="5459028935" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447" lat="-20.7620429" lon="-42.8605790"/>
-   <node id="3675546583" lat="-21.7396643" lon="-43.3735110" version="2" timestamp="2018-09-12T02:38:51Z" changeset="62506435" uid="8811050" user="gabrielcastrojf">
-    <tag k="addr:city" v="Juiz de Fora"/>
-    <tag k="addr:housenumber" v="6345"/>
-    <tag k="addr:postcode" v="36080-060"/>
-    <tag k="addr:street" v="Avenida Brasil"/>
-    <tag k="addr:suburb" v="Mariano Procópio"/>
-    <tag k="description" v="Pista de Kart&#x0a;Karts rentáveis - baterias de 10 ou 20 minutos&#x0a;No estacionamento do Shopping Jardim Norte / HAVAN"/>
-    <tag k="highway" v="raceway"/>
-    <tag k="lit" v="yes"/>
-    <tag k="name" v="Arena Kart JF"/>
-    <tag k="oneway" v="no"/>
-    <tag k="phone" v="+55 32 98844-4444"/>
-    <tag k="sport" v="motor;kart"/>
-    <tag k="surface" v="Asfalto"/>
-    <tag k="website" v="https://www.arenapaintballjf.com.br/"/>
-  </node>
  <way id="148758575" visible="true" version="3" changeset="10593680" timestamp="2012-02-05T14:46:40Z" user="Fabrício" uid="593564">
   <nd ref="1618242538"/>
   <nd ref="1618242556"/>
@@ -621,8 +602,7 @@
   <nd ref="2964381060"/>
   <nd ref="2964381061"/>
   <nd ref="2964381058"/>
-  <tag k="amenity" v="hospital"/>
-  <tag k="name" v="Divisão de Saúde"/>
+  <tag k="highway" v="70 km/h"/>
  </way>
  <way id="566996658" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028212"/>
@@ -640,7 +620,7 @@
   <nd ref="5459028218"/>
   <nd ref="5459028220"/>
   <tag k="leisure" v="fitness_centre"/>
-  <tag k="name" v="Ação &amp; +Água"/>
+  <tag k="name" v="Ação &amp; Água"/>
   <tag k="sport" v="swimming;fitness"/>
  </way>
  <way id="566996660" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
@@ -657,20 +637,20 @@
   <nd ref="5459028214"/>
   <nd ref="5459028216"/>
   <nd ref="5459028926"/>
-    <tag k="addr:city" v="Belo Horizonte"/>
-    <tag k="addr:housenumber" v="2140"/>
-    <tag k="addr:postcode" v="30160-012"/>
-    <tag k="addr:street" v="Rua da Bahia"/>
-    <tag k="amenity" v="embassy"/>
-    <tag k="building" v="yes"/>
-    <tag k="contact:email" v="belohorizonte@honorary.mzv.cz"/>
-    <tag k="contact:phone" v="005531/33303604"/>
-    <tag k="country" v="CZ"/>
-    <tag k="diplomatic" v="honorary_consulate"/>
-    <tag k="name" v="Honorary Consulate of the Czech Republic"/>
-    <tag k="name:cs" v="Honorární konzulát České republiky"/>
-    <tag k="opening_hours" v="Mo-Fr 09:00-12:00"/>
-    <tag k="website" v="https://www.mzv.cz/jnp/cz/o_ministerstvu/adresar_diplomatickych_misi/ceske_urady_v_zahranici/brazilie_honorarni_konzulat_belo.html"/>
+  <tag k="addr:city" v="Juiz de Fora"/>
+  <tag k="addr:housenumber" v="6345"/>
+  <tag k="addr:postcode" v="36080-060"/>
+  <tag k="addr:street" v="Avenida Brasil"/>
+  <tag k="addr:suburb" v="Mariano Procópio"/>
+  <tag k="description" v="Pista de Kart&#x0a;Karts rentáveis - baterias de 10 ou 20 minutos&#x0a;No estacionamento do Shopping Jardim Norte / HAVAN"/>
+  <tag k="highway" v="raceway"/>
+  <tag k="lit" v="yes"/>
+  <tag k="name" v="Arena Kart JF"/>
+  <tag k="oneway" v="no"/>
+  <tag k="phone" v="+55 32 98844-4444"/>
+  <tag k="sport" v="motor;kart"/>
+  <tag k="surface" v="Asfalto"/>
+  <tag k="website" v="https://www.arenapaintballjf.com.br/"/>
  </way>
  <way id="566996661" visible="true" version="1" changeset="56931769" timestamp="2018-03-06T11:15:43Z" user="Valério Castro" uid="6237447">
   <nd ref="5459028932"/>

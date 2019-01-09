@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow">
+  <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
     <property name="default_width">440</property>
     <property name="default_height">250</property>
@@ -23,6 +23,7 @@
                 <property name="margin_left">16</property>
                 <property name="margin_top">16</property>
                 <property name="margin_bottom">11</property>
+                <property name="editable">False</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -44,12 +45,6 @@
                 <property name="left_attach">1</property>
                 <property name="top_attach">0</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
             </child>
           </object>
           <packing>

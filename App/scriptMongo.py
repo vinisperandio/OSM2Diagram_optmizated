@@ -94,6 +94,19 @@ def scriptGeneration(listAll, mapName):
         elif "craft" in listAll[i]:
             script = "db."+listAll[i]['craft']+".insert({ "
 
+        elif "highway" in listAll[i]:
+            script = "db."+listAll[i]['highway']+".insert({ "
+        elif "aerialway" in listAll[i]:
+            script = "db."+listAll[i]['aerialway']+".insert({ "
+        elif "aeroway" in listAll[i]:
+            script = "db."+listAll[i]['aeroway']+".insert({ "
+        elif "railway" in listAll[i]:
+            script = "db."+listAll[i]['railway']+".insert({ "
+        elif "route" in listAll[i]:
+            script = "db."+listAll[i]['route']+".insert({ "
+        elif "public_transportation" in listAll[i]:
+            script = "db."+listAll[i]['public_transportation']+".insert({ "
+
         elif "emergency" in listAll[i]:
             script = "db."+listAll[i]['emergency']+".insert({ "
 
@@ -122,23 +135,6 @@ def scriptGeneration(listAll, mapName):
         elif "boundary" in listAll[i]:
             script = "db." + listAll[i]['boundary'] + ".insert({ "
 
-        elif "highway" in listAll[i]:
-            script = "db."+listAll[i]['highway']+".insert({ "
-
-        elif "aerialway" in listAll[i]:
-            script = "db."+listAll[i]['aerialway']+".insert({ "
-
-        elif "aeroway" in listAll[i]:
-            script = "db."+listAll[i]['aeroway']+".insert({ "
-
-        elif "railway" in listAll[i]:
-            script = "db."+listAll[i]['railway']+".insert({ "
-
-        elif "route" in listAll[i]:
-            script = "db."+listAll[i]['route']+".insert({ "
-
-        elif "public_transportation" in listAll[i]:
-            script = "db."+listAll[i]['public_transportation']+".insert({ "
 
         elif "building" in listAll[i]:
             script = "db."+listAll[i]['building']+".insert({ "
@@ -200,3 +196,4 @@ def scriptGeneration(listAll, mapName):
     print("Script Table completed")
 
     return lisNames
+
