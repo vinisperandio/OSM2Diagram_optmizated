@@ -90,10 +90,7 @@ def app_main(self):
     thread2.start()
 
 
-def main():
+if __name__ == '__main__':
     interface()
     Gtk.main()
     exit(0)
-
-
-main()
