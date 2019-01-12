@@ -2,15 +2,16 @@ import json
 from builtins import print
 
 from bs4 import BeautifulSoup
-import graph
+from App import graph
 import time
-import scriptMongo
+from App import scriptMongo
 import re
 import os
 import sys
 
 dicMain = {}     # arquivo osm inteiro carregado
 dicElements = {}  # responsavel por separar as caracteristicas (name, coordinates...) dentro da funcao Find_tag_coord
+global dicWay
 dicWay = {}    # dicionario das tags Way
 listWay = []   # lista que recebe todos os blocos XML da tag Way
 dicNode = {}   # dicionario das tags Node
@@ -23,7 +24,7 @@ idMultipolygon = [] #guarda os ID dos multipolygons, para que eles nao entrem no
 
 
 def replace_attr(value):
-    return value.replace('/', '_').replace('\u010c', 'C').replace('\u200e', '').replace('\"', '').replace(' ','')
+    return value.replace('/', '_').replace('\u010c', 'C').replace('\u200e', '').replace('\"', '').replace(' ', '_')
 
 
 def find_coord_stereotypes_Way(list):
@@ -69,18 +70,19 @@ def find_coord_stereotypes_Node(list):
 
 def find_coord_stereotypes_Relation(list):
     flg = 0
-    aa = 0
 
     for member in list.find_all('member'):
         refMember = member.get('ref')
         idMultipolygon.append(refMember)
 
         if refMember in dicWay:
+
             for nd in dicWay[refMember].find_all('nd'):
                 refID = nd.get('ref')
                 dicElements["lat" + str(flg)] = dicMain[refID][0]
                 dicElements["lon" + str(flg)] = dicMain[refID][1]
                 flg = flg + 1
+
 
     dicElements["stereotype"] = "Polygon"
 
@@ -210,13 +212,16 @@ def report_generation():
     arqNode.close()
     return
 
-def start():
+def start(arq):
 
     #### LEITURA XML
     #with open(sys.argv[1]) as xml_file:
     ini = time.time()
+    global dicWay
+    global dicNode
+    global dicRelation
 
-    with open("App/map.osm") as xml_file: #, encoding='UTF-8'
+    with open(arq) as xml_file: #, encoding='UTF-8'
         soup = BeautifulSoup(xml_file, 'lxml')
 
     #### PEGANDO TAGs WAY
@@ -237,6 +242,7 @@ def start():
     for i in dicRelation:
         find_tag_coord(dicRelation[i], 'relation')
 
+
     for i in dicWay:
         find_tag_coord(dicWay[i], 'way')
 
@@ -246,6 +252,7 @@ def start():
 
     #### CONSTRUINDO ESQUEMA CONCEITUAL
     listAllEntities = listNode + listWay + listRelation
+
     print(graph.driveGraph(listAllEntities))
 
 
@@ -253,7 +260,7 @@ def start():
     fileName = xml_file.name
     listNames = scriptMongo.scriptGeneration(listAllEntities, fileName[4:])
     listNames = sorted(set(listNames))
-    print(listNames)
+    # print(listNames)
 
     #### GERAR SHP
     shp_generation(listNames)

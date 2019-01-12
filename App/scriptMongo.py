@@ -22,6 +22,7 @@ def coordinates(listAll, i):
         stereotypeFLG = 2
 
     scriptCoordinates = " \"coordinates\": " + charStereotypeOpen[stereotypeFLG]
+    # print(listAll[i])
     flgLat = listAll[i]['lat0']
     flgLon = listAll[i]['lon0']
     scriptCoordinates += " [ "
